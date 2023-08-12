@@ -15,8 +15,8 @@
 	--shadow-color: #888888;
 	--hover-color: #cccccc;
 	--code-color: #f0f0f0;
-  --tool-tip-background: #101010;
-  --tool-tip-color: #ffffff;
+	--tool-tip-background: #101010;
+	--tool-tip-color: #ffffff;
 }
 
 :root.dark-mode {
@@ -24,11 +24,11 @@
 	--color: #ffffff;
 	--subtle-text-color: #aaaaaa;
 	--border-color: #272727;
-	--shadow-color: #000000;
+	--shadow-color: #0d0d0d;
 	--hover-color: #353535;
 	--code-color: #0d1117;
-  --tool-tip-background: #eeeeee;
-  --tool-tip-color: #000000;
+	--tool-tip-background: #eeeeee;
+	--tool-tip-color: #000000;
 }
 
 html {
@@ -74,89 +74,109 @@ body {
 	padding: 7px 10px;
 	font-size: 10px;
 	border-radius: 4px;
-  z-index: 99999;
-  display: none;
-  justify-content: center;
-  place-items: center;
-  flex-direction: column;
-  gap: 5px;
+	z-index: 99999;
+	display: none;
+	justify-content: center;
+	place-items: center;
+	flex-direction: column;
+	gap: 5px;
 }
 
 .tooltip[data-show] {
-  display: flex;
+	display: flex;
 }
 
-.tooltip[data-popper-placement^='top'] > .arrow {
-  bottom: -4px;
+.tooltip[data-popper-placement^="top"] > .arrow {
+	bottom: -4px;
 }
 
-.tooltip[data-popper-placement^='bottom'] > .arrow {
-  top: -4px;
+.tooltip[data-popper-placement^="bottom"] > .arrow {
+	top: -4px;
 }
 
-.tooltip[data-popper-placement^='left'] > .arrow {
-  right: -4px;
+.tooltip[data-popper-placement^="left"] > .arrow {
+	right: -4px;
 }
 
-.tooltip[data-popper-placement^='right'] > .arrow {
-  left: -4px;
+.tooltip[data-popper-placement^="right"] > .arrow {
+	left: -4px;
 }
 
 .arrow,
 .arrow::before {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: inherit;
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: inherit;
 }
 
 .arrow {
-  visibility: hidden;
+	visibility: hidden;
 }
 
 .arrow::before {
-  visibility: visible;
-  content: '';
-  transform: rotate(45deg);
+	visibility: visible;
+	content: "";
+	transform: rotate(45deg);
 }
 
 .keys {
-  display: flex;
-  justify-content: center;
-  place-items: center;
-  gap: 5px;
+	display: flex;
+	justify-content: center;
+	place-items: center;
+	gap: 5px;
 }
 
 .key {
-  display: flex;
-  justify-content: center;
-  place-items: center;
-  color: var(--tool-tip-color);
-  border: 1px solid var(--tool-tip-color);
-  padding: 5px 10px;
-  border-radius: 2px;
-  font-size: 8px;
+	display: flex;
+	justify-content: center;
+	place-items: center;
+	color: var(--tool-tip-color);
+	border: 1px solid var(--tool-tip-color);
+	padding: 5px 10px;
+	border-radius: 2px;
+	font-size: 8px;
+}
+
+.Svelte {
+	background-color: #ff3e00;
+}
+
+.SCSS {
+	background-color: #c6538c;
+}
+
+.TypeScript {
+	background-color: #3178c6;
+}
+
+.JavaScript {
+	background-color: #f1e05a;
+}
+
+.HTML {
+	background-color: #e34c26;
 }
 
 .Rust {
-  background-color: #dea584;
+	background-color: #dea584;
 }
 
 .Makefile {
-  background-color: #427819;
+	background-color: #427819;
 }
 
 .C\# {
-  background-color: #178600;
+	background-color: #178600;
 }
 
 .TSQL {
-  background-color: #e38c00;
+	background-color: #e38c00;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
+	* {
+		animation: none !important;
+		transition: none !important;
+	}
 }

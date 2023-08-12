@@ -27,7 +27,7 @@ darkModeMediaQuery.addEventListener('change',handleColorSchemeChange);
 // Initial check for the preferred color scheme
 handleColorSchemeChange(darkModeMediaQuery);
 
-console.log("Welcome to aidanbleser.com! See my code here https://github.com/ieedan/aidanbleser.com! 🚀")
+console.log("Welcome to aidanbleser.com! See the source here https://github.com/ieedan/aidanbleser.com! 🚀")
 
 const app = new App({
   target: document.getElementById('app'),

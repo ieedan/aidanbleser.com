@@ -7,9 +7,8 @@
 	import mssqlsSVG from "./assets/mssqls.svg";
 	import aidanSVG from "./assets/aidan.jpg";
 	import { onMount } from "svelte";
-	import { getRepoDescription, getRepoLangs, getRepositoryStats, type Language } from "./TS/github";
+	import { getRepoDescription, getRepoLangs, type Language } from "./TS/github";
 	import hljs from "highlight.js";
-	import { createPopper } from "@popperjs/core";
 	import { addToolTip } from "./TS/tooltip";
 	import ToolTipContent from "./Components/ToolTipContent.svelte";
 	import DistributionDisplay from "./Components/DistributionDisplay.svelte";
@@ -36,6 +35,7 @@
 
 	let ipsStats = new RepoStats();
 	let scalogStats = new RepoStats();
+	let abcomStats = new RepoStats();
 
 	const setDefaultPosition = () => {
 		const storedPosition = localStorage.getItem(navbarPositionKey)
@@ -97,7 +97,7 @@
 		},
 		{
 			name: "skills",
-			left: "-50%",
+			left: "-33.33%",
 			top: "-33.333%",
 		},
 		{
@@ -107,13 +107,18 @@
 		},
 		{
 			name: "my work",
-			left: "-50%",
+			left: "-33.33%",
 			top: "-66.666%",
 		},
 		{
 			name: "about",
 			left: "0%",
 			top: "-66.666%",
+		},
+		{
+			name: "where am i",
+			left: "-66.66%",
+			top: "-66.66%",
 		},
 	];
 
@@ -225,6 +230,7 @@
 
 		scalogStats.languages = await getRepoLangs("ieedan", "Scalog");
 		ipsStats.languages = await getRepoLangs("ieedan", "ips");
+		abcomStats.languages = await getRepoLangs("ieedan", "aidanbleser.com");
 		scalogStats.description = await getRepoDescription("ieedan", "Scalog");
 		ipsStats.description = await getRepoDescription("ieedan", "ips");
 
@@ -380,7 +386,7 @@
 		<div id="ph-3" class="page" />
 		<div id="about" class="page">
 			<div class="content-container">
-				<img src={aidanSVG} alt="Aidan and his dog Zion">
+				<img src={aidanSVG} alt="Aidan and his dog Zion" />
 				<h3>About me</h3>
 				<p>
 					In the cooler months of the year I enjoy camping with my Fiance and Dog. I always enjoy playing
@@ -423,13 +429,13 @@ C:\WINDOWS\system32>ips 192.168.1.100
 					<li class="project">
 						<div class="section top">
 							<pre class="example" lang="csharp">
-								<code lang="csharp">
+								<code>
 using Scalog;
 	
 string connString = "yourConnectionStringHere";
-	
+		
 var logger = new Logger(connString, false);
-	
+		
 logger.LogInfo("Welcome to Scalog");
 								</code>
 							</pre>
@@ -451,7 +457,27 @@ logger.LogInfo("Welcome to Scalog");
 				</ul>
 			</div>
 		</div>
-		<div id="ph-4" class="page" />
+		<div id="where-am-i" class="page">
+			<div class="content-container">
+				<h2>Where am I?</h2>
+				<DistributionDisplay items={abcomStats?.languages} />
+				<ul class="tags">
+					{#each abcomStats?.languages as language}
+						<li>
+							<div class={`${language.name} dot`} />
+							<small class="lang-tag">{language.name}</small>
+						</li>
+					{/each}
+				</ul>
+				<small class="description">
+					This website was developed using the above technologies. See the source here
+					<a href="https://github.com/ieedan/aidanbleser.com" target="_blank">
+						<i class="fa-solid fa-up-right-from-square fa-xs"></i>
+					</a>
+					.
+				</small>
+			</div>
+		</div>
 	</div>
 </main>
 
@@ -646,7 +672,8 @@ logger.LogInfo("Welcome to Scalog");
 		.grid-container {
 			overflow: hidden;
 			position: relative;
-			width: 200%;
+			width: 300%;
+			height: 300%;
 			display: grid;
 			grid-template-areas:
 				"top-left top-middle top-right"
@@ -722,6 +749,36 @@ logger.LogInfo("Welcome to Scalog");
 
 						p {
 							font-size: 14px;
+						}
+					}
+
+					.tags {
+						display: flex;
+						justify-content: center;
+						place-items: center;
+						list-style: none;
+						flex-wrap: wrap;
+						padding: 0px;
+						margin: 0px;
+						gap: 7px;
+						margin-top: 5px;
+
+						li {
+							display: flex;
+							justify-content: center;
+							place-items: center;
+							.dot {
+								width: 5px;
+								height: 5px;
+								border-radius: 50%;
+							}
+
+							.lang-tag {
+								color: var(--color);
+								padding: 3px 6px;
+								border-radius: 12px;
+								font-family: var(--code-font-family);
+							}
 						}
 					}
 				}
@@ -1031,35 +1088,6 @@ logger.LogInfo("Welcome to Scalog");
 									margin: 0px;
 									margin-bottom: 15px;
 								}
-
-								.tags {
-									display: flex;
-									justify-content: start;
-									place-items: center;
-									list-style: none;
-									padding: 0px;
-									margin: 0px;
-									gap: 7px;
-									margin-top: 5px;
-
-									li {
-										display: flex;
-										justify-content: center;
-										place-items: center;
-										.dot {
-											width: 5px;
-											height: 5px;
-											border-radius: 50%;
-										}
-
-										.lang-tag {
-											color: var(--color);
-											padding: 3px 6px;
-											border-radius: 12px;
-											font-family: var(--code-font-family);
-										}
-									}
-								}
 							}
 						}
 					}
@@ -1074,8 +1102,18 @@ logger.LogInfo("Welcome to Scalog");
 				grid-area: "middle-right";
 			}
 
-			#ph-3 {
+			#where-am-i {
 				grid-area: "bottom-right";
+				.content-container {
+					a {
+						color: var(--color);
+					}
+
+					.description {
+						color: var(--subtle-text-color);
+						margin-top: 15px;
+					}
+				}
 			}
 
 			#ph-4 {
