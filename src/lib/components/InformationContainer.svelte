@@ -31,15 +31,11 @@
 </script>
 
 <div
-	class="rounded-lg border border-gray-100 bg-white text-black dark:border-gray-900 dark:bg-gray-999 dark:text-white {className}"
->
+	class="rounded-lg border border-gray-100 bg-white text-black dark:border-gray-900 dark:bg-gray-999 dark:text-white {className}">
 	<div
 		class="flex place-items-center justify-between border-b
-        border-gray-100 px-1 py-1 font-serif dark:border-gray-900"
-	>
-		<small
-			class="hidden text-gray-400 selection:bg-purple-400 selection:text-white dark:text-gray-500 md:block"
-		>
+        border-gray-100 px-1 py-1 font-serif dark:border-gray-900">
+		<small class="hidden text-gray-400 dark:text-gray-500 md:block">
 			{endpoint}
 		</small>
 		<small class="block text-gray-400 dark:text-gray-500 md:hidden">
@@ -49,8 +45,7 @@
 			on:click={copy}
 			class="flex h-6 w-6 place-items-center justify-center
             rounded-md border border-gray-100 text-gray-400
-            transition-all hover:bg-gray-100 dark:border-gray-900 dark:text-gray-500 hover:dark:bg-gray-900"
-		>
+            transition-all hover:bg-gray-100 dark:border-gray-900 dark:text-gray-500 hover:dark:bg-gray-900">
 			{#if copied}
 				<div class="flex place-items-center justify-center">
 					<i class="fa-regular fa-check fa-xs"></i>
@@ -62,7 +57,7 @@
 			{/if}
 		</button>
 	</div>
-	<ul class="flex flex-col gap-2 px-2 py-2">
+	<ul class="flex max-h-72 flex-col gap-2 overflow-auto px-2 py-2">
 		{#if infoArr.length != 0}
 			{#each infoArr as info}
 				<li class="flex flex-col">
@@ -70,15 +65,14 @@
 						<strong class="font-medium">{info.name}</strong>
 						{#if info.shortDetail}
 							<small class="text-gray-600 dark:text-gray-600"
-								>{info.shortDetail}</small
-							>
+								>{info.shortDetail}</small>
 						{/if}
 					</div>
 					{#if info.longDetail}
 						<small class="text-gray-600 dark:text-gray-600">{info.longDetail}</small>
 					{/if}
 					{#if info.description}
-						<p class="hidden text-sm md:block">{info.description}</p>
+						<p class="text-sm">{info.description}</p>
 					{/if}
 				</li>
 			{/each}
