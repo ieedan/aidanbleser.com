@@ -5,6 +5,9 @@
 	import logoSVG from "$lib/assets/favicon.svg";
 	import { ColorPreference, changePreference, getCurrentPreference } from "$lib/TS/dark-mode";
 	import { usePreload } from "$lib";
+	import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit"
+
+	injectSpeedInsights();
 
 	let colorPreference: ColorPreference;
 

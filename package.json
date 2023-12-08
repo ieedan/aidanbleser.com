@@ -33,6 +33,7 @@
 	"type": "module",
 	"dependencies": {
 		"@vercel/analytics": "^1.1.1",
+		"@vercel/speed-insights": "^1.0.1",
 		"prettier-plugin-tailwindcss": "^0.5.9"
 	}
 }
