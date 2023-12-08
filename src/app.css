@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer utilities {
-    .scheme-dark {
-        color-scheme: dark;
-    }
+	.scheme-dark {
+		color-scheme: dark;
+	}
 }
