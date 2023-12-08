@@ -1,32 +1,6 @@
 <script lang="ts">
 	import InformationContainer from "$lib/components/InformationContainer.svelte";
 
-	type Resume = {
-		skills: Skill[];
-		experience: Experience[];
-		education: Education[];
-	};
-
-	type Skill = {
-		name: string;
-		yearsExperience: number;
-	};
-
-	type Experience = {
-		name: string;
-		location: string;
-		from: string; 
-		to: string; 
-		description: string;
-	};
-
-	type Education = {
-		name: string;
-		from: string; 
-		to: string; 
-		degree: string;
-	};
-
     export let data;
 </script>
 
