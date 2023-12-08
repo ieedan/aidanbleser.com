@@ -1,2 +1,2 @@
 # aidanbleser.com
-A portfolio website built to display my skills. I hope you like it.
+This portfolio website allows you to interact with my resume as a REST API.
