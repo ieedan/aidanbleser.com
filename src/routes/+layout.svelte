@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import "../app.css";
-	import "$lib/index.ts";
-	import { faGithub } from "@fortawesome/free-brands-svg-icons";
+	import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 	import {
 		faMoon,
@@ -14,10 +13,7 @@
 	import logoSVG from "$lib/assets/favicon.svg";
 	import blogSVG from "$lib/assets/blog-icon.svg";
 	import { ColorPreference, changePreference, getCurrentPreference } from "$lib/TS/dark-mode";
-	import { usePreload } from "$lib";
-	import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
 	import { get } from "$lib/TS/api";
-	import findAncestor from "$lib/TS/find-ancestor";
 
 	class Action {
 		name: string;
@@ -35,7 +31,7 @@
 			group: string,
 			shortCut?: string,
 			icon?: IconDefinition,
-			img?: string,
+			img?: string
 		) {
 			this.name = name;
 			this.fn = fn;
@@ -136,7 +132,14 @@
 			() => window.open("https://github.com/ieedan", "_blank")?.focus(),
 			"Links",
 			undefined,
-			faGithub,
+			faGithub
+		),
+		new Action(
+			"LinkedIn",
+			() => window.open("https://www.linkedin.com/in/aidan-bleser-731b01286", "_blank")?.focus(),
+			"Links",
+			undefined,
+			faLinkedin
 		),
 	];
 
@@ -144,8 +147,6 @@
 		if (a instanceof Group) return true;
 		return a.name.toLowerCase().includes(search.toLowerCase());
 	});
-
-	injectSpeedInsights();
 
 	let colorPreference: ColorPreference;
 
@@ -238,7 +239,6 @@
 
 						if (top - a.elementRef.offsetTop + 110 > listRef.offsetHeight) {
 							const scrollTop = a.elementRef.offsetTop - (listRef.offsetHeight / 2);
-							console.log('Scroll Top: ',scrollTop);
 							listRef.scrollTop = scrollTop;
 						}
 					}
@@ -256,7 +256,6 @@
 	};
 
 	onMount(() => {
-		usePreload();
 		colorPreference = getCurrentPreference();
 	});
 </script>
@@ -314,6 +313,12 @@
 						target="_blank"
 						class="transition-all hover:text-black hover:dark:text-white">
 						GitHub
+					</a>
+					<a
+						href="https://www.linkedin.com/in/aidan-bleser-731b01286"
+						target="_blank"
+						class="transition-all hover:text-black hover:dark:text-white">
+						LinkedIn
 					</a>
 				</div>
 				<div class="col flex flex-col gap-1">
@@ -462,192 +467,4 @@
 			{/if}
 		{/each}
 	</ul>
-	<!-- <ul
-		class="scroll-container dark:scheme-dark relative h-96 overflow-y-auto px-2 py-2"
-		id="action-list">
-		{#if foundActions.length == 0}
-			<p
-				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-500 dark:text-gray-600"
-				>No results found for "{search}".</p>
-		{/if}
-		<div
-			class="py-1 data-[show=false]:hidden"
-			data-show={-1 <
-				foundActions.findIndex((a) => a.getAttribute("data-group") == "Information")}>
-			<small class="px-3 text-gray-600 dark:text-gray-500">Information</small>
-		</div>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<button
-				on:click={async () => {
-					const response = await get("/resume");
-					const json = JSON.stringify(response.body);
-					downloadJSON(json, "resume.json");
-				}}
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-regular fa-arrow-down-to-line"></i>
-				</div>
-				<span data-group="Information">Download resume JSON</span>
-			</button>
-		</li>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<button
-				on:click={() => window.print()}
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-regular fa-print"></i>
-				</div>
-				<span class="flex-grow text-start" data-group="Information">Print resume</span>
-				<div>
-					<span
-						class="rounded-md border border-gray-100 bg-white px-1 py-1
-					text-sm text-black transition-all placeholder:text-gray-500
-					dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300">
-						Ctrl
-					</span>
-					<span
-						class="rounded-md border border-gray-100 bg-white px-1 py-1
-					text-sm text-black transition-all placeholder:text-gray-500
-					dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300">
-						P
-					</span>
-				</div>
-			</button>
-		</li>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<button
-				on:click={async () => {
-					const response = await get("/skills");
-					const json = JSON.stringify(response.body);
-					downloadJSON(json, "skills.json");
-				}}
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-regular fa-arrow-down-to-line"></i>
-				</div>
-				<span data-group="Information">Download skills JSON</span>
-			</button>
-		</li>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<button
-				on:click={async () => {
-					const response = await get("/experience");
-					const json = JSON.stringify(response.body);
-					downloadJSON(json, "experience.json");
-				}}
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-regular fa-arrow-down-to-line"></i>
-				</div>
-				<span data-group="Information">Download experience JSON</span>
-			</button>
-		</li>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<button
-				on:click={async () => {
-					const response = await get("/education");
-					const json = JSON.stringify(response.body);
-					downloadJSON(json, "education.json");
-				}}
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-regular fa-arrow-down-to-line"></i>
-				</div>
-				<span data-group="Information">Download education JSON</span>
-			</button>
-		</li>
-		<div
-			class="py-1 data-[show=false]:hidden"
-			data-show={-1 <
-				foundActions.findIndex((a) => a.getAttribute("data-group") == "General")}>
-			<small class="px-3 text-gray-900 dark:text-gray-500">General</small>
-		</div>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<button
-				on:click={() => choosePreference(ColorPreference.dark)}
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-light fa-moon"></i>
-				</div>
-				<span data-group="General">Change theme to Dark</span>
-			</button>
-		</li>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<button
-				on:click={() => choosePreference(ColorPreference.light)}
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-light fa-sun"></i>
-				</div>
-				<span data-group="General">Change theme to Light</span>
-			</button>
-		</li>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<button
-				on:click={() => choosePreference(ColorPreference.OS)}
-				class="group flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-light fa-desktop"></i>
-				</div>
-				<span data-group="General">Change theme to System</span>
-			</button>
-		</li>
-		<div
-			class="py-1 data-[show=false]:hidden"
-			data-show={-1 < foundActions.findIndex((a) => a.getAttribute("data-group") == "Links")}>
-			<small class="px-3 text-gray-900 dark:text-gray-500">Links</small>
-		</div>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<a
-				href="https://blog.aidanbleser.com/"
-				target="_blank"
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<img src={blogSVG} alt="Blog icon" />
-				</div>
-				<span data-group="Links">Blog</span>
-			</a>
-		</li>
-		<li class="group w-full data-[show=false]:hidden" data-show={true}>
-			<a
-				href="https://github.com/ieedan"
-				target="_blank"
-				class="flex w-full place-items-center gap-4 rounded-md px-3
-				py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-				dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
-				<div
-					class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
-					<i class="fa-brands fa-github"></i>
-				</div>
-				<span data-group="Links">Github</span>
-			</a>
-		</li>
-	</ul> -->
 </div>
