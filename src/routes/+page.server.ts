@@ -1,17 +1,17 @@
 import { get } from "$lib/TS/api";
 
-type Resume = {
+export type Resume = {
     skills: Skill[];
     experience: Experience[];
     education: Education[];
 };
 
-type Skill = {
+export type Skill = {
     name: string;
     yearsExperience: number;
 };
 
-type Experience = {
+export type Experience = {
     name: string;
     location: string;
     from: string; 
@@ -19,7 +19,7 @@ type Experience = {
     description: string;
 };
 
-type Education = {
+export type Education = {
     name: string;
     from: string; 
     to: string; 

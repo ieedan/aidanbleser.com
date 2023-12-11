@@ -31,19 +31,20 @@
 </script>
 
 <div
-	class="rounded-lg border border-gray-100 bg-white text-black dark:border-gray-900 dark:bg-gray-999 dark:text-white {className}">
+	class="rounded-lg border print:border-none border-gray-100 
+	bg-white text-black print:dark:text-black dark:border-gray-900 dark:bg-gray-999 dark:text-white {className}">
 	<div
-		class="flex place-items-center justify-between border-b
+		class="flex place-items-center justify-between border-b print:dark:border-gray-100
         border-gray-100 px-1 py-1 font-serif dark:border-gray-900">
-		<small class="hidden text-gray-400 dark:text-gray-500 md:block">
+		<small class="hidden text-gray-400 dark:text-gray-500 xs:block">
 			{endpoint}
 		</small>
-		<small class="block text-gray-400 dark:text-gray-500 md:hidden">
+		<small class="block text-gray-400 dark:text-gray-500 xs:hidden">
 			{trimmedEndpoint}
 		</small>
 		<button
 			on:click={copy}
-			class="flex h-6 w-6 place-items-center justify-center
+			class="flex h-6 w-6 place-items-center justify-center print:hidden
             rounded-md border border-gray-100 text-gray-400
             transition-all hover:bg-gray-100 dark:border-gray-900 dark:text-gray-500 hover:dark:bg-gray-900">
 			{#if copied}
@@ -57,7 +58,7 @@
 			{/if}
 		</button>
 	</div>
-	<ul class="flex max-h-72 flex-col gap-2 overflow-auto px-2 py-2">
+	<ul class="flex max-h-[300px] print:max-h-full flex-col gap-2 overflow-auto px-2 py-2">
 		{#if infoArr.length != 0}
 			{#each infoArr as info}
 				<li class="flex flex-col">
