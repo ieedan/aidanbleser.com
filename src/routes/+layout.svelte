@@ -423,23 +423,20 @@
 					bind:this={action.elementRef}
 					class="group w-full"
 					data-selected={action.selected}
-					on:mouseleave={() => {
-						if (action instanceof Group) return;
-						action.selected = false;
-					}}
-					on:mouseover={() => {
+					on:mousemove={() => {
 						if (action instanceof Group) return;
 						foundActions.forEach(a => {
 							if (a instanceof Group) return;
 							a.selected = false;
 						});
 						action.selected = true;
+						selectedActionIndex = index;
 					}}>
 					<button
 						on:click={action.fn}
 						class="flex w-full place-items-center gap-4 rounded-md px-3
-						py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-					dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
+						py-2 text-sm text-black transition-all group-data-[selected=true]:bg-gray-100
+					dark:text-white group-data-[selected=true]:dark:bg-gray-925">
 						<div
 							class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
 							{#if action.icon}
