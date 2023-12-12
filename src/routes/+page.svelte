@@ -11,7 +11,7 @@
 		<h1
 			class="select-none text-center text-7xl font-semibold print:text-start print:text-2xl print:dark:text-black"
 			>Aidan Bleser</h1>
-		<a href="/api-docs" class="w-full py-2 font-serif text-center dark:text-gray-200 text-gray-800">/API Docs</a>
+		<a href="/docs" class="w-full py-2 font-serif text-center dark:text-gray-200 text-gray-800">/Docs</a>
 	</div>
 	<section class="h-16 print:hidden"></section>
 	<div class="flex w-full grid-cols-2 grid-rows-4 flex-col gap-4 print:gap-0 print:px-2 px-6 md:grid max-w-7xl">

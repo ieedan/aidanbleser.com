@@ -305,8 +305,9 @@
 <main class="bg-white dark:bg-gray-999">
 	<slot />
 	<footer
-		class="border-t border-gray-100 text-black dark:border-gray-900 dark:text-white print:dark:border-gray-100 flex justify-center">
-		<div class="flex justify-between px-6 py-4 max-w-7xl w-full">
+		class="border-t border-gray-100 text-black dark:border-gray-900 
+		dark:text-white print:dark:border-gray-100 flex justify-center">
+		<div class="flex justify-between px-6 py-4 max-w-7xl w-full min-h-[120px]">
 			<div class="flex h-8 place-items-center justify-start">
 				<div class="flex place-items-center gap-2">
 					<a href="/">
