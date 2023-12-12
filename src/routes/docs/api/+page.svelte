@@ -1,24 +1,38 @@
 <script lang="ts">
-    import '$lib/css/docs/doc.css';
+	import Code from "$lib/components/Code.svelte";
+	import "$lib/css/docs/doc.css";
+	import { faChevronRight } from "@fortawesome/pro-light-svg-icons";
+	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 </script>
 
-<div class="flex w-full flex-col place-items-center justify-center">
-	<div class="pt-8 pb-4 px-8 w-full">
-        <h1 class="text-4xl"> api.aidanbleser.com reference </h1>
-        <small>{new Date('12/12/2023').toLocaleDateString()}</small>
-    </div>
-    <p class="py-1">You can interact with the aidanbleser API using <code>curl</code> or a fetch ui. To start try running:</p>
-    <code>curl https://api.aidanbleser.com</code>
+<div class="flex w-full flex-col place-items-start justify-center px-8">
+	<div class="w-full pb-4 pt-8">
+		<h1 class="text-4xl"> api.aidanbleser.com reference </h1>
+		<small>{new Date("12/12/2023").toLocaleDateString()}</small>
+	</div>
+	<p class="pb-3"
+		>You can interact with the aidanbleser API like any other api. You can start by calling it
+		from your terminal:</p>
+	<Code>curl https://api.aidanbleser.com/resume</Code>
+	<div class="flex w-full place-items-center justify-between py-8">
+		<div></div>
+		<div class="flex flex-col place-items-end justify-end">
+			<small class="text-xs text-gray-600 dark:text-gray-400 px-5">Next</small>
+			<a href="/docs/api/resume" class="flex place-items-center gap-2 hover:underline">
+				/resume <FontAwesomeIcon class="text-gray-600 dark:text-gray-400" icon={faChevronRight} />
+			</a>
+		</div>
+	</div>
 </div>
 
 <style lang="postcss">
 	p {
-		@apply w-full max-w-3xl px-8 text-start;
+		@apply w-full max-w-3xl text-start;
 	}
 
-    small {
-        @apply dark:text-gray-500
-    }
+	small {
+		@apply dark:text-gray-500;
+	}
 
 	code {
 		@apply rounded-lg bg-gray-100 px-1 py-[2px] font-serif text-sm text-black dark:bg-gray-900 dark:text-white;
@@ -31,10 +45,6 @@
 	h5,
 	h6 {
 		@apply w-full text-start font-medium;
-	}
-
-	a {
-		@apply text-blue-600 hover:underline dark:text-blue-500;
 	}
 
 	ul {

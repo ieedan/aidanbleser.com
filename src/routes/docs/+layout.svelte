@@ -29,67 +29,67 @@
 			routes: [
 				{
 					name: "/resume",
-					slug: "/docs/resume",
+					slug: "/docs/api/resume",
 				},
 				{
 					name: "/skills",
-					slug: "/docs/skills",
+					slug: "/docs/api/skills",
 					routes: [
 						{
 							name: "name",
-							slug: "/docs/skills/#name",
+							slug: "/docs/api/skills/#name",
 						},
 						{
 							name: "yearsExperience",
-							slug: "/docs/skills/#yearsExperience",
+							slug: "/docs/api/skills/#yearsExperience",
 						},
 					],
 				},
 				{
 					name: "/experience",
-					slug: "/docs/experience",
+					slug: "/docs/api/experience",
 					routes: [
 						{
 							name: "name",
-							slug: "/docs/experience/#name",
+							slug: "/docs/api/experience/#name",
 						},
 						{
 							name: "location",
-							slug: "/docs/experience/#location",
+							slug: "/docs/api/experience/#location",
 						},
 						{
 							name: "from",
-							slug: "/docs/experience/#from",
+							slug: "/docs/api/experience/#from",
 						},
 						{
 							name: "to",
-							slug: "/docs/experience/#to",
+							slug: "/docs/api/experience/#to",
 						},
 						{
 							name: "description",
-							slug: "/docs/experience/#description",
+							slug: "/docs/api/experience/#description",
 						},
 					],
 				},
 				{
 					name: "/education",
-					slug: "/docs/education",
+					slug: "/docs/api/education",
 					routes: [
 						{
 							name: "name",
-							slug: "/docs/education/#name",
+							slug: "/docs/api/education/#name",
 						},
 						{
 							name: "from",
-							slug: "/docs/education/#from",
+							slug: "/docs/api/education/#from",
 						},
 						{
 							name: "to",
-							slug: "/docs/education/#to",
+							slug: "/docs/api/education/#to",
 						},
 						{
 							name: "degree",
-							slug: "/docs/education/#degree",
+							slug: "/docs/api/education/#degree",
 						},
 					],
 				},
@@ -145,7 +145,7 @@
 	<div class="flex min-h-screen justify-center">
 		<div class="flex w-full max-w-7xl">
 			<nav bind:this={navigationRef}
-				class="fixed bottom-0 z-50 flex max-h-screen w-full flex-col place-items-end overflow-y-auto
+				class="fixed bottom-0 z-40 flex max-h-screen w-full flex-col place-items-end overflow-y-auto
 				border-t border-gray-100 bg-transparent bg-white
                 px-4 py-3 dark:border-gray-900 dark:bg-gray-999 md:top-[41px] md:w-[300px] md:border-0 md:dark:bg-transparent">
 				<div
@@ -172,7 +172,7 @@
 						><FontAwesomeIcon class="fa-xs text-blue-500" icon={faChevronUp} /></div>
 				</button>
 			</nav>
-			<div class="slot-width relative w-full md:left-[300px]">
+			<div class="slot-width relative w-full md:left-[300px] max-w-3xl">
 				<section class="h-[41px]"></section>
 				<slot />
 			</div>

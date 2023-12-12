@@ -391,7 +391,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class="fixed left-0 top-0 z-10 h-screen w-full bg-white transition-all data-[show=false]:pointer-events-none data-[show=false]:opacity-0
+	class="fixed left-0 top-0 z-[49] h-screen w-full bg-white transition-all data-[show=false]:pointer-events-none data-[show=false]:opacity-0
     data-[show=true]:opacity-80 dark:bg-gray-999 print:hidden"
 	on:click={closePallet}
 	data-show={palletOpen}>
