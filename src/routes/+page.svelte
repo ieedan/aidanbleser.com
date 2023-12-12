@@ -7,13 +7,14 @@
 
 <div class="flex min-h-screen flex-col place-items-center">
 	<section class="h-16 print:hidden"></section>
-	<div class="flex place-items-start justify-start py-6 text-black dark:text-white print:py-2">
+	<div class="flex flex-col place-items-start justify-start py-6 text-black dark:text-white print:py-2">
 		<h1
 			class="select-none text-center text-7xl font-semibold print:text-start print:text-2xl print:dark:text-black"
 			>Aidan Bleser</h1>
+		<a href="/api-docs" class="w-full py-2 font-serif text-center dark:text-gray-200 text-gray-800">/API Docs</a>
 	</div>
 	<section class="h-16 print:hidden"></section>
-	<div class="flex w-full grid-cols-2 grid-rows-4 flex-col gap-4 print:gap-0 print:px-2 px-6 md:grid">
+	<div class="flex w-full grid-cols-2 grid-rows-4 flex-col gap-4 print:gap-0 print:px-2 px-6 md:grid max-w-7xl">
 		<div
 			class="col-span-1 col-start-2 row-span-1 row-start-1 flex place-items-center justify-center py-5">
 			<h4

@@ -8,6 +8,8 @@
 		faSun,
 		faDesktop,
 		type IconDefinition,
+		faMagnifyingGlass,
+		faCommand,
 	} from "@fortawesome/pro-light-svg-icons";
 	import { faArrowDownToLine, faPrint } from "@fortawesome/pro-regular-svg-icons";
 	import logoSVG from "$lib/assets/favicon.svg";
@@ -303,9 +305,9 @@
 <main class="bg-white dark:bg-gray-999">
 	<slot />
 	<footer
-		class="border-t border-gray-100 text-black dark:border-gray-900 dark:text-white print:dark:border-gray-100">
-		<div class="flex justify-between px-6 py-4">
-			<div>
+		class="border-t border-gray-100 text-black dark:border-gray-900 dark:text-white print:dark:border-gray-100 flex justify-center">
+		<div class="flex justify-between px-6 py-4 max-w-7xl w-full">
+			<div class="flex h-8 place-items-center justify-start">
 				<div class="flex place-items-center gap-2">
 					<a href="/">
 						<img src={logoSVG} alt="aidanbleser.com logo" class="h-5 w-5 rounded-md" />
@@ -351,7 +353,7 @@
 					<button
 						on:click={openPallet}
 						class="text-start transition-all hover:text-black hover:dark:text-white">
-						<i class="fa-light fa-command fa-sm"></i> K
+						<FontAwesomeIcon class="fa-sm" icon={faCommand}/> K
 					</button>
 				</div>
 			</nav>
@@ -362,7 +364,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<FontAwesomeIcon icon={faMoon}/>
+					<FontAwesomeIcon icon={faMoon} />
 				</button>
 				<button
 					data-selected={colorPreference == ColorPreference.light}
@@ -370,7 +372,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<FontAwesomeIcon icon={faSun}/>
+					<FontAwesomeIcon icon={faSun} />
 				</button>
 				<button
 					data-selected={colorPreference == ColorPreference.OS}
@@ -378,7 +380,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<FontAwesomeIcon icon={faDesktop}/>
+					<FontAwesomeIcon icon={faDesktop} />
 				</button>
 			</div>
 		</div>
@@ -404,10 +406,10 @@
 	aria-hidden={!palletOpen}
 	data-show={palletOpen}>
 	<div class="border-b border-gray-100 dark:border-gray-900">
-		<search class="flex place-items-center px-2 dark:text-white">
-			<i class="fa-light fa-magnifying-glass fa-sm text-gray-500 dark:text-gray-600"></i>
+		<search class="flex place-items-center px-2 text-gray-500 dark:text-gray-600">
+			<FontAwesomeIcon class="fa-sm" icon={faMagnifyingGlass}/>
 			<input
-				class="flex-grow bg-transparent px-2 py-2 outline-none focus:outline-none dark:placeholder:text-gray-600"
+				class="flex-grow bg-transparent px-2 py-2 outline-none focus:outline-none dark:text-white dark:placeholder:text-gray-600"
 				placeholder="Search actions..."
 				type="text"
 				autocomplete="off"
