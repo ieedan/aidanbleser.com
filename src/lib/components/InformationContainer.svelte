@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { faClone, faCheck } from "@fortawesome/pro-regular-svg-icons";
+	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
+
 	let className: string = "";
 	export { className as class };
 
@@ -49,11 +52,11 @@
             transition-all hover:bg-gray-100 dark:border-gray-900 dark:text-gray-500 hover:dark:bg-gray-900">
 			{#if copied}
 				<div class="flex place-items-center justify-center">
-					<i class="fa-regular fa-check fa-xs"></i>
+					<FontAwesomeIcon class="fa-xs" icon={faCheck}/>
 				</div>
 			{:else}
 				<div class="flex place-items-center justify-center">
-					<i class="fa-regular fa-clone fa-xs"></i>
+					<FontAwesomeIcon class="fa-xs" icon={faClone}/>
 				</div>
 			{/if}
 		</button>

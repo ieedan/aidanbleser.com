@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import "../app.css";
-	import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+	import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 	import {
 		faMoon,
@@ -25,13 +25,15 @@
 		/** Space separated list with the shortcut */
 		shortCut?: string;
 		elementRef?: HTMLLIElement;
+		iconClass?: string;
 		constructor(
 			name: string,
 			fn: () => void,
 			group: string,
 			shortCut?: string,
 			icon?: IconDefinition,
-			img?: string
+			img?: string,
+			iconClass?: string,
 		) {
 			this.name = name;
 			this.fn = fn;
@@ -39,6 +41,7 @@
 			this.shortCut = shortCut;
 			this.icon = icon;
 			this.img = img;
+			this.iconClass = iconClass;
 		}
 	}
 
@@ -132,14 +135,30 @@
 			() => window.open("https://github.com/ieedan", "_blank")?.focus(),
 			"Links",
 			undefined,
-			faGithub
+			faGithub,
+			undefined,
+			"text-black dark:text-white",
 		),
 		new Action(
 			"LinkedIn",
-			() => window.open("https://www.linkedin.com/in/aidan-bleser-731b01286", "_blank")?.focus(),
+			() =>
+				window
+					.open("https://www.linkedin.com/in/aidan-bleser-731b01286", "_blank")
+					?.focus(),
 			"Links",
 			undefined,
-			faLinkedin
+			faLinkedin,
+			undefined,
+			"text-liBlue",
+		),
+		new Action(
+			"X / Twitter",
+			() => window.open("https://twitter.com/theaidanbleser", "_blank")?.focus(),
+			"Links",
+			undefined,
+			faXTwitter,
+			undefined,
+			"text-black dark:text-white",
 		),
 	];
 
@@ -233,12 +252,12 @@
 						const top = listRef.offsetHeight + listRef.scrollTop;
 						const elementBottom = a.elementRef.offsetHeight + a.elementRef.offsetTop;
 						if (top < elementBottom) {
-							const scrollTop = elementBottom + 8 - listRef.offsetHeight;							
+							const scrollTop = elementBottom + 8 - listRef.offsetHeight;
 							listRef.scrollTop = scrollTop;
 						}
 
 						if (top - a.elementRef.offsetTop + 110 > listRef.offsetHeight) {
-							const scrollTop = a.elementRef.offsetTop - (listRef.offsetHeight / 2);
+							const scrollTop = a.elementRef.offsetTop - listRef.offsetHeight / 2;
 							listRef.scrollTop = scrollTop;
 						}
 					}
@@ -320,6 +339,12 @@
 						class="transition-all hover:text-black hover:dark:text-white">
 						LinkedIn
 					</a>
+					<a
+						href="https://twitter.com/theaidanbleser"
+						target="_blank"
+						class="transition-all hover:text-black hover:dark:text-white">
+						X / Twitter
+					</a>
 				</div>
 				<div class="col flex flex-col gap-1">
 					<h6 class="text-base font-semibold text-black dark:text-white">Actions</h6>
@@ -337,7 +362,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<i class="fa-light fa-moon"></i>
+					<FontAwesomeIcon icon={faMoon}/>
 				</button>
 				<button
 					data-selected={colorPreference == ColorPreference.light}
@@ -345,7 +370,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<i class="fa-light fa-sun"></i>
+					<FontAwesomeIcon icon={faSun}/>
 				</button>
 				<button
 					data-selected={colorPreference == ColorPreference.OS}
@@ -353,7 +378,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<i class="fa-light fa-desktop"></i>
+					<FontAwesomeIcon icon={faDesktop}/>
 				</button>
 			</div>
 		</div>
@@ -399,7 +424,9 @@
 			</button>
 		</search>
 	</div>
-	<ul class="scroll-container dark:scheme-dark relative h-96 overflow-y-auto px-2 py-2" bind:this={listRef}>
+	<ul
+		class="scroll-container dark:scheme-dark relative h-96 overflow-y-auto px-2 py-2"
+		bind:this={listRef}>
 		{#if foundActions.length == 0}
 			<p
 				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-500 dark:text-gray-600">
@@ -425,7 +452,7 @@
 					data-selected={action.selected}
 					on:mousemove={() => {
 						if (action instanceof Group) return;
-						foundActions.forEach(a => {
+						foundActions.forEach((a) => {
 							if (a instanceof Group) return;
 							a.selected = false;
 						});
@@ -438,7 +465,8 @@
 						py-2 text-sm text-black transition-all group-data-[selected=true]:bg-gray-100
 					dark:text-white group-data-[selected=true]:dark:bg-gray-925">
 						<div
-							class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
+							class="flex h-4 w-4 place-items-center justify-center {action.iconClass ??
+								'text-gray-600 dark:text-gray-500'}">
 							{#if action.icon}
 								<FontAwesomeIcon icon={action.icon} />
 							{:else}

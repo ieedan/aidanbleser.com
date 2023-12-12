@@ -22,6 +22,9 @@ export default {
 					950: "#141414",
 					999: "#0d0d0d",
 				},
+				liBlue: {
+					DEFAULT: '#0077b5'
+				}
 			},
 			height: {
 				screen: "100svh",
