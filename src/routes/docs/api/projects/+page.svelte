@@ -1,8 +1,7 @@
 <script lang="ts">
 	import Code from "$lib/components/Code.svelte";
 	import "$lib/css/docs/doc.css";
-	import { faChevronLeft } from "@fortawesome/pro-light-svg-icons";
-	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
+	import ArrowNavigation from "$lib/components/ArrowNavigation.svelte";
 </script>
 
 <div class="flex w-full flex-col place-items-start justify-center px-8">
@@ -43,15 +42,8 @@
 	<p>The description of the project.</p>
     <h2 class="py-4 text-2xl" id="description">.repoURL</h2>
 	<p>The url of the repo (if the repo is public).</p>
-	<div class="flex w-full place-items-center justify-between py-8">
-		<div class="flex flex-col place-items-start justify-start">
-			<small class="px-5 text-xs text-gray-600 dark:text-gray-400">Last</small>
-			<a href="/docs/api/education" class="flex place-items-center gap-2 hover:underline">
-				<FontAwesomeIcon class="text-gray-600 dark:text-gray-400" icon={faChevronLeft} /> /education
-			</a>
-		</div>
-		<div></div>
-	</div>
+	<ArrowNavigation
+		last={{ name: "/education", slug: "/docs/api/education" }}/>
 </div>
 
 <style lang="postcss">

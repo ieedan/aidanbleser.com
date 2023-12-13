@@ -3,4 +3,5 @@ export type Route = {
     slug: string;
     routes?: Route[];
     expanded?: boolean; 
+    hidden?: boolean;
 }
