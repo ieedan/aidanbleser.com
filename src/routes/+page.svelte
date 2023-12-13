@@ -2,7 +2,7 @@
 	import InformationContainer from "$lib/components/InformationContainer.svelte";
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 	import type { Resume } from "./+page.server";
-	import { faArrowRight, faArrowUpRight, faTerminal } from "@fortawesome/pro-light-svg-icons";
+	import { faArrowRight, faTerminal } from "@fortawesome/pro-light-svg-icons";
 	import { getContext } from "svelte";
 
 	const showActions = getContext<() => void>('showActions');
@@ -13,11 +13,11 @@
 <div class="flex min-h-screen flex-col place-items-center">
 	<section class="h-16 print:hidden"></section>
 	<div
-		class="flex flex-col place-items-start justify-start py-6 text-black dark:text-white print:py-2">
+		class="flex flex-col place-items-start justify-start py-6 text-black dark:text-white print:py-0">
 		<h1
-			class="select-none text-center text-7xl font-semibold print:text-start print:text-2xl print:dark:text-black"
+			class="select-none text-center text-7xl font-semibold print:text-start print:text-xl print:dark:text-black"
 			>Aidan Bleser</h1>
-		<div class="flex w-full place-items-center justify-center gap-5 py-5">
+		<div class="flex w-full place-items-center justify-center gap-5 py-5 print:hidden">
 			<button 
 				on:click={showActions}
 				class="flex w-28 place-items-center justify-center gap-2 rounded-lg bg-black
