@@ -2,6 +2,8 @@
     import '$lib/css/docs/doc.css'
 	import svelteLogo from "$lib/assets/svelte.svg";
 	import dotnetLogo from "$lib/assets/dotnet.svg";
+	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
+	import { faChevronRight } from '@fortawesome/pro-light-svg-icons';
 </script>
 
 <div class="flex w-full flex-col place-items-start justify-start px-8">
@@ -28,6 +30,15 @@
 			><a href="https://github.com/ieedan/aidanbleser.com" class="text-blue-600 hover:underline dark:text-blue-500" target="_blank">aidanbleser.com</a
 			></li>
 	</ul>
+	<div class="flex w-full place-items-center justify-between py-8">
+		<div></div>
+		<div class="flex flex-col place-items-end justify-end">
+			<small class="text-xs text-gray-600 dark:text-gray-400 px-5">Next</small>
+			<a href="/docs/api" class="flex place-items-center gap-2 hover:underline">
+				API Reference<FontAwesomeIcon class="text-gray-600 dark:text-gray-400" icon={faChevronRight} />
+			</a>
+		</div>
+	</div>
 </div>
 
 <style lang="postcss">

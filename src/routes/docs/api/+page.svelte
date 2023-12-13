@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Code from "$lib/components/Code.svelte";
 	import "$lib/css/docs/doc.css";
-	import { faChevronRight } from "@fortawesome/pro-light-svg-icons";
+	import { faChevronLeft, faChevronRight } from "@fortawesome/pro-light-svg-icons";
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 </script>
 
@@ -15,7 +15,13 @@
 		from your terminal:</p>
 	<Code>curl https://api.aidanbleser.com/resume</Code>
 	<div class="flex w-full place-items-center justify-between py-8">
-		<div></div>
+		<div class="flex flex-col place-items-start justify-start">
+			<small class="px-5 text-xs text-gray-600 dark:text-gray-400">Last</small>
+			<a href="/docs" class="flex place-items-center gap-2 hover:underline">
+				<FontAwesomeIcon class="text-gray-600 dark:text-gray-400" icon={faChevronLeft} />
+				Introduction
+			</a>
+		</div>
 		<div class="flex flex-col place-items-end justify-end">
 			<small class="text-xs text-gray-600 dark:text-gray-400 px-5">Next</small>
 			<a href="/docs/api/resume" class="flex place-items-center gap-2 hover:underline">
