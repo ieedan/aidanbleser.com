@@ -19,6 +19,7 @@
 	import { ColorPreference, changePreference, getCurrentPreference } from "$lib/TS/dark-mode";
 	import { get } from "$lib/TS/api";
 	import { goto } from "$app/navigation";
+	import { isMobile } from "$lib/TS/is-mobile";
 
 	class Action {
 		name: string;
@@ -40,7 +41,7 @@
 			icon?: IconDefinition,
 			img?: string,
 			iconClass?: string,
-			closeOnCommand: boolean = false
+			closeOnCommand: boolean = false,
 		) {
 			this.name = name;
 			this.fn = fn;
@@ -142,12 +143,34 @@
 		),
 		new Group("Links"),
 		new Action(
+			"Home",
+			() => goto("/"),
+			"Links",
+			undefined,
+			faHouse,
+			undefined,
+			undefined,
+			true,
+		),
+		new Action(
+			"Documentation",
+			() => goto("/docs"),
+			"Links",
+			undefined,
+			faBooks,
+			undefined,
+			undefined,
+			true,
+		),
+		new Action(
 			"Blog",
-			() => window.open("https://blog.aidanbleser.com", "_blank")?.focus(),
+			() => goto('blog'),
 			"Links",
 			undefined,
 			undefined,
 			blogSVG,
+			undefined,
+			true,
 		),
 		new Action(
 			"Github",
@@ -179,26 +202,6 @@
 			undefined,
 			"text-black dark:text-white",
 		),
-		new Action(
-			"Documentation",
-			() => goto('/docs'),
-			"Links",
-			undefined,
-			faBooks,
-			undefined,
-			undefined,
-			true
-		),
-		new Action(
-			"Home",
-			() => goto('/'),
-			"Links",
-			undefined,
-			faHouse,
-			undefined,
-			undefined,
-			true
-		),
 	];
 
 	$: foundActions = actions.filter((a) => {
@@ -220,10 +223,10 @@
 	const openPallet = () => {
 		palletOpen = true;
 		document.body.classList.toggle("overflow-hidden", palletOpen);
-		searchInput.focus();
+		if (!isMobile()) searchInput.focus();
 	};
 
-	setContext('showActions', openPallet);
+	setContext("showActions", openPallet);
 
 	const closePallet = () => {
 		palletOpen = false;
@@ -321,6 +324,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>aidanbleser.com</title>
+</svelte:head>
+
 <svelte:document
 	on:keydown={(e) => {
 		if (e.ctrlKey && e.key == "k") {
@@ -345,9 +352,9 @@
 <main class="bg-white dark:bg-gray-999">
 	<slot />
 	<footer
-		class="border-t border-gray-100 text-black dark:border-gray-900 
-		dark:text-white print:dark:border-gray-100 flex justify-center">
-		<div class="flex justify-between px-6 py-4 max-w-7xl w-full min-h-[120px]">
+		class="flex justify-center border-t border-gray-100
+		text-black dark:border-gray-900 dark:text-white print:dark:border-gray-100">
+		<div class="flex min-h-[120px] w-full max-w-7xl justify-between px-6 py-4">
 			<div class="flex h-8 place-items-center justify-start">
 				<div class="flex place-items-center gap-2">
 					<a href="/">
@@ -362,7 +369,7 @@
 					<h6 class="text-base font-semibold text-black dark:text-white"
 						>Other projects</h6>
 					<a
-						href="https://blog.aidanbleser.com"
+						href="/blog"
 						target="_blank"
 						class="transition-all hover:text-black hover:dark:text-white">
 						Blog
@@ -394,7 +401,7 @@
 					<button
 						on:click={openPallet}
 						class="text-start transition-all hover:text-black hover:dark:text-white">
-						<FontAwesomeIcon class="fa-sm" icon={faCommand}/> K
+						<FontAwesomeIcon class="fa-sm" icon={faCommand} /> K
 					</button>
 				</div>
 			</nav>
@@ -448,7 +455,7 @@
 	data-show={palletOpen}>
 	<div class="border-b border-gray-100 dark:border-gray-900">
 		<search class="flex place-items-center px-2 text-gray-500 dark:text-gray-600">
-			<FontAwesomeIcon class="fa-sm" icon={faMagnifyingGlass}/>
+			<FontAwesomeIcon class="fa-sm" icon={faMagnifyingGlass} />
 			<input
 				class="flex-grow bg-transparent px-2 py-2 outline-none focus:outline-none dark:text-white dark:placeholder:text-gray-600"
 				placeholder="Search actions..."
