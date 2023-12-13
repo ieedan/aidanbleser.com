@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ArrowNavigation from "$lib/components/ArrowNavigation.svelte";
 	import Code from "$lib/components/Code.svelte";
 	import "$lib/css/docs/doc.css";
 	import { faChevronLeft, faChevronRight } from "@fortawesome/pro-light-svg-icons";
@@ -14,21 +15,9 @@
 		>You can interact with the aidanbleser API like any other api. You can start by calling it
 		from your terminal:</p>
 	<Code>curl https://api.aidanbleser.com/resume</Code>
-	<div class="flex w-full place-items-center justify-between py-8">
-		<div class="flex flex-col place-items-start justify-start">
-			<small class="px-5 text-xs text-gray-600 dark:text-gray-400">Last</small>
-			<a href="/docs" class="flex place-items-center gap-2 hover:underline">
-				<FontAwesomeIcon class="text-gray-600 dark:text-gray-400" icon={faChevronLeft} />
-				Introduction
-			</a>
-		</div>
-		<div class="flex flex-col place-items-end justify-end">
-			<small class="text-xs text-gray-600 dark:text-gray-400 px-5">Next</small>
-			<a href="/docs/api/resume" class="flex place-items-center gap-2 hover:underline">
-				/resume <FontAwesomeIcon class="text-gray-600 dark:text-gray-400" icon={faChevronRight} />
-			</a>
-		</div>
-	</div>
+	<ArrowNavigation
+		last={{ name: "Introduction", slug: "/docs" }}
+		next={{ name: "/resume", slug: "/docs/api/resume" }}/>
 </div>
 
 <style lang="postcss">

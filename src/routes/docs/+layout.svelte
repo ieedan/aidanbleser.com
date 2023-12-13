@@ -8,10 +8,14 @@
 
 	let navigationExpanded = false;
 
-	let navigationRef: HTMLElement; 
+	let navigationRef: HTMLElement;
 
 	const routes: Route[] = [
-		
+		{
+			name: "Introduction",
+			slug: "/docs",
+			hidden: true,
+		},
 		{
 			name: "API Reference",
 			slug: "/docs/api",
@@ -89,7 +93,7 @@
 					routes: [
 						{
 							name: "name",
-							slug: "/docs/api/projects#name"
+							slug: "/docs/api/projects#name",
 						},
 						{
 							name: "location",
@@ -111,13 +115,13 @@
 							name: "repoURL",
 							slug: "/docs/api/projects#repoURL",
 						},
-					]
-				}
+					],
+				},
 			],
 		},
 	];
 
-	$: currentDoc = getCurrentDoc(routes, $page.url.href.replace($page.url.origin, ''));
+	$: currentDoc = getCurrentDoc(routes, $page.url.href.replace($page.url.origin, ""));
 
 	const getCurrentDoc = (rs: Route[], path: string): Route | undefined => {
 		for (let i = 0; i < rs.length; i++) {
@@ -139,7 +143,7 @@
 		if (!navigationRef.contains(e.target as Node)) {
 			navigationExpanded = false;
 		}
-	}
+	};
 
 	const toggleNavigationExpanded = () => (navigationExpanded = !navigationExpanded);
 </script>
@@ -149,14 +153,14 @@
 		if (e.key == "Escape") {
 			navigationExpanded = false;
 		}
-	}} 
-	on:click={handleDocClick}/>
+	}}
+	on:click={handleDocClick} />
 
 <div class="flex flex-col">
 	<header
 		class="fixed top-0 z-40 flex w-full place-items-center justify-center border-b border-gray-100 bg-white py-2 dark:border-gray-900 dark:bg-gray-999">
 		<div class="flex w-full max-w-7xl">
-			<a href="/" class="flex place-items-center gap-2 px-4 font-medium text-lg">
+			<a href="/" class="flex place-items-center gap-2 px-4 text-lg font-medium">
 				<img src={logoSVG} class="h-5 w-5 rounded-md" alt="aidanbleser.com logo" />
 				aidanbleser.com
 			</a>
@@ -164,10 +168,11 @@
 	</header>
 	<div class="flex min-h-screen justify-center">
 		<div class="flex w-full max-w-7xl">
-			<nav bind:this={navigationRef}
+			<nav
+				bind:this={navigationRef}
 				class="fixed bottom-0 z-40 flex max-h-screen w-full flex-col place-items-end overflow-y-auto
-				border-t border-gray-100 bg-white md:bg-transparent
-                px-4 py-3 dark:border-gray-900 dark:bg-gray-999 md:top-[45px] md:w-[300px] md:border-0 md:dark:bg-transparent">
+				border-t border-gray-100 bg-white px-4
+                py-3 dark:border-gray-900 dark:bg-gray-999 md:top-[45px] md:w-[300px] md:border-0 md:bg-transparent md:dark:bg-transparent">
 				<div
 					class="w-full flex-col data-[show=false]:hidden md:data-[show=false]:flex"
 					data-show={navigationExpanded}>
@@ -192,7 +197,7 @@
 						><FontAwesomeIcon class="fa-xs text-blue-500" icon={faChevronUp} /></div>
 				</button>
 			</nav>
-			<div class="slot-width relative w-full md:left-[300px] max-w-3xl">
+			<div class="slot-width relative w-full max-w-3xl md:left-[300px]">
 				<section class="h-[45px]"></section>
 				<slot />
 			</div>

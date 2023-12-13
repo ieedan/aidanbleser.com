@@ -9,13 +9,14 @@
 	export let routes: Route[] | undefined = undefined;
 	export let expanded = false;
 	export let nested = false;
+	export let hidden = false;
 
 	$: active = routes ? $page.url.pathname.startsWith(slug) : $page.url.href.replace($page.url.origin, '') == slug;
 
 	const toggleExpanded = () => (expanded = !expanded);
 </script>
 
-<div class="flex w-full flex-col data-[nested=true]:pl-4" data-nested={nested}>
+<div class="flex w-full flex-col data-[nested=true]:pl-4 data-[hidden=true]:hidden" data-nested={nested} data-hidden={hidden}>
 	<div class="group flex place-items-center justify-between">
 		<a
 			href={slug}

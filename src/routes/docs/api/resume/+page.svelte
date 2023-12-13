@@ -3,6 +3,7 @@
 	import "$lib/css/docs/doc.css";
 	import { faChevronRight, faChevronLeft } from "@fortawesome/pro-light-svg-icons";
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
+	import ArrowNavigation from "$lib/components/ArrowNavigation.svelte";
 </script>
 
 <div class="flex w-full flex-col place-items-start justify-center px-8">
@@ -45,23 +46,9 @@
 				Project[]</a>
 		</li>
 	</ul>
-	<div class="flex w-full place-items-center justify-between py-8">
-		<div class="flex flex-col place-items-start justify-start">
-			<small class="px-5 text-xs text-gray-600 dark:text-gray-400">Last</small>
-			<a href="/docs/api" class="flex place-items-center gap-2 hover:underline">
-				<FontAwesomeIcon class="text-gray-600 dark:text-gray-400" icon={faChevronLeft} /> API
-				Reference
-			</a>
-		</div>
-		<div class="flex flex-col place-items-end justify-end">
-			<small class="px-5 text-xs text-gray-600 dark:text-gray-400">Next</small>
-			<a href="/docs/api/skills" class="flex place-items-center gap-2 hover:underline">
-				/skills <FontAwesomeIcon
-					class="text-gray-600 dark:text-gray-400"
-					icon={faChevronRight} />
-			</a>
-		</div>
-	</div>
+	<ArrowNavigation
+		last={{ name: "API Reference", slug: "/docs/api" }}
+		next={{ name: "/skills", slug: "/docs/api/skills" }} />
 </div>
 
 <style lang="postcss">

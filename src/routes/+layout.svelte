@@ -10,12 +10,15 @@
 		type IconDefinition,
 		faMagnifyingGlass,
 		faCommand,
+		faBooks,
+		faHouse,
 	} from "@fortawesome/pro-light-svg-icons";
 	import { faArrowDownToLine, faPrint } from "@fortawesome/pro-regular-svg-icons";
 	import logoSVG from "$lib/assets/favicon.svg";
 	import blogSVG from "$lib/assets/blog-icon.svg";
 	import { ColorPreference, changePreference, getCurrentPreference } from "$lib/TS/dark-mode";
 	import { get } from "$lib/TS/api";
+	import { goto } from "$app/navigation";
 
 	class Action {
 		name: string;
@@ -28,6 +31,7 @@
 		shortCut?: string;
 		elementRef?: HTMLLIElement;
 		iconClass?: string;
+		closeOnCommand: boolean;
 		constructor(
 			name: string,
 			fn: () => void,
@@ -36,6 +40,7 @@
 			icon?: IconDefinition,
 			img?: string,
 			iconClass?: string,
+			closeOnCommand: boolean = false
 		) {
 			this.name = name;
 			this.fn = fn;
@@ -44,6 +49,7 @@
 			this.icon = icon;
 			this.img = img;
 			this.iconClass = iconClass;
+			this.closeOnCommand = closeOnCommand;
 		}
 	}
 
@@ -173,6 +179,26 @@
 			undefined,
 			"text-black dark:text-white",
 		),
+		new Action(
+			"Documentation",
+			() => goto('/docs'),
+			"Links",
+			undefined,
+			faBooks,
+			undefined,
+			undefined,
+			true
+		),
+		new Action(
+			"Home",
+			() => goto('/'),
+			"Links",
+			undefined,
+			faHouse,
+			undefined,
+			undefined,
+			true
+		),
 	];
 
 	$: foundActions = actions.filter((a) => {
@@ -230,6 +256,7 @@
 		if (action instanceof Group) return;
 
 		action.fn();
+		if (action.closeOnCommand) closePallet();
 	};
 
 	const onYArrow = (arrow: string) => {
@@ -305,7 +332,7 @@
 			closePallet();
 		}
 
-		if (e.key == "ArrowUp" || (e.key == "ArrowDown" && palletOpen)) {
+		if ((e.key == "ArrowUp" || e.key == "ArrowDown") && palletOpen) {
 			e.preventDefault();
 			onYArrow(e.key);
 		}
@@ -476,7 +503,11 @@
 						selectedActionIndex = index;
 					}}>
 					<button
-						on:click={action.fn}
+						on:click={() => {
+							if (action instanceof Group) return;
+							action.fn();
+							if (action.closeOnCommand) closePallet();
+						}}
 						class="flex w-full place-items-center gap-4 rounded-md px-3
 						py-2 text-sm text-black transition-all group-data-[selected=true]:bg-gray-100
 					dark:text-white group-data-[selected=true]:dark:bg-gray-925">
