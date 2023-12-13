@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+	import { onMount, setContext } from "svelte";
 	import "../app.css";
 	import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
@@ -101,6 +101,17 @@
 			undefined,
 			faArrowDownToLine,
 		),
+		new Action(
+			"Download projects JSON",
+			async () => {
+				const response = await get("/projects");
+				const json = JSON.stringify(response.body);
+				downloadJSON(json, "projects.json");
+			},
+			"Information",
+			undefined,
+			faArrowDownToLine,
+		),
 		new Group("General"),
 		new Action(
 			"Change theme to Dark",
@@ -185,6 +196,8 @@
 		document.body.classList.toggle("overflow-hidden", palletOpen);
 		searchInput.focus();
 	};
+
+	setContext('showActions', openPallet);
 
 	const closePallet = () => {
 		palletOpen = false;

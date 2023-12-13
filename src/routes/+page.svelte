@@ -2,7 +2,10 @@
 	import InformationContainer from "$lib/components/InformationContainer.svelte";
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 	import type { Resume } from "./+page.server";
-	import { faArrowUpRight } from "@fortawesome/pro-light-svg-icons";
+	import { faArrowRight, faArrowUpRight, faTerminal } from "@fortawesome/pro-light-svg-icons";
+	import { getContext } from "svelte";
+
+	const showActions = getContext<() => void>('showActions');
 
 	export let data: Resume;
 </script>
@@ -14,13 +17,21 @@
 		<h1
 			class="select-none text-center text-7xl font-semibold print:text-start print:text-2xl print:dark:text-black"
 			>Aidan Bleser</h1>
-		<a
-			href="/docs"
-			class="flex w-full place-items-center justify-center gap-1 py-2 text-center font-serif text-gray-800 hover:underline dark:text-gray-200">
-			Check out the docs here<FontAwesomeIcon
-				class="text-blue-600 dark:text-blue-500"
-				icon={faArrowUpRight} />
-		</a>
+		<div class="flex w-full place-items-center justify-center gap-5 py-5">
+			<button 
+				on:click={showActions}
+				class="flex w-28 place-items-center justify-center gap-2 rounded-lg bg-black
+			px-3 py-2 text-white transition-all hover:bg-gray-900 dark:bg-white dark:text-black hover:dark:bg-gray-100">
+				<FontAwesomeIcon class="fa-sm" icon={faTerminal} />
+				Actions
+			</button>
+			<a
+				href="/docs"
+				class="flex w-28 place-items-center justify-center gap-1 py-2 text-center
+				text-black hover:underline dark:text-white">
+				Docs<FontAwesomeIcon class="fa-sm" icon={faArrowRight} />
+			</a>
+		</div>
 	</div>
 	<section class="h-16 print:hidden"></section>
 	<div
