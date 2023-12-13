@@ -16,6 +16,7 @@
     skills: Skill[];
     experience: Experience[];
     education: Education[];
+	projects: Project[];
 };`}</Code>
 	<h2 class="py-4 text-2xl" id="properties">Properties</h2>
 	<ul class="flex flex-col w-full justify-start">
@@ -36,6 +37,12 @@
 				href="/docs/api/education"
 				class="text-blue-600 hover:underline dark:text-blue-500">
 				Education[]</a>
+		</li>
+		<li>
+			<a
+				href="/docs/api/projects"
+				class="text-blue-600 hover:underline dark:text-blue-500">
+				Project[]</a>
 		</li>
 	</ul>
 	<div class="flex w-full place-items-center justify-between py-8">

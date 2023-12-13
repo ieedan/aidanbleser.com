@@ -20,7 +20,7 @@
 		<a
 			href={slug}
 			data-active={active}
-			class="w-full rounded-md px-2 py-2 text-gray-600 data-[active=true]:text-black data-[active=true]:dark:text-white
+			class="w-full rounded-md px-2 py-2 text-gray-400 data-[active=true]:text-black data-[active=true]:dark:text-white
     		transition-all group-hover:text-black dark:text-gray-400 group-hover:dark:text-white">
 			{name}
 		</a>

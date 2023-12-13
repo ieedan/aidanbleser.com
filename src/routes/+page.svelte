@@ -24,7 +24,7 @@
 	</div>
 	<section class="h-16 print:hidden"></section>
 	<div
-		class="flex w-full max-w-7xl grid-cols-2 grid-rows-4 flex-col gap-4 px-6 print:gap-0 print:px-2 md:grid">
+		class="grid-rows-8 flex w-full max-w-7xl grid-cols-2 flex-col gap-4 px-6 print:gap-0 print:px-2 md:grid">
 		<div
 			class="col-span-1 col-start-2 row-span-1 row-start-1 flex place-items-center justify-center py-5">
 			<h4
@@ -74,6 +74,23 @@
 					name: a.name,
 					shortDetail: `${a.from} - ${a.to}`,
 					description: a.degree,
+				};
+			})} />
+		<div
+			class="col-span-1 col-start-1 row-span-2 row-start-6 flex place-items-center justify-center py-5">
+			<h4
+				class="select-none text-center text-4xl font-semibold
+			text-black dark:text-white print:text-xl print:dark:text-black xs:text-5xl print:xs:text-xl"
+				>Projects</h4>
+		</div>
+		<InformationContainer
+			class="col-span-1 col-start-2 row-span-2 row-start-6"
+			endpoint={`${import.meta.env.VITE_API_URL}projects`}
+			infoArr={data.projects.map((a) => {
+				return {
+					name: a.name,
+					shortDetail: `${a.from} - ${a.to}`,
+					description: a.description,
 				};
 			})} />
 	</div>

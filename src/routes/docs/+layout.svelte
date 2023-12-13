@@ -83,6 +83,36 @@
 						},
 					],
 				},
+				{
+					name: "/projects",
+					slug: "/docs/api/projects",
+					routes: [
+						{
+							name: "name",
+							slug: "/docs/api/projects#name"
+						},
+						{
+							name: "location",
+							slug: "/docs/api/projects#location",
+						},
+						{
+							name: "from",
+							slug: "/docs/api/projects#from",
+						},
+						{
+							name: "to",
+							slug: "/docs/api/projects#to",
+						},
+						{
+							name: "description",
+							slug: "/docs/api/projects#description",
+						},
+						{
+							name: "repoURL",
+							slug: "/docs/api/projects#repoURL",
+						},
+					]
+				}
 			],
 		},
 	];
@@ -136,7 +166,7 @@
 		<div class="flex w-full max-w-7xl">
 			<nav bind:this={navigationRef}
 				class="fixed bottom-0 z-40 flex max-h-screen w-full flex-col place-items-end overflow-y-auto
-				border-t border-gray-100 bg-transparent bg-white
+				border-t border-gray-100 bg-white md:bg-transparent
                 px-4 py-3 dark:border-gray-900 dark:bg-gray-999 md:top-[45px] md:w-[300px] md:border-0 md:dark:bg-transparent">
 				<div
 					class="w-full flex-col data-[show=false]:hidden md:data-[show=false]:flex"
