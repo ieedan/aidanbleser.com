@@ -1,13 +1,15 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+	import { onMount, setContext } from "svelte";
 	import "../app.css";
-	import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+	import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 	import {
 		faMoon,
 		faSun,
 		faDesktop,
 		type IconDefinition,
+		faMagnifyingGlass,
+		faCommand,
 	} from "@fortawesome/pro-light-svg-icons";
 	import { faArrowDownToLine, faPrint } from "@fortawesome/pro-regular-svg-icons";
 	import logoSVG from "$lib/assets/favicon.svg";
@@ -25,13 +27,15 @@
 		/** Space separated list with the shortcut */
 		shortCut?: string;
 		elementRef?: HTMLLIElement;
+		iconClass?: string;
 		constructor(
 			name: string,
 			fn: () => void,
 			group: string,
 			shortCut?: string,
 			icon?: IconDefinition,
-			img?: string
+			img?: string,
+			iconClass?: string,
 		) {
 			this.name = name;
 			this.fn = fn;
@@ -39,6 +43,7 @@
 			this.shortCut = shortCut;
 			this.icon = icon;
 			this.img = img;
+			this.iconClass = iconClass;
 		}
 	}
 
@@ -96,6 +101,17 @@
 			undefined,
 			faArrowDownToLine,
 		),
+		new Action(
+			"Download projects JSON",
+			async () => {
+				const response = await get("/projects");
+				const json = JSON.stringify(response.body);
+				downloadJSON(json, "projects.json");
+			},
+			"Information",
+			undefined,
+			faArrowDownToLine,
+		),
 		new Group("General"),
 		new Action(
 			"Change theme to Dark",
@@ -132,14 +148,30 @@
 			() => window.open("https://github.com/ieedan", "_blank")?.focus(),
 			"Links",
 			undefined,
-			faGithub
+			faGithub,
+			undefined,
+			"text-black dark:text-white",
 		),
 		new Action(
 			"LinkedIn",
-			() => window.open("https://www.linkedin.com/in/aidan-bleser-731b01286", "_blank")?.focus(),
+			() =>
+				window
+					.open("https://www.linkedin.com/in/aidan-bleser-731b01286", "_blank")
+					?.focus(),
 			"Links",
 			undefined,
-			faLinkedin
+			faLinkedin,
+			undefined,
+			"text-liBlue",
+		),
+		new Action(
+			"X / Twitter",
+			() => window.open("https://twitter.com/theaidanbleser", "_blank")?.focus(),
+			"Links",
+			undefined,
+			faXTwitter,
+			undefined,
+			"text-black dark:text-white",
 		),
 	];
 
@@ -164,6 +196,8 @@
 		document.body.classList.toggle("overflow-hidden", palletOpen);
 		searchInput.focus();
 	};
+
+	setContext('showActions', openPallet);
 
 	const closePallet = () => {
 		palletOpen = false;
@@ -233,12 +267,12 @@
 						const top = listRef.offsetHeight + listRef.scrollTop;
 						const elementBottom = a.elementRef.offsetHeight + a.elementRef.offsetTop;
 						if (top < elementBottom) {
-							const scrollTop = elementBottom + 8 - listRef.offsetHeight;							
+							const scrollTop = elementBottom + 8 - listRef.offsetHeight;
 							listRef.scrollTop = scrollTop;
 						}
 
 						if (top - a.elementRef.offsetTop + 110 > listRef.offsetHeight) {
-							const scrollTop = a.elementRef.offsetTop - (listRef.offsetHeight / 2);
+							const scrollTop = a.elementRef.offsetTop - listRef.offsetHeight / 2;
 							listRef.scrollTop = scrollTop;
 						}
 					}
@@ -284,9 +318,10 @@
 <main class="bg-white dark:bg-gray-999">
 	<slot />
 	<footer
-		class="border-t border-gray-100 text-black dark:border-gray-900 dark:text-white print:dark:border-gray-100">
-		<div class="flex justify-between px-6 py-4">
-			<div>
+		class="border-t border-gray-100 text-black dark:border-gray-900 
+		dark:text-white print:dark:border-gray-100 flex justify-center">
+		<div class="flex justify-between px-6 py-4 max-w-7xl w-full min-h-[120px]">
+			<div class="flex h-8 place-items-center justify-start">
 				<div class="flex place-items-center gap-2">
 					<a href="/">
 						<img src={logoSVG} alt="aidanbleser.com logo" class="h-5 w-5 rounded-md" />
@@ -320,13 +355,19 @@
 						class="transition-all hover:text-black hover:dark:text-white">
 						LinkedIn
 					</a>
+					<a
+						href="https://twitter.com/theaidanbleser"
+						target="_blank"
+						class="transition-all hover:text-black hover:dark:text-white">
+						X / Twitter
+					</a>
 				</div>
 				<div class="col flex flex-col gap-1">
 					<h6 class="text-base font-semibold text-black dark:text-white">Actions</h6>
 					<button
 						on:click={openPallet}
 						class="text-start transition-all hover:text-black hover:dark:text-white">
-						<i class="fa-light fa-command fa-sm"></i> K
+						<FontAwesomeIcon class="fa-sm" icon={faCommand}/> K
 					</button>
 				</div>
 			</nav>
@@ -337,7 +378,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<i class="fa-light fa-moon"></i>
+					<FontAwesomeIcon icon={faMoon} />
 				</button>
 				<button
 					data-selected={colorPreference == ColorPreference.light}
@@ -345,7 +386,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<i class="fa-light fa-sun"></i>
+					<FontAwesomeIcon icon={faSun} />
 				</button>
 				<button
 					data-selected={colorPreference == ColorPreference.OS}
@@ -353,7 +394,7 @@
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
                 dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
-					<i class="fa-light fa-desktop"></i>
+					<FontAwesomeIcon icon={faDesktop} />
 				</button>
 			</div>
 		</div>
@@ -363,7 +404,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class="fixed left-0 top-0 z-10 h-screen w-full bg-white transition-all data-[show=false]:pointer-events-none data-[show=false]:opacity-0
+	class="fixed left-0 top-0 z-[49] h-screen w-full bg-white transition-all data-[show=false]:pointer-events-none data-[show=false]:opacity-0
     data-[show=true]:opacity-80 dark:bg-gray-999 print:hidden"
 	on:click={closePallet}
 	data-show={palletOpen}>
@@ -379,10 +420,10 @@
 	aria-hidden={!palletOpen}
 	data-show={palletOpen}>
 	<div class="border-b border-gray-100 dark:border-gray-900">
-		<search class="flex place-items-center px-2 dark:text-white">
-			<i class="fa-light fa-magnifying-glass fa-sm text-gray-500 dark:text-gray-600"></i>
+		<search class="flex place-items-center px-2 text-gray-500 dark:text-gray-600">
+			<FontAwesomeIcon class="fa-sm" icon={faMagnifyingGlass}/>
 			<input
-				class="flex-grow bg-transparent px-2 py-2 outline-none focus:outline-none dark:placeholder:text-gray-600"
+				class="flex-grow bg-transparent px-2 py-2 outline-none focus:outline-none dark:text-white dark:placeholder:text-gray-600"
 				placeholder="Search actions..."
 				type="text"
 				autocomplete="off"
@@ -399,7 +440,9 @@
 			</button>
 		</search>
 	</div>
-	<ul class="scroll-container dark:scheme-dark relative h-96 overflow-y-auto px-2 py-2" bind:this={listRef}>
+	<ul
+		class="scroll-container dark:scheme-dark relative h-96 overflow-y-auto px-2 py-2"
+		bind:this={listRef}>
 		{#if foundActions.length == 0}
 			<p
 				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-500 dark:text-gray-600">
@@ -423,25 +466,23 @@
 					bind:this={action.elementRef}
 					class="group w-full"
 					data-selected={action.selected}
-					on:mouseleave={() => {
+					on:mousemove={() => {
 						if (action instanceof Group) return;
-						action.selected = false;
-					}}
-					on:mouseover={() => {
-						if (action instanceof Group) return;
-						foundActions.forEach(a => {
+						foundActions.forEach((a) => {
 							if (a instanceof Group) return;
 							a.selected = false;
 						});
 						action.selected = true;
+						selectedActionIndex = index;
 					}}>
 					<button
 						on:click={action.fn}
 						class="flex w-full place-items-center gap-4 rounded-md px-3
-						py-2 text-sm text-black transition-all hover:bg-gray-100 group-data-[selected=true]:bg-gray-100
-					dark:text-white dark:hover:bg-gray-925 group-data-[selected=true]:dark:bg-gray-925">
+						py-2 text-sm text-black transition-all group-data-[selected=true]:bg-gray-100
+					dark:text-white group-data-[selected=true]:dark:bg-gray-925">
 						<div
-							class="flex h-4 w-4 place-items-center justify-center text-gray-600 dark:text-gray-500">
+							class="flex h-4 w-4 place-items-center justify-center {action.iconClass ??
+								'text-gray-600 dark:text-gray-500'}">
 							{#if action.icon}
 								<FontAwesomeIcon icon={action.icon} />
 							{:else}

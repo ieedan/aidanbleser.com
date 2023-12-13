@@ -4,6 +4,7 @@ export type Resume = {
     skills: Skill[];
     experience: Experience[];
     education: Education[];
+    projects: Project[];
 };
 
 export type Skill = {
@@ -25,6 +26,15 @@ export type Education = {
     to: string; 
     degree: string;
 };
+
+export type Project = {
+    name: string;
+    location: string;
+    from: string; 
+    to: string; 
+    description: string;
+    repoURL?: string;
+}
 
 export async function load() {
     const response = await get<Resume>('/resume');
