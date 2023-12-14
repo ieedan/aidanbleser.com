@@ -1,9 +1,9 @@
 import TailwindBlogPost from "./TailwindCSS-9-27-2023/TailwindBlogPost.svelte";
-import NamingThingsBlogPost from "./NamingThings-10-2-2023/NamingThingsBlogPost.svelte";
 
 export type Post = {
     date: Date;
     title: string;
+    readMinutes: number;
     /** Brief summary to get the reader interested */
     hook: string;
     component: ConstructorOfATypedSvelteComponent
@@ -12,14 +12,9 @@ export type Post = {
 export const posts: Post[] = [
     {
         date: new Date('9-27-2023'),
+        readMinutes: 5,
         title: "Not using TailwindCSS for your next project is IRRESPONSIBLE",
-        hook: "TailwindCSS gives your codebase the consistency and semantics you wish you had everywhere for your CSS.",
+        hook: "With the consistency and semantics Tailwind gives your codebase you would be irresponsible not to choose it for your next project.",
         component: TailwindBlogPost
-    },
-    {
-        date: new Date('10-2-2023'),
-        title: "Naming things in your code",
-        hook: "The guidance in naming things that I wish I had when I started programming.",
-        component: NamingThingsBlogPost
     },
 ].sort((a, b) => Date.parse(b.date.toString()) - Date.parse(a.date.toString()));

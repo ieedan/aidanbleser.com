@@ -370,7 +370,6 @@
 						>Other projects</h6>
 					<a
 						href="/blog"
-						target="_blank"
 						class="transition-all hover:text-black hover:dark:text-white">
 						Blog
 					</a>
