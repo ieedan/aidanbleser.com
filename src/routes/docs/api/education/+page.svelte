@@ -16,7 +16,8 @@
     from: string; 
     to: string; 
     degree: string;
-};`}</Code>
+};`}</Code
+	>
 	<h2 class="py-4 text-2xl" id="properties">Properties</h2>
 	<Code
 		>{`{
@@ -36,7 +37,8 @@
 	<p>The degree I completed.</p>
 	<ArrowNavigation
 		last={{ name: "/experience", slug: "/docs/api/experience" }}
-		next={{ name: "/projects", slug: "/docs/api/projects" }} />
+		next={{ name: "/projects", slug: "/docs/api/projects" }}
+	/>
 </div>
 
 <style lang="postcss">

@@ -18,7 +18,8 @@
     to: string; 
     description: string;
     repoURL?: string;
-};`}</Code>
+};`}</Code
+	>
 	<h2 class="py-4 text-2xl" id="properties">Properties</h2>
 	<Code
 		>{`{
@@ -32,7 +33,7 @@
 	</Code>
 	<h2 class="py-4 text-2xl" id="name">.name</h2>
 	<p>The name of the project.</p>
-    <h2 class="py-4 text-2xl" id="from">.location</h2>
+	<h2 class="py-4 text-2xl" id="from">.location</h2>
 	<p>The company I did this project at or personal if it was a personal project.</p>
 	<h2 class="py-4 text-2xl" id="from">.from</h2>
 	<p>The time I started the project.</p>
@@ -40,10 +41,9 @@
 	<p>The time I completed the project or last worked on it.</p>
 	<h2 class="py-4 text-2xl" id="description">.description</h2>
 	<p>The description of the project.</p>
-    <h2 class="py-4 text-2xl" id="description">.repoURL</h2>
+	<h2 class="py-4 text-2xl" id="description">.repoURL</h2>
 	<p>The url of the repo (if the repo is public).</p>
-	<ArrowNavigation
-		last={{ name: "/education", slug: "/docs/api/education" }}/>
+	<ArrowNavigation last={{ name: "/education", slug: "/docs/api/education" }} />
 </div>
 
 <style lang="postcss">

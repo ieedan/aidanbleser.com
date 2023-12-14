@@ -2,8 +2,6 @@
 	import ArrowNavigation from "$lib/components/ArrowNavigation.svelte";
 	import Code from "$lib/components/Code.svelte";
 	import "$lib/css/docs/doc.css";
-	import { faChevronLeft, faChevronRight } from "@fortawesome/pro-light-svg-icons";
-	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 </script>
 
 <div class="flex w-full flex-col place-items-start justify-center px-8">
@@ -13,11 +11,13 @@
 	</div>
 	<p class="pb-3"
 		>You can interact with the aidanbleser API like any other api. You can start by calling it
-		from your terminal:</p>
+		from your terminal:</p
+	>
 	<Code>curl https://api.aidanbleser.com/resume</Code>
 	<ArrowNavigation
 		last={{ name: "Introduction", slug: "/docs" }}
-		next={{ name: "/resume", slug: "/docs/api/resume" }}/>
+		next={{ name: "/resume", slug: "/docs/api/resume" }}
+	/>
 </div>
 
 <style lang="postcss">

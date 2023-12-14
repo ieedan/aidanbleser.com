@@ -12,7 +12,8 @@
 	project.
 </p>
 <p class="py-2 text-gray-700 dark:text-gray-300">
-	Before we talk about why Tailwind is so great lets squash the arguments against Tailwind.</p>
+	Before we talk about why Tailwind is so great lets squash the arguments against Tailwind.</p
+>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	First of all the argument that "It makes my HTML Ugly". To a non-Tailwind user looking in from
 	the outside this is a fairly strong argument. However once you start using Tailwind you find
@@ -22,16 +23,18 @@
 		href="https://tailwindcss.com/blog/automatic-class-sorting-with-prettier"
 		target="_blank"
 		class="whitespace-nowrap font-bold text-black hover:underline dark:text-white"
-		>prettier-plugin-tailwindcss</a> which sort your Tailwind classes to make it easier to read and
-	maintain. In many cases Tailwind actually ends up being less code than traditional CSS classes. Lets
-	look at an example of some code for a big red button.
+		>prettier-plugin-tailwindcss</a
+	> which sort your Tailwind classes to make it easier to read and maintain. In many cases Tailwind
+	actually ends up being less code than traditional CSS classes. Lets look at an example of some code
+	for a big red button.
 </p>
 <strong class="whitespace-nowrap py-2 text-black dark:text-white">Before Tailwind</strong>
 <Code
 	>{`<!-- Big red button -->
 <button class="big-red-button">
 	Click Me!
-</button>`}</Code>
+</button>`}</Code
+>
 <section class="h-4"></section>
 <Code
 	>{`.big-red-button {
@@ -40,19 +43,22 @@
 	width: 100px;
 	height: 100px;
 	box-shadow: 0px 3px 5px gray;
-}`}</Code>
+}`}</Code
+>
 <strong class="whitespace-nowrap py-2 text-black dark:text-white">After Tailwind</strong>
 <Code
 	>{`<!-- Big red button -->
 <button class="bg-red-800 rounded-full w-[100px] h-[100px] shadow-md">
 	Click Me!
-</button>`}</Code>
+</button>`}</Code
+>
 <section class="h-4"></section>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	The change in complexity is pretty obvious and this doesn't take into acount some of the built
 	in overrides Tailwind provides such as every button automatically showing <code
 		class="whitespace-nowrap rounded-md bg-gray-100 px-1 font-serif text-sm dark:bg-gray-900"
-		>cursor-pointer</code> when hovered.
+		>cursor-pointer</code
+	> when hovered.
 </p>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	Next lets talk about the second argument "I have to learn someone elses utility classes" and

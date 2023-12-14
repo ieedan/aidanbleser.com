@@ -32,7 +32,8 @@
 				href="https://github.com/ieedan/aidanbleser.com"
 				class="text-blue-600 hover:underline dark:text-blue-500"
 				target="_blank">aidanbleser.com</a
-			></li>
+			></li
+		>
 	</ul>
 	<h2 class="py-4 text-2xl" id="navigation">Navigating the docs</h2>
 	<p
@@ -40,19 +41,22 @@
 		<span
 			class="rounded-md border border-gray-100 bg-white px-1 py-1
 		text-sm text-black transition-all placeholder:text-gray-500
-		dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300">
+		dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300"
+		>
 			<FontAwesomeIcon class="fa-sm" icon={faChevronLeft} />
 		</span>
 		and
 		<span
 			class="rounded-md border border-gray-100 bg-white px-1 py-1
 		text-sm text-black transition-all placeholder:text-gray-500
-		dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300">
+		dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300"
+		>
 			<FontAwesomeIcon class="fa-sm" icon={faChevronRight} />
 		</span>
-		to navigate forwards or backwards in the documentation. On mobile the navigation bar is located on the bottom of the screen.</p>
-	<ArrowNavigation
-		next={{ name: "API Reference", slug: "/docs/api" }}/>
+		to navigate forwards or backwards in the documentation. On mobile the navigation bar is located
+		on the bottom of the screen.</p
+	>
+	<ArrowNavigation next={{ name: "API Reference", slug: "/docs/api" }} />
 </div>
 
 <style lang="postcss">
