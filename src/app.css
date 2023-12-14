@@ -8,6 +8,20 @@
 	}
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 html.dark {
 	color-scheme: dark;
+}
+
+ul.list-style-dash {
+	list-style-type: none;
+}
+
+ul.list-style-dash li::before {
+	content: "- ";
+	padding-right: 5px;
+	@apply text-gray-400 dark:text-gray-600;
 }
