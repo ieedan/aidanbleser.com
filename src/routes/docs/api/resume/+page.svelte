@@ -1,8 +1,6 @@
 <script lang="ts">
 	import Code from "$lib/components/Code.svelte";
 	import "$lib/css/docs/doc.css";
-	import { faChevronRight, faChevronLeft } from "@fortawesome/pro-light-svg-icons";
-	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 	import ArrowNavigation from "$lib/components/ArrowNavigation.svelte";
 </script>
 
@@ -18,37 +16,35 @@
     experience: Experience[];
     education: Education[];
 	projects: Project[];
-};`}</Code>
+};`}</Code
+	>
 	<h2 class="py-4 text-2xl" id="properties">Properties</h2>
-	<ul class="flex flex-col w-full justify-start">
+	<ul class="flex w-full flex-col justify-start">
 		<li>
-			<a
-				href="/docs/api/skills"
-				class="text-blue-600 hover:underline dark:text-blue-500">
-				Skill[]</a>
+			<a href="/docs/api/skills" class="text-blue-600 hover:underline dark:text-blue-500">
+				Skill[]</a
+			>
 		</li>
 		<li>
-			<a
-				href="/docs/api/experience"
-				class="text-blue-600 hover:underline dark:text-blue-500">
-				Experience[]</a>
+			<a href="/docs/api/experience" class="text-blue-600 hover:underline dark:text-blue-500">
+				Experience[]</a
+			>
 		</li>
 		<li>
-			<a
-				href="/docs/api/education"
-				class="text-blue-600 hover:underline dark:text-blue-500">
-				Education[]</a>
+			<a href="/docs/api/education" class="text-blue-600 hover:underline dark:text-blue-500">
+				Education[]</a
+			>
 		</li>
 		<li>
-			<a
-				href="/docs/api/projects"
-				class="text-blue-600 hover:underline dark:text-blue-500">
-				Project[]</a>
+			<a href="/docs/api/projects" class="text-blue-600 hover:underline dark:text-blue-500">
+				Project[]</a
+			>
 		</li>
 	</ul>
 	<ArrowNavigation
 		last={{ name: "API Reference", slug: "/docs/api" }}
-		next={{ name: "/skills", slug: "/docs/api/skills" }} />
+		next={{ name: "/skills", slug: "/docs/api/skills" }}
+	/>
 </div>
 
 <style lang="postcss">

@@ -164,7 +164,7 @@
 		),
 		new Action(
 			"Blog",
-			() => goto('blog'),
+			() => goto("blog"),
 			"Links",
 			undefined,
 			undefined,
@@ -347,13 +347,15 @@
 		if (e.key == "Enter" && palletOpen) {
 			handleEnter();
 		}
-	}} />
+	}}
+/>
 
 <main class="bg-white dark:bg-gray-999 print:dark:bg-white">
 	<slot />
 	<footer
 		class="flex justify-center border-t border-gray-100
-		text-black dark:border-gray-900 dark:text-white print:dark:border-gray-100">
+		text-black dark:border-gray-900 dark:text-white print:dark:border-gray-100"
+	>
 		<div class="flex min-h-[120px] w-full max-w-7xl justify-between px-6 py-4">
 			<div class="flex h-8 place-items-center justify-start">
 				<div class="flex place-items-center gap-2">
@@ -364,13 +366,13 @@
 				</div>
 			</div>
 			<nav
-				class="hidden justify-start gap-8 text-sm text-gray-800 dark:text-gray-500 print:hidden md:flex">
+				class="hidden justify-start gap-8 text-sm text-gray-800 dark:text-gray-500 print:hidden md:flex"
+			>
 				<div class="col flex flex-col gap-1">
 					<h6 class="text-base font-semibold text-black dark:text-white"
-						>Other projects</h6>
-					<a
-						href="/blog"
-						class="transition-all hover:text-black hover:dark:text-white">
+						>Other projects</h6
+					>
+					<a href="/blog" class="transition-all hover:text-black hover:dark:text-white">
 						Blog
 					</a>
 				</div>
@@ -379,19 +381,22 @@
 					<a
 						href="https://github.com/ieedan"
 						target="_blank"
-						class="transition-all hover:text-black hover:dark:text-white">
+						class="transition-all hover:text-black hover:dark:text-white"
+					>
 						GitHub
 					</a>
 					<a
 						href="https://www.linkedin.com/in/aidan-bleser-731b01286"
 						target="_blank"
-						class="transition-all hover:text-black hover:dark:text-white">
+						class="transition-all hover:text-black hover:dark:text-white"
+					>
 						LinkedIn
 					</a>
 					<a
 						href="https://twitter.com/theaidanbleser"
 						target="_blank"
-						class="transition-all hover:text-black hover:dark:text-white">
+						class="transition-all hover:text-black hover:dark:text-white"
+					>
 						X / Twitter
 					</a>
 				</div>
@@ -399,7 +404,8 @@
 					<h6 class="text-base font-semibold text-black dark:text-white">Actions</h6>
 					<button
 						on:click={openPallet}
-						class="text-start transition-all hover:text-black hover:dark:text-white">
+						class="text-start transition-all hover:text-black hover:dark:text-white"
+					>
 						<FontAwesomeIcon class="fa-sm" icon={faCommand} /> K
 					</button>
 				</div>
@@ -410,7 +416,8 @@
 					on:click={() => choosePreference(ColorPreference.dark)}
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
-                dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
+                dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white"
+				>
 					<FontAwesomeIcon icon={faMoon} />
 				</button>
 				<button
@@ -418,7 +425,8 @@
 					on:click={() => choosePreference(ColorPreference.light)}
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
-                dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
+                dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white"
+				>
 					<FontAwesomeIcon icon={faSun} />
 				</button>
 				<button
@@ -426,7 +434,8 @@
 					on:click={() => choosePreference(ColorPreference.OS)}
 					class="flex h-8 w-8 place-items-center justify-center rounded-full text-gray-600
                     transition-all hover:text-black data-[selected=true]:bg-gray-100 data-[selected=true]:text-black dark:text-gray-700
-                dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white">
+                dark:hover:text-white data-[selected=true]:dark:bg-gray-900 data-[selected=true]:dark:text-white"
+				>
 					<FontAwesomeIcon icon={faDesktop} />
 				</button>
 			</div>
@@ -440,7 +449,8 @@
 	class="fixed left-0 top-0 z-[49] h-screen w-full bg-white transition-all data-[show=false]:pointer-events-none data-[show=false]:opacity-0
     data-[show=true]:opacity-80 dark:bg-gray-999 print:hidden"
 	on:click={closePallet}
-	data-show={palletOpen}>
+	data-show={palletOpen}
+>
 </div>
 
 <div
@@ -451,7 +461,8 @@
 	aria-haspopup="listbox"
 	aria-disabled={!palletOpen}
 	aria-hidden={!palletOpen}
-	data-show={palletOpen}>
+	data-show={palletOpen}
+>
 	<div class="border-b border-gray-100 dark:border-gray-900">
 		<search class="flex place-items-center px-2 text-gray-500 dark:text-gray-600">
 			<FontAwesomeIcon class="fa-sm" icon={faMagnifyingGlass} />
@@ -462,12 +473,14 @@
 				autocomplete="off"
 				autocorrect="false"
 				bind:value={search}
-				bind:this={searchInput} />
+				bind:this={searchInput}
+			/>
 			<button on:click={closePallet}>
 				<span
 					class="rounded-md border border-gray-100 bg-white px-1 py-1
 				text-sm text-black transition-all placeholder:text-gray-500 hover:bg-gray-50
-				dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300 dark:hover:bg-gray-925">
+				dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300 dark:hover:bg-gray-925"
+				>
 					Esc
 				</span>
 			</button>
@@ -475,10 +488,12 @@
 	</div>
 	<ul
 		class="scroll-container dark:scheme-dark relative h-96 overflow-y-auto px-2 py-2"
-		bind:this={listRef}>
+		bind:this={listRef}
+	>
 		{#if foundActions.length == 0}
 			<p
-				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-500 dark:text-gray-600">
+				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-500 dark:text-gray-600"
+			>
 				No results found for "{search}".
 			</p>
 		{/if}
@@ -490,7 +505,8 @@
 						foundActions.findIndex((a) => {
 							if (a instanceof Group) return;
 							return a.group == action.name;
-						})}>
+						})}
+				>
 					<small class="px-3 text-gray-600 dark:text-gray-500">{action.name}</small>
 				</div>
 			{:else if action instanceof Action}
@@ -507,7 +523,8 @@
 						});
 						action.selected = true;
 						selectedActionIndex = index;
-					}}>
+					}}
+				>
 					<button
 						on:click={() => {
 							if (action instanceof Group) return;
@@ -516,10 +533,12 @@
 						}}
 						class="flex w-full place-items-center gap-4 rounded-md px-3
 						py-2 text-sm text-black transition-all group-data-[selected=true]:bg-gray-100
-					dark:text-white group-data-[selected=true]:dark:bg-gray-925">
+					dark:text-white group-data-[selected=true]:dark:bg-gray-925"
+					>
 						<div
 							class="flex h-4 w-4 place-items-center justify-center {action.iconClass ??
-								'text-gray-600 dark:text-gray-500'}">
+								'text-gray-600 dark:text-gray-500'}"
+						>
 							{#if action.icon}
 								<FontAwesomeIcon icon={action.icon} />
 							{:else}
@@ -527,14 +546,16 @@
 							{/if}
 						</div>
 						<span class="flex-grow text-start" data-group={action.group}
-							>{action.name}</span>
+							>{action.name}</span
+						>
 						{#if action.shortCut}
 							<div>
 								{#each action.shortCut.split(" ") as sc}
 									<span
 										class="rounded-md border border-gray-100 bg-white px-1 py-1
 										text-sm text-black transition-all placeholder:text-gray-500
-									dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300">
+									dark:border-gray-900 dark:bg-gray-999 dark:text-gray-300"
+									>
 										{sc}
 									</span>
 								{/each}

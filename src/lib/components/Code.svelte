@@ -6,9 +6,9 @@
 	import { onMount } from "svelte";
 
 	let codeRef: HTMLElement;
-    let className = "";
+	let className = "";
 	export let fileName: string = "";
-    export { className as class }
+	export { className as class };
 
 	let copied = false;
 
@@ -24,21 +24,26 @@
 	});
 </script>
 
-<div class="relative border border-gray-900 rounded-md overflow-hidden bg-gray-999 group max-w-full {className}">
+<div
+	class="group relative max-w-full overflow-hidden rounded-md border border-gray-900 bg-gray-999 {className}"
+>
 	<div class="flex place-items-end justify-between border-b border-gray-900 px-1 py-1">
 		<div>{fileName}</div>
-		<button class="flex place-items-center justify-center rounded-md border 
-		border-gray-900 text-gray-400 hover:bg-gray-900 transition-all w-6 h-6" on:click={copy}>
+		<button
+			class="flex h-6 w-6 place-items-center justify-center
+		rounded-md border border-gray-900 text-gray-400 transition-all hover:bg-gray-900"
+			on:click={copy}
+		>
 			{#if copied}
 				<div class="flex place-items-center justify-center">
-					<FontAwesomeIcon class="fa-xs" icon={faCheck}/>
+					<FontAwesomeIcon class="fa-xs" icon={faCheck} />
 				</div>
 			{:else}
 				<div class="flex place-items-center justify-center">
-					<FontAwesomeIcon class="fa-xs" icon={faClone}/>
+					<FontAwesomeIcon class="fa-xs" icon={faClone} />
 				</div>
 			{/if}
 		</button>
 	</div>
-	<pre><code class="!bg-gray-999 whitespace-pre-wrap" bind:this={codeRef}><slot /></code></pre>
+	<pre><code class="whitespace-pre-wrap !bg-gray-999" bind:this={codeRef}><slot /></code></pre>
 </div>

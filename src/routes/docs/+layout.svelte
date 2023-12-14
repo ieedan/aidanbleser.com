@@ -161,7 +161,8 @@
 			navigationExpanded = false;
 		}
 	}}
-	on:click={handleDocClick} />
+	on:click={handleDocClick}
+/>
 
 <svelte:head>
 	<title>Docs | aidanbleser.com</title>
@@ -169,7 +170,8 @@
 
 <div class="flex flex-col">
 	<header
-		class="fixed top-0 z-40 flex w-full place-items-center justify-center border-b border-gray-100 bg-white py-2 dark:border-gray-900 dark:bg-gray-999">
+		class="fixed top-0 z-40 flex w-full place-items-center justify-center border-b border-gray-100 bg-white py-2 dark:border-gray-900 dark:bg-gray-999"
+	>
 		<div class="flex w-full max-w-7xl justify-between">
 			<a href="/" class="flex place-items-center gap-2 px-4 text-lg font-medium">
 				<img src={logoSVG} class="h-5 w-5 rounded-md" alt="aidanbleser.com logo" />
@@ -178,19 +180,22 @@
 			<div class="flex place-items-center gap-5 px-4 text-gray-600 dark:text-gray-400">
 				<button
 					on:click={showPallet}
-					class="transition-all hover:text-black hover:dark:text-white">
+					class="transition-all hover:text-black hover:dark:text-white"
+				>
 					<FontAwesomeIcon class="fa-xs" icon={faTerminal} />
 				</button>
 				<a
 					href="/docs"
 					data-active={$page.url.pathname.startsWith("/docs")}
-					class="hidden transition-all hover:text-black hover:dark:text-white data-[active=true]:dark:text-white md:block">
+					class="hidden transition-all hover:text-black hover:dark:text-white data-[active=true]:dark:text-white md:block"
+				>
 					Docs
 				</a>
 				<a
 					href="/blog"
 					data-active={$page.url.pathname.startsWith("/blog")}
-					class="hidden transition-all hover:text-black hover:dark:text-white data-[active=true]:dark:text-white md:block">
+					class="hidden transition-all hover:text-black hover:dark:text-white data-[active=true]:dark:text-white md:block"
+				>
 					Blog
 				</a>
 			</div>
@@ -202,21 +207,25 @@
 				bind:this={navigationRef}
 				class="fixed bottom-0 z-40 flex max-h-screen w-full flex-col place-items-end overflow-y-auto
 				border-t border-gray-100 bg-white px-4
-                py-3 dark:border-gray-900 dark:bg-gray-999 md:top-[45px] md:w-[300px] md:border-0 md:bg-transparent md:dark:bg-transparent">
+                py-3 dark:border-gray-900 dark:bg-gray-999 md:top-[45px] md:w-[300px] md:border-0 md:bg-transparent md:dark:bg-transparent"
+			>
 				<div
 					class="w-full flex-col data-[show=false]:hidden md:data-[show=false]:flex"
-					data-show={navigationExpanded}>
+					data-show={navigationExpanded}
+				>
 					{#each routes as route}
 						<NavRoute {...route} />
 					{/each}
 				</div>
 				<section
 					class="h-5 data-[show=false]:hidden md:hidden"
-					data-show={navigationExpanded}></section>
+					data-show={navigationExpanded}
+				></section>
 				<button
 					class="flex w-full place-items-center justify-between rounded-md border border-gray-100
                 px-2 py-1 dark:border-gray-900 md:hidden"
-					on:click={toggleNavigationExpanded}>
+					on:click={toggleNavigationExpanded}
+				>
 					<div class="flex place-items-center gap-2">
 						<FontAwesomeIcon class="fa-xs text-blue-500" icon={faArrowTurnDownRight} />
 						{currentDoc?.name}
@@ -224,7 +233,8 @@
 					<div
 						class="transition-all data-[show=false]:rotate-180"
 						data-show={navigationExpanded}
-						><FontAwesomeIcon class="fa-xs text-blue-500" icon={faChevronUp} /></div>
+						><FontAwesomeIcon class="fa-xs text-blue-500" icon={faChevronUp} /></div
+					>
 				</button>
 			</nav>
 			<div class="slot-width relative w-full max-w-3xl md:left-[300px]">

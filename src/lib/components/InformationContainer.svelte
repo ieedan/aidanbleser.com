@@ -34,11 +34,13 @@
 </script>
 
 <div
-	class="rounded-lg border print:border-none border-gray-100 
-	bg-white text-black print:dark:text-black dark:border-gray-900 dark:bg-gray-999 print:dark:bg-white dark:text-white {className}">
+	class="rounded-lg border border-gray-100 bg-white
+	text-black dark:border-gray-900 dark:bg-gray-999 dark:text-white print:border-none print:dark:bg-white print:dark:text-black {className}"
+>
 	<div
-		class="flex place-items-center justify-between border-b print:dark:border-gray-100
-        border-gray-100 px-1 py-1 font-serif dark:border-gray-900">
+		class="flex place-items-center justify-between border-b border-gray-100
+        px-1 py-1 font-serif dark:border-gray-900 print:dark:border-gray-100"
+	>
 		<small class="hidden text-gray-400 dark:text-gray-500 xs:block">
 			{endpoint}
 		</small>
@@ -47,21 +49,22 @@
 		</small>
 		<button
 			on:click={copy}
-			class="flex h-6 w-6 place-items-center justify-center print:hidden
-            rounded-md border border-gray-100 text-gray-400
-            transition-all hover:bg-gray-100 dark:border-gray-900 dark:text-gray-500 hover:dark:bg-gray-900">
+			class="flex h-6 w-6 place-items-center justify-center rounded-md
+            border border-gray-100 text-gray-400 transition-all
+            hover:bg-gray-100 dark:border-gray-900 dark:text-gray-500 hover:dark:bg-gray-900 print:hidden"
+		>
 			{#if copied}
 				<div class="flex place-items-center justify-center">
-					<FontAwesomeIcon class="fa-xs" icon={faCheck}/>
+					<FontAwesomeIcon class="fa-xs" icon={faCheck} />
 				</div>
 			{:else}
 				<div class="flex place-items-center justify-center">
-					<FontAwesomeIcon class="fa-xs" icon={faClone}/>
+					<FontAwesomeIcon class="fa-xs" icon={faClone} />
 				</div>
 			{/if}
 		</button>
 	</div>
-	<ul class="flex max-h-[300px] print:max-h-full flex-col gap-2 overflow-auto px-2 py-2">
+	<ul class="flex max-h-[300px] flex-col gap-2 overflow-auto px-2 py-2 print:max-h-full">
 		{#if infoArr.length != 0}
 			{#each infoArr as info}
 				<li class="flex flex-col">
@@ -69,7 +72,8 @@
 						<strong class="font-medium">{info.name}</strong>
 						{#if info.shortDetail}
 							<small class="text-gray-600 dark:text-gray-600"
-								>{info.shortDetail}</small>
+								>{info.shortDetail}</small
+							>
 						{/if}
 					</div>
 					{#if info.longDetail}

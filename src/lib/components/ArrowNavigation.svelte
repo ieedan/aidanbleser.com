@@ -47,7 +47,8 @@
 			<a href={next.slug} class="flex place-items-center gap-2 hover:underline">
 				{next.name}<FontAwesomeIcon
 					class="text-gray-600 dark:text-gray-400"
-					icon={faChevronRight} />
+					icon={faChevronRight}
+				/>
 			</a>
 		</div>
 	{:else}

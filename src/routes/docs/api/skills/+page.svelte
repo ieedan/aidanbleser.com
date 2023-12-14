@@ -1,8 +1,6 @@
 <script lang="ts">
 	import Code from "$lib/components/Code.svelte";
 	import "$lib/css/docs/doc.css";
-	import { faChevronRight, faChevronLeft } from "@fortawesome/pro-light-svg-icons";
-	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 	import ArrowNavigation from "$lib/components/ArrowNavigation.svelte";
 </script>
 
@@ -16,9 +14,11 @@
 		>{`type Skill = {
     name: string;
     yearsExperience: number;
-};`}</Code>
-    <h2 class="py-4 text-2xl" id="properties">Properties</h2>
-	<Code>{`{ 
+};`}</Code
+	>
+	<h2 class="py-4 text-2xl" id="properties">Properties</h2>
+	<Code
+		>{`{ 
     name: "TypeScript", 
     yearsExperience: 1.1987795142874587 
 }`}
@@ -28,10 +28,12 @@
 	<h2 class="py-4 text-2xl" id="yearsExperience">.yearsExperience</h2>
 	<p
 		>The years of experience with that skill. This updates per each request. Each skill updates
-		based on its given <code>start date</code>.</p>
-		<ArrowNavigation
+		based on its given <code>start date</code>.</p
+	>
+	<ArrowNavigation
 		last={{ name: "/resume", slug: "/docs/api/resume" }}
-		next={{ name: "/experience", slug: "/docs/api/experience" }} />
+		next={{ name: "/experience", slug: "/docs/api/experience" }}
+	/>
 </div>
 
 <style lang="postcss">
