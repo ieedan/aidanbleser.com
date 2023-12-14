@@ -35,7 +35,7 @@
 
 <div
 	class="rounded-lg border print:border-none border-gray-100 
-	bg-white text-black print:dark:text-black dark:border-gray-900 dark:bg-gray-999 dark:text-white {className}">
+	bg-white text-black print:dark:text-black dark:border-gray-900 dark:bg-gray-999 print:dark:bg-white dark:text-white {className}">
 	<div
 		class="flex place-items-center justify-between border-b print:dark:border-gray-100
         border-gray-100 px-1 py-1 font-serif dark:border-gray-900">

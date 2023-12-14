@@ -74,7 +74,7 @@
 			undefined,
 			faArrowDownToLine,
 		),
-		new Action("Print resume", () => window.print(), "Information", "Ctrl P", faPrint),
+		new Action("Print", () => window.print(), "Information", "Ctrl P", faPrint),
 		new Action(
 			"Download skills JSON",
 			async () => {
@@ -349,7 +349,7 @@
 		}
 	}} />
 
-<main class="bg-white dark:bg-gray-999">
+<main class="bg-white dark:bg-gray-999 print:dark:bg-white">
 	<slot />
 	<footer
 		class="flex justify-center border-t border-gray-100
