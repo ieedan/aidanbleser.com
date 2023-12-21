@@ -2,6 +2,7 @@
 	import Code from "$lib/components/Code.svelte";
 	import blogSVG from "./tailwindblog.svg";
 	import tailwindPlugin from "$lib/assets/tailwind-plugin.png";
+	import LinkHeading from "$lib/components/LinkHeading.svelte";
 </script>
 
 <img src={blogSVG} class="w-full py-8" alt="CSS crossed out arrow pointing to tailwind" />
@@ -80,24 +81,24 @@
 	<li><a href="#localization" class="hover:underline">Style Localization</a></li>
 	<li><a href="#speed" class="hover:underline">Speed of development</a></li>
 </ul>
-<h4 class="pt-4 text-xl font-bold" id="standardization">Style Standardization</h4>
+<LinkHeading class="pt-4" type="h4" id="standardization">Style Standardization</LinkHeading>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	Style Standardization means any project that uses Tailwind can be maintained by anyone who
 	already knows Tailwind. Having standards in your code improves productivity and onboarding for
 	every project that use those standards.
 </p>
-<h4 class="pt-4 text-xl font-bold" id="collocation">Style/Markup Collocation</h4>
+<LinkHeading class="pt-4" type="h4" id="collocation">Style/Markup Collocation</LinkHeading>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	The collocation of styles in the markup make it easy to understand what is effected by a change
 	and saves lots of time otherwise used searching for CSS classes.
 </p>
-<h4 class="pt-4 text-xl font-bold" id="localization">Style Localization</h4>
+<LinkHeading class="pt-4" type="h4" id="localization">Style Localization</LinkHeading>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	Tailwind takes the cascading out of cascading style sheets (CSS). You no longer need the context
 	of the entire codebase to make a simple style change. This saves a huge amount of time debugging
 	weird CSS issues caused by overlapping classes and cascading styles.
 </p>
-<h4 class="pt-4 text-xl font-bold" id="speed">Speed of development</h4>
+<LinkHeading class="pt-4" type="h4" id="speed">Speed of development</LinkHeading>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	Between the collocation, standardization, and simplicity Tailwind provides it means that
 	development is <strong class="text-black dark:text-white">way faster</strong>. The jump in
