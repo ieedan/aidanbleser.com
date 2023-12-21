@@ -64,6 +64,9 @@ devDependencies:
   prettier-plugin-svelte:
     specifier: ^3.0.0
     version: 3.1.2(prettier@3.1.0)(svelte@4.2.8)
+  shikiji:
+    specifier: ^0.9.10
+    version: 0.9.10
   svelte:
     specifier: ^4.2.7
     version: 4.2.8
@@ -1982,6 +1985,16 @@ packages:
   /shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+    dev: true
+
+  /shikiji-core@0.9.10:
+    resolution: {integrity: sha512-s+aC66Fh343wpm7VyQTg+htdHM/tUb8R+yxdAdUpCtKkRWbSBIpqQ3xTSNjbCTnGv10xsT164SW0r1VV1N6ToA==}
+    dev: true
+
+  /shikiji@0.9.10:
+    resolution: {integrity: sha512-tqnoSWWb7NailWJ/72Bgi8Z5O+ul71SJ5EhXbfHprZg67RGwck5eVyv5Uv4pso06ZuzNpUabRTyyFKHN/Ea9Mw==}
+    dependencies:
+      shikiji-core: 0.9.10
     dev: true
 
   /sirv@2.0.3:

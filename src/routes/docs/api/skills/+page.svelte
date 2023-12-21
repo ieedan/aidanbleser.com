@@ -10,14 +10,14 @@
 		<small>{new Date("12/12/2023").toLocaleDateString()}</small>
 	</div>
 	<p class="pb-3">Returns my skills in the following form.</p>
-	<Code
+	<Code lang="typescript"
 		>{`type Skill = {
     name: string;
     yearsExperience: number;
 };`}</Code
 	>
 	<h2 class="py-4 text-2xl" id="properties">Properties</h2>
-	<Code
+	<Code lang="json"
 		>{`{ 
     name: "TypeScript", 
     yearsExperience: 1.1987795142874587 

@@ -10,7 +10,7 @@
 		<small>{new Date("12/12/2023").toLocaleDateString()}</small>
 	</div>
 	<p class="pb-3">Returns my projects in the following form.</p>
-	<Code
+	<Code lang="typescript"
 		>{`type Project = {
     name: string;
     location: string;
@@ -21,7 +21,7 @@
 };`}</Code
 	>
 	<h2 class="py-4 text-2xl" id="properties">Properties</h2>
-	<Code
+	<Code lang="json"
 		>{`{
     name: "ips CLI",
     location: "Avanzar Interior Technologies",

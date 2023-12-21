@@ -10,7 +10,7 @@
 		<small>{new Date("12/12/2023").toLocaleDateString()}</small>
 	</div>
 	<p class="pb-3">Returns my experience in the following form.</p>
-	<Code
+	<Code lang="typescript"
 		>{`type Experience = {
     name: string;
     location: string;
@@ -20,7 +20,7 @@
 };`}</Code
 	>
 	<h2 class="py-4 text-2xl" id="properties">Properties</h2>
-	<Code
+	<Code lang="json"
 		>{`{
     name: "Maintenance Technician",
     location: "Toyota Motor Manfacturing Texas",

@@ -10,7 +10,7 @@
 		<small>{new Date("12/12/2023").toLocaleDateString()}</small>
 	</div>
 	<p class="pb-3">Returns my resume in the following form.</p>
-	<Code
+	<Code lang="typescript"
 		>{`type Resume = {
     skills: Skill[];
     experience: Experience[];

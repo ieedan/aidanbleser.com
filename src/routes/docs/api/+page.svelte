@@ -13,7 +13,7 @@
 		>You can interact with the aidanbleser API like any other api. You can start by calling it
 		from your terminal:</p
 	>
-	<Code>curl https://api.aidanbleser.com/resume</Code>
+	<Code lang="bash">curl https://api.aidanbleser.com/resume</Code>
 	<ArrowNavigation
 		last={{ name: "Introduction", slug: "/docs" }}
 		next={{ name: "/resume", slug: "/docs/api/resume" }}
