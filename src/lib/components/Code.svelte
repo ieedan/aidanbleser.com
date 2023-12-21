@@ -10,9 +10,39 @@
 	export let fileName: string = "";
 	export { className as class };
 
-	const THEME = "dark-plus";
+	const THEME: BuiltInTheme = "vitesse-black";
 
 	let copied = false;
+
+	type BuiltInTheme =
+		| "dark-plus"
+		| "dracula"
+		| "dracula-soft"
+		| "github-dark"
+		| "github-dark-dimmed"
+		| "github-light"
+		| "light-plus"
+		| "material-theme"
+		| "material-theme-darker"
+		| "material-theme-lighter"
+		| "material-theme-ocean"
+		| "material-theme-palenight"
+		| "min-dark"
+		| "min-light"
+		| "monokai"
+		| "nord"
+		| "one-dark-pro"
+		| "poimandres"
+		| "rose-pine"
+		| "rose-pine-dawn"
+		| "rose-pine-moon"
+		| "slack-dark"
+		| "slack-ochin"
+		| "solarized-dark"
+		| "solarized-light"
+		| "vitesse-black"
+		| "vitesse-dark"
+		| "vitesse-light";
 
 	const copy = () => {
 		navigator.clipboard.writeText(codeRef.innerText).then(() => {
