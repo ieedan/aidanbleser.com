@@ -1,3 +1,4 @@
+import { toMap } from "$lib/TS/to-map";
 import WebDevWrapped2023 from "./2023WebDevWrapped/WebDevWrapped2023.svelte";
 import TailwindBlogPost from "./TailwindCSS-9-27-2023/TailwindBlogPost.svelte";
 
@@ -25,4 +26,8 @@ export const posts: Post[] = [
 		hook: "2023 has been a huge year in my web development journey. Continue reading to see how far I have come and the technologies I will be using in 2024.",
 		component: WebDevWrapped2023,
 	},
-].sort((a, b) => Date.parse(b.date.toString()) - Date.parse(a.date.toString()));
+];
+
+export const postsMap = toMap(posts, a => {
+	return { key: a.title, value: a };
+})

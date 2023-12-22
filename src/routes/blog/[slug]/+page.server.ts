@@ -1,9 +1,13 @@
-import { posts } from "$lib/blog/posts/posts";
+import { postsMap } from "$lib/blog/posts/posts.js";
+import { error } from "@sveltejs/kit";
 
 export function load({ params }) {
-	const index = posts.findIndex((a) => a.title == params.slug);
+	const post = postsMap.get(params.slug);
+	if (!post) throw error(404, `Couldn't find the post ${params.slug}`);
 	return {
-		index: index,
-		title: posts[index].title 
+		title: post.title,
+		hook: post.hook,
+		date: post.date,
+		readMinutes: post.readMinutes,
 	};
 }
