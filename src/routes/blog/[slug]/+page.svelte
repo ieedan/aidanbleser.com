@@ -25,7 +25,7 @@
 		<small class="text-gray-600 dark:text-gray-400">{post.date.toLocaleDateString()}</small>
 		<span class="text-xs text-gray-600 dark:text-gray-400">{post.readMinutes} min read</span>
 	</div>
-	<h1 class="pb-4 pt-2 text-2xl font-bold">{post.title}</h1>
+	<h1 id="#heading" class="pb-4 pt-2 text-2xl font-bold sm:text-4xl">{post.title}</h1>
 	<p class="text-gray-700 dark:text-gray-300">{post.hook}</p>
 	<svelte:component this={post.component} />
 	<section class="h-8"></section>

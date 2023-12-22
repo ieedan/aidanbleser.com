@@ -366,14 +366,17 @@
 				</div>
 			</div>
 			<nav
-				class="hidden justify-start gap-8 text-sm text-gray-800 dark:text-gray-500 print:hidden md:flex"
+				class="hidden justify-start gap-8 text-sm text-gray-800 print:hidden md:flex dark:text-gray-500"
 			>
 				<div class="col flex flex-col gap-1">
 					<h6 class="text-base font-semibold text-black dark:text-white"
-						>Other projects</h6
+						>Other Links</h6
 					>
 					<a href="/blog" class="transition-all hover:text-black hover:dark:text-white">
 						Blog
+					</a>
+					<a href="/docs" class="transition-all hover:text-black hover:dark:text-white">
+						Docs
 					</a>
 				</div>
 				<div class="col flex flex-col gap-1">
@@ -447,7 +450,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
 	class="fixed left-0 top-0 z-[49] h-screen w-full bg-white transition-all data-[show=false]:pointer-events-none data-[show=false]:opacity-0
-    data-[show=true]:opacity-80 dark:bg-gray-999 print:hidden"
+    data-[show=true]:opacity-80 print:hidden dark:bg-gray-999"
 	on:click={closePallet}
 	data-show={palletOpen}
 >
@@ -456,8 +459,8 @@
 <div
 	class="transtion-all fixed bottom-0 left-1/2 z-50 max-h-[424px] w-full -translate-x-1/2
     overflow-hidden rounded-t-xl border border-gray-100 bg-white data-[show=false]:pointer-events-none
-    data-[show=false]:translate-y-3 data-[show=false]:opacity-0 dark:border-gray-900
-    dark:bg-gray-999 print:hidden sm:top-1/3 sm:max-w-[640px] sm:-translate-y-1/2 sm:rounded-xl"
+    data-[show=false]:translate-y-3 data-[show=false]:opacity-0 print:hidden
+    sm:top-1/3 sm:max-w-[640px] sm:-translate-y-1/2 sm:rounded-xl dark:border-gray-900 dark:bg-gray-999"
 	aria-haspopup="listbox"
 	aria-disabled={!palletOpen}
 	aria-hidden={!palletOpen}

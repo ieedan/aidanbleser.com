@@ -31,14 +31,14 @@
 				<a
 					href="/docs"
 					data-active={$page.url.pathname.startsWith("/docs")}
-					class="hidden transition-all hover:text-black hover:dark:text-white data-[active=true]:dark:text-white md:block"
+					class="hidden transition-all hover:text-black data-[active=true]:text-black md:block hover:dark:text-white data-[active=true]:dark:text-white"
 				>
 					Docs
 				</a>
 				<a
 					href="/blog"
 					data-active={$page.url.pathname.startsWith("/blog")}
-					class="hidden transition-all hover:text-black hover:dark:text-white data-[active=true]:dark:text-white md:block"
+					class="hidden transition-all hover:text-black data-[active=true]:text-black md:block hover:dark:text-white data-[active=true]:dark:text-white"
 				>
 					Blog
 				</a>
