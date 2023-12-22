@@ -19,7 +19,8 @@
 		<a
 			href="/blog/{data.title}"
 			class="max-w-[175px] truncate text-sm font-medium hover:underline sm:max-w-none"
-			>{data.title}</a>
+			>{data.title}</a
+		>
 	</div>
 	<div class="flex place-items-center justify-between gap-3">
 		<small class="text-gray-600 dark:text-gray-400">{data.date.toLocaleDateString()}</small>

@@ -4,7 +4,9 @@
 
 	export let data;
 
-	const posts = data.summaries.toSorted((a, b) => Date.parse(b.date.toString()) - Date.parse(a.date.toString()));
+	const posts = data.summaries.toSorted(
+		(a, b) => Date.parse(b.date.toString()) - Date.parse(a.date.toString()),
+	);
 </script>
 
 <section class="h-16"></section>

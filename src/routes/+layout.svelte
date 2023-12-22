@@ -369,9 +369,7 @@
 				class="hidden justify-start gap-8 text-sm text-gray-800 print:hidden md:flex dark:text-gray-500"
 			>
 				<div class="col flex flex-col gap-1">
-					<h6 class="text-base font-semibold text-black dark:text-white"
-						>Other Links</h6
-					>
+					<h6 class="text-base font-semibold text-black dark:text-white">Other Links</h6>
 					<a href="/blog" class="transition-all hover:text-black hover:dark:text-white">
 						Blog
 					</a>

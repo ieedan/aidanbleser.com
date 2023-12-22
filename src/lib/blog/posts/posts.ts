@@ -28,6 +28,6 @@ export const posts: Post[] = [
 	},
 ];
 
-export const postsMap = toMap(posts, a => {
+export const postsMap = toMap(posts, (a) => {
 	return { key: a.title, value: a };
-})
+});
