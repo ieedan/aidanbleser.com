@@ -187,14 +187,14 @@
 				<a
 					href="/docs"
 					data-active={$page.url.pathname.startsWith("/docs")}
-					class="hidden transition-all hover:text-black hover:dark:text-white data-[active=true]:dark:text-white md:block"
+					class="hidden transition-all hover:text-black md:block hover:dark:text-white data-[active=true]:dark:text-white"
 				>
 					Docs
 				</a>
 				<a
 					href="/blog"
 					data-active={$page.url.pathname.startsWith("/blog")}
-					class="hidden transition-all hover:text-black hover:dark:text-white data-[active=true]:dark:text-white md:block"
+					class="hidden transition-all hover:text-black md:block hover:dark:text-white data-[active=true]:dark:text-white"
 				>
 					Blog
 				</a>
@@ -207,7 +207,7 @@
 				bind:this={navigationRef}
 				class="fixed bottom-0 z-40 flex max-h-screen w-full flex-col place-items-end overflow-y-auto
 				border-t border-gray-100 bg-white px-4
-                py-3 dark:border-gray-900 dark:bg-gray-999 md:top-[45px] md:w-[300px] md:border-0 md:bg-transparent md:dark:bg-transparent"
+                py-3 md:top-[45px] md:w-[300px] md:border-0 md:bg-transparent dark:border-gray-900 dark:bg-gray-999 md:dark:bg-transparent"
 			>
 				<div
 					class="w-full flex-col data-[show=false]:hidden md:data-[show=false]:flex"
@@ -223,7 +223,7 @@
 				></section>
 				<button
 					class="flex w-full place-items-center justify-between rounded-md border border-gray-100
-                px-2 py-1 dark:border-gray-900 md:hidden"
+                px-2 py-1 md:hidden dark:border-gray-900"
 					on:click={toggleNavigationExpanded}
 				>
 					<div class="flex place-items-center gap-2">

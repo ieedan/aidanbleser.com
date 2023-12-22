@@ -6,21 +6,22 @@
 
 	export let type: HeadingType;
 	export let id: string;
-    let className = "";
-    export { className as class }
+	let className = "";
+	export { className as class };
 </script>
 
-<a href="#{id}" class="flex place-items-center gap-2 group hover:underline {className}">
+<a href="#{id}" class="group flex place-items-center gap-2 hover:underline {className}">
 	<svelte:element
 		this={type}
 		class="link-heading flex place-items-center font-bold"
 		{id}
-		data-active={$page.url.hash == `#${id}`}>
+		data-active={$page.url.hash == `#${id}`}
+	>
 		<slot />
 	</svelte:element>
-    <div class="hidden group-hover:block">
-        <FontAwesomeIcon class="fa-xs" icon={faLink} />
-    </div>
+	<div class="hidden group-hover:block">
+		<FontAwesomeIcon class="fa-xs" icon={faLink} />
+	</div>
 </a>
 
 <style lang="postcss">

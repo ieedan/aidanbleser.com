@@ -6,7 +6,8 @@
 <img
 	src={blogSVG}
 	class="w-full py-8"
-	alt="2023 Web dev wrapped next to react svelte and tailwind logos" />
+	alt="2023 Web dev wrapped next to react svelte and tailwind logos"
+/>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	2023 was my second year doing web development after starting in the fall of 2022. I came into
 	2023 using vanilla JavaScript, HTML, and CSS for the front-end and C# rest API for the backend
@@ -74,7 +75,8 @@
 <LinkHeading class="pt-2" id="vite" type="h3">Discovering Vite</LinkHeading>
 <p class="py-2 text-gray-700 dark:text-gray-300">
 	After creating my first real React project using the dreaded <strong
-		class="whitespace-nowrap text-black dark:text-white">create-react-app</strong>
+		class="whitespace-nowrap text-black dark:text-white">create-react-app</strong
+	>
 	I was looking to create an admin panel for my larger web app at work. During this time I learned
 	about Vite. Vite is the best way to init any project in my opinion. It takes a lot of the pain out
 	of using any technology that requires a build step (TypeScript, SASS, Tailwind, etc.). Not to mention
