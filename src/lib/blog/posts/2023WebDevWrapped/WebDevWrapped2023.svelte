@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { page } from "$app/stores";
-	import Code from "$lib/components/Code.svelte";
 	import LinkHeading from "$lib/components/LinkHeading.svelte";
 	import blogSVG from "./2023-web-dev-wrapped.svg";
 </script>
@@ -93,8 +91,8 @@
 		href="https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA"
 		target="_blank"
 		class="text-black hover:underline dark:text-white">Fireship</a
-	>'s web framework of choice and it seemed to have a lot of love from its users. So I decided to try
-	it out, I built a basic to-do app in both React and Svelte and I was blown away by the
+	>'s web framework of choice and it seemed to have a lot of love from its users. So I decided to
+	try it out, I built a basic to-do app in both React and Svelte and I was blown away by the
 	differences in speed of development, and overall complexity.
 </p>
 <p class="py-2 text-gray-700 dark:text-gray-300">
@@ -137,6 +135,6 @@
 	<li>C# .NET Core</li>
 </ul>
 <p class="py-2 text-gray-700 dark:text-gray-300">
-	For now this is the stack that I can move the fastest with and it will help me build
-	even bigger things in 2024.
+	For now this is the stack that I can move the fastest with and it will help me build even bigger
+	things in 2024.
 </p>

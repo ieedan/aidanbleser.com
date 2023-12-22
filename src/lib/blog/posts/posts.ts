@@ -20,7 +20,7 @@ export const posts: Post[] = [
 	},
 	{
 		date: new Date("12-21-2023"),
-		readMinutes: 8,
+		readMinutes: 10,
 		title: "My 2023 Web Development Wrapped",
 		hook: "2023 has been a huge year in my web development journey. Continue reading to see how far I have come and the technologies I will be using in 2024.",
 		component: WebDevWrapped2023,
