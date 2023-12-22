@@ -22,18 +22,18 @@
 		<div class="flex w-full place-items-center justify-center gap-5 py-5 print:hidden">
 			<button
 				on:click={showActions}
-				class="flex w-28 place-items-center justify-center gap-2 rounded-lg bg-black
+				class="flex w-28 place-items-center justify-center gap-2 bg-black rounded-3xl
 			px-3 py-2 text-white transition-all hover:bg-gray-900 dark:bg-white dark:text-black hover:dark:bg-gray-100"
 			>
 				<FontAwesomeIcon class="fa-sm" icon={faTerminal} />
 				Actions
 			</button>
 			<a
-				href="/docs"
-				class="flex w-28 place-items-center justify-center gap-1 py-2 text-center
-				text-black hover:underline dark:text-white"
+				href="/blog"
+				class="flex w-28 place-items-center justify-center gap-1 py-2 text-center transition-all border-gray-100 hover:bg-gray-100
+				text-black dark:text-white dark:border-gray-900 border rounded-3xl hover:dark:bg-gray-900"
 			>
-				Docs<FontAwesomeIcon class="fa-sm" icon={faArrowRight} />
+				Blog
 			</a>
 		</div>
 	</div>

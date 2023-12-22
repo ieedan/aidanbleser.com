@@ -370,10 +370,13 @@
 			>
 				<div class="col flex flex-col gap-1">
 					<h6 class="text-base font-semibold text-black dark:text-white"
-						>Other projects</h6
+						>Other Links</h6
 					>
 					<a href="/blog" class="transition-all hover:text-black hover:dark:text-white">
 						Blog
+					</a>
+					<a href="/docs" class="transition-all hover:text-black hover:dark:text-white">
+						Docs
 					</a>
 				</div>
 				<div class="col flex flex-col gap-1">
