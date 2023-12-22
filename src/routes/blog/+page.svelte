@@ -3,13 +3,17 @@
 	import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
 
 	export let data;
+
+	const posts = data.summaries.toSorted(
+		(a, b) => Date.parse(b.date.toString()) - Date.parse(a.date.toString()),
+	);
 </script>
 
 <section class="h-16"></section>
 <h1 class="text-4xl font-bold">Blog posts</h1>
 <section class="h-16"></section>
 <ol class="flex flex-col gap-2 sm:gap-0">
-	{#each data.summaries as post}
+	{#each posts as post}
 		<li class="relative flex place-items-start gap-4 px-6 sm:h-44 sm:px-0 md:h-40">
 			<small class="hidden w-20 py-4 text-center text-gray-600 md:block dark:text-gray-500"
 				>{post.date.toLocaleDateString()}</small
