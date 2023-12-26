@@ -132,9 +132,12 @@
 
 	const getCurrentDoc = (rs: Route[], path: string): Route | undefined => {
 		for (let i = 0; i < rs.length; i++) {
-			const r = rs[i];
+			const r = rs[i];	
 
-			if (r.slug == path) return r;
+			const slug = r.slug[r.slug.length - 1] == "/" ? r.slug.slice(0, r.slug.length - 1) : r.slug;
+			const newPath = path[path.length - 1] == "/" ? path.slice(0, path.length - 1) : path;
+
+			if (slug.toLowerCase() == newPath.toLowerCase()) return r;
 
 			if (!r.routes) continue;
 
