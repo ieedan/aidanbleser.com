@@ -5,6 +5,7 @@
 	import { mode, setMode } from 'mode-watcher';
 	import BreadCrumbs from './BreadCrumbs.svelte';
 	import { page } from '$app/stores';
+	import { capitalizeFirstLetter } from '$lib/ts/path-transform';
 
 	const toggleMode = () => {
 		if ($mode == 'dark') {
@@ -17,11 +18,11 @@
 
 <header class="flex place-items-center justify-between px-6 py-6">
 	<div class="hidden place-items-center justify-center md:flex">
-		<BreadCrumbs />
+		<BreadCrumbs transform={capitalizeFirstLetter}/>
 	</div>
 	<div class="md:hidden">
 		{#if $page.url.pathname != '/'}
-			<a href="/" class="transition-all hover:text-foreground-primary"> 
+			<a href="/" class="transition-all hover:text-foreground-primary text-foreground-muted"> 
 				Posts 
 			</a>
 		{/if}

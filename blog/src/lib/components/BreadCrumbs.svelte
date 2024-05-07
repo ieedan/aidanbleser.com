@@ -56,15 +56,6 @@
 </script>
 
 <ul class="flex place-items-center gap-2 px-4">
-	<a
-		href="/"
-		data-active={$page.url.pathname == "/"}
-		class="data-[active=true]:text-foreground-primary text-foreground-secondary
-            flex place-items-center gap-4 rounded-md hover:text-foreground-primary
-            px-2 py-1 font-medium transition-all hover:bg-component-background-hover"
-	>
-		Posts
-	</a>
 	{#each breadCrumbs as { name, href }}
 		<span
 			class="font-serif

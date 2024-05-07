@@ -7,14 +7,6 @@
 	import Header from '$lib/components/Header.svelte';
 </script>
 
-<svelte:head>
-	<title>blog.aidanbleser.com | Posts</title>
-	<meta
-		name="description"
-		content="Aidan Bleser's blog website. Where he talks about tech and his terrible opinions."
-	/>
-</svelte:head>
-
 <ModeWatcher />
 
 <Header />
