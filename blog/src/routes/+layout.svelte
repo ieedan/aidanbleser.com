@@ -4,15 +4,16 @@
 	import '@fontsource/geist-mono';
 	import '$lib/theme.css';
 	import { ModeWatcher } from 'mode-watcher';
-	import { MetaTags } from 'svelte-meta-tags';
 	import Header from '$lib/components/Header.svelte';
 </script>
 
-<!-- https://github.com/oekazuma/svelte-meta-tags -->
-<MetaTags
-	title="blog.aidanbleser.com | Posts"
-	description="Aidan Bleser's blog website. Where he talks about tech and his terrible opinions."
-/>
+<svelte:head>
+	<title>blog.aidanbleser.com | Posts</title>
+	<meta
+		name="description"
+		content="Aidan Bleser's blog website. Where he talks about tech and his terrible opinions."
+	/>
+</svelte:head>
 
 <ModeWatcher />
 
