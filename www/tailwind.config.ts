@@ -2,7 +2,7 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	darkMode: 'class',
-	safeList: ['dark'],
+	safelist: ['dark'],
 	theme: {
 		fontFamily: {
 			serif: ['Geist Mono', 'Monospace'],
@@ -132,6 +132,4 @@ export default {
 			},
 		},
 	},
-
-	plugins: [require('@tailwindcss/typography')],
 };
