@@ -26,7 +26,10 @@
 		<H>Aidan Bleser</H>
 		<Spacer h={25} />
 		<!-- Line -->
-		<div style="height: calc(100% - 65px);" class="absolute left-[12px] z-[1] w-[2px] bg-component-background"></div>
+		<div
+			style="height: calc(100% - 65px);"
+			class="absolute left-[12px] z-[1] w-[2px] bg-component-background"
+		></div>
 		<div class="relative z-[2]">
 			<InfoSection icon={faBriefcase} title="Working at">
 				<P>Avanzar Interior Technologies, Texas</P>

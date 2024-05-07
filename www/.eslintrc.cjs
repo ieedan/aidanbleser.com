@@ -42,14 +42,6 @@ module.exports = {
 				'svelte/no-at-html-tags': 'warn',
 				'no-prototype-builtins': 'off',
 				'no-useless-escape': 'off',
-				'@cspell/spellchecker': [
-					'error',
-					{
-						cspell: {
-							words: [],
-						},
-					},
-				],
 			},
 		},
 	],
@@ -67,13 +59,5 @@ module.exports = {
 		'no-nested-ternary': 'error',
 		'no-prototype-builtins': 'off',
 		'no-useless-escape': 'off',
-		'@cspell/spellchecker': [
-			'error',
-			{
-				cspell: {
-					words: [],
-				},
-			},
-		],
 	},
 };

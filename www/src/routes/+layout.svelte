@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
-    import '@fontsource/geist-sans';
-    import '@fontsource/geist-mono';
+	import '@fontsource/geist-sans';
+	import '@fontsource/geist-mono';
 	import '$lib/theme.css';
 	import { ModeWatcher } from 'mode-watcher';
 	import { MetaTags } from 'svelte-meta-tags';
@@ -13,5 +13,5 @@
 
 <ModeWatcher />
 
-<Header/>
+<Header />
 <slot />

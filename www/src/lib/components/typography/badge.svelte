@@ -7,7 +7,7 @@
 {#if href}
 	<a
 		{href}
-		class="inline-flex select-none place-items-center gap-1 rounded-md 
+		class="inline-flex select-none place-items-center gap-1 rounded-md
 		bg-component-background px-2 py-1 transition-all hover:bg-component-background-active"
 		target="_blank"
 	>
