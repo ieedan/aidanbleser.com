@@ -1,5 +1,5 @@
 export type Post = {
-    name: string;
-    summary: string;
-    content: string;
-}
+	name: string;
+	summary: string;
+	content: string;
+};

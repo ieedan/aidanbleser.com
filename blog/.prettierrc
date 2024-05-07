@@ -5,10 +5,7 @@
 	"svelteAllowShorthand": true,
 	"trailingComma": "es5",
 	"printWidth": 100,
-	"plugins": [
-		"prettier-plugin-svelte",
-		"prettier-plugin-tailwindcss"
-	],
+	"plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
 	"tailwindFunctions": ["tv"],
 	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
 }

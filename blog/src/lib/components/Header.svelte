@@ -18,12 +18,12 @@
 
 <header class="flex place-items-center justify-between px-6 py-6">
 	<div class="hidden place-items-center justify-center md:flex">
-		<BreadCrumbs transform={capitalizeFirstLetter}/>
+		<BreadCrumbs transform={capitalizeFirstLetter} />
 	</div>
 	<div class="md:hidden">
 		{#if $page.url.pathname != '/'}
-			<a href="/" class="transition-all hover:text-foreground-primary text-foreground-muted"> 
-				Posts 
+			<a href="/" class="text-foreground-muted transition-all hover:text-foreground-primary">
+				Posts
 			</a>
 		{/if}
 	</div>

@@ -4,7 +4,8 @@
 	/** Can be used to exclude a path prefix EX: excludePrefix == '/dashboard' => route == '/dashboard/settings' => route == '/settings'*/
 	export let excludePrefix: string | undefined = undefined;
 	/** Allows you to apply a custom transform to the path name */
-	export let transform: (pathName: string) => string = (pathName: string) => decodeURIComponent(pathName);
+	export let transform: (pathName: string) => string = (pathName: string) =>
+		decodeURIComponent(pathName);
 	export let separator: string = '/';
 	/** Will prevent the transformation from being run on direct children of the routes provided*/
 	export let doNotTransform: string[] = [];
@@ -66,9 +67,9 @@
 		<a
 			{href}
 			data-active={$page.url.pathname == href}
-			class="data-[active=true]:text-foreground-primary text-foreground-secondary
-            flex place-items-center gap-4 rounded-md hover:text-foreground-primary
-            px-2 py-1 font-medium transition-all hover:bg-component-background-hover"
+			class="flex place-items-center
+            gap-4 rounded-md px-2 py-1 font-medium
+            text-foreground-secondary transition-all hover:bg-component-background-hover hover:text-foreground-primary data-[active=true]:text-foreground-primary"
 		>
 			{name}
 		</a>

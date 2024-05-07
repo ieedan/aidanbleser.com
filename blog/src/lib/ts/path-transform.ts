@@ -5,19 +5,19 @@ function isNumber(str: string): boolean {
 export function capitalizeFirstLetter(path: string): string {
 	const decodedPath = decodeURIComponent(path);
 
-	if (isNumber(decodedPath)) return "#" + decodedPath;
+	if (isNumber(decodedPath)) return '#' + decodedPath;
 
 	const hasNumbers = /[0-9]/.test(path);
 
 	// This would indicate that is most likely an ID or something that we don't want to transform
 	if (hasNumbers) return decodedPath;
 
-	const spacedPath = decodedPath.replace(/[-]/g, " ");
+	const spacedPath = decodedPath.replace(/[-]/g, ' ');
 
 	// Capitalize the first letter of each word
-	const words = spacedPath.split(" ");
+	const words = spacedPath.split(' ');
 
-	let capitalizedPath = "";
+	let capitalizedPath = '';
 
 	for (let i = 0; i < words.length; i++) {
 		const word = words[i];
@@ -26,7 +26,7 @@ export function capitalizeFirstLetter(path: string): string {
 			capitalizedPath += word[0].toUpperCase() + word.slice(1);
 		}
 
-		if (i < words.length - 1) capitalizedPath += " ";
+		if (i < words.length - 1) capitalizedPath += ' ';
 	}
 
 	return capitalizedPath;
