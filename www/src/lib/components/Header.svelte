@@ -37,10 +37,10 @@
 			on:click={toggleMode}
 			class="flex place-items-center justify-center transition-all hover:text-foreground-primary"
 		>
-			<div data-visible={$mode == 'dark'} class="data-[visible=false]:hidden">
+			<div data-visible={$mode == 'dark'} class="data-[visible=false]:hidden w-5">
 				<FontAwesomeIcon icon={faMoon} size="lg" />
 			</div>
-			<div data-visible={$mode == 'light'} class="data-[visible=false]:hidden">
+			<div data-visible={$mode == 'light'} class="data-[visible=false]:hidden w-5">
 				<FontAwesomeIcon icon={faSun} size="lg" />
 			</div>
 		</button>
