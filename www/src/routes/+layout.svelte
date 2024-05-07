@@ -5,6 +5,7 @@
 	import '$lib/theme.css';
 	import { ModeWatcher } from 'mode-watcher';
 	import { MetaTags } from 'svelte-meta-tags';
+	import Header from '$lib/components/Header.svelte';
 </script>
 
 <!-- https://github.com/oekazuma/svelte-meta-tags -->
@@ -12,4 +13,5 @@
 
 <ModeWatcher />
 
+<Header/>
 <slot />
