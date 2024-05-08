@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import markdownit from 'markdown-it';
 import Shikiji from 'markdown-it-shikiji';
 
@@ -70,7 +70,7 @@ const summarize = (post) => {
 			breakCount++;
 		}
 
-		if (breakCount >= 2 || i >= MAX_LENGTH) {
+		if (breakCount >= 3 || i >= MAX_LENGTH) {
 			return post.slice(firstBreak, i - 1);
 		}
 	}
