@@ -1,4 +1,4 @@
-# aidanbleser.com
+# *.aidanbleser.com
 
 monorepo for:
 - **aidanbleser.com** `/www`

@@ -3,6 +3,8 @@
 	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
 
 	export let data;
+
+	$: posts = data.posts.sort((a, b) => Date.parse(b.metaData.date) - Date.parse(a.metaData.date));
 </script>
 
 <svelte:head>
@@ -15,21 +17,37 @@
 
 <main class="flex flex-col place-items-center px-4">
 	<h1 class="py-10 text-6xl font-semibold">Posts</h1>
-	<ul class="flex flex-col">
-		{#each data.posts as post}
+	<ul class="relative flex flex-col md:px-4">
+		<div
+			class="absolute left-0 z-[1] hidden h-full w-[2px] bg-component-background md:block"
+		></div>
+		{#each posts as post}
 			<li
-				class="max-w-[576px] rounded-lg px-6 py-4 transition-all hover:bg-component-background-hover"
+				class="relative max-w-[576px] rounded-lg px-6 py-4 transition-all hover:bg-component-background-hover"
 			>
+				<div
+					class="absolute left-[-25px] z-[2] mt-1 hidden size-5 flex-shrink-0 flex-grow-0 rounded-full border
+					border-border bg-background ring-4 ring-background md:block"
+				>
+					<span
+						class="absolute -left-2 -top-[1px] hidden -translate-x-full text-nowrap text-sm text-foreground-muted lg:block"
+					>
+						{post.metaData.date}
+					</span>
+				</div>
 				<a href="/posts/{post.name}">
+					<small class="text-foreground-muted lg:hidden">
+						{post.metaData.date}
+					</small>
 					<h3 class="text-lg font-semibold">
 						{post.name}
 					</h3>
 					<div class="prose prose-zinc dark:prose-invert">
 						{@html post.summary}
 					</div>
-					<span class="flex place-items-center gap-1 text-blue-700"
-						>Read More <FontAwesomeIcon icon={faChevronRight} size="xs" /></span
-					>
+					<span class="flex place-items-center gap-1 text-blue-700">
+						Read More <FontAwesomeIcon icon={faChevronRight} size="xs" />
+					</span>
 				</a>
 			</li>
 		{/each}

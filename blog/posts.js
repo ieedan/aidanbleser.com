@@ -4,7 +4,7 @@ import markdownit from 'markdown-it';
 import Shikiji from 'markdown-it-shikiji';
 
 export const getPosts = async () => {
-	const postsDirectory = './posts';
+	const postsDirectory = './src/posts';
 
 	const files = fs.readdirSync(postsDirectory);
 
@@ -15,39 +15,38 @@ export const getPosts = async () => {
 	md.use(
 		await Shikiji({
 			themes: {
-				light: 'github-dark',
-				dark: 'github-dark',
+				light: 'dark-plus',
+				dark: 'dark-plus',
 			},
 		})
 	);
 
 	return posts.map((post) => {
 		const file = fs.readFileSync(path.resolve(postsDirectory, post)).toString();
+		const meta = JSON.parse(
+			fs.readFileSync(path.resolve(postsDirectory, post.replace('.md', '.json'))).toString()
+		);
+
 		return {
-			name: normalizeName(post),
+			name: getTitle(file),
 			summary: md.render(summarize(file)),
 			content: md.render(file),
+			metaData: meta,
 		};
 	});
 };
 
 /**
  *
- * @param {string} name
+ * @param {string} post
  * @returns {string}
  */
-const normalizeName = (name) => {
-	name = name.replace('.md', '');
+const getTitle = (post) => {
+	const firstLineEnd = post.indexOf('\n');
 
-	const segments = name.split('-');
+	let firstLine = post.slice(0, firstLineEnd).replace('# ', '');
 
-	let final = '';
-
-	segments.forEach((seg) => {
-		final = final + seg[0].toUpperCase() + seg.slice(1) + ' ';
-	});
-
-	return final.trim();
+	return firstLine.trim();
 };
 
 /** Returns a shortened summary of the post
@@ -71,7 +70,13 @@ const summarize = (post) => {
 		}
 
 		if (breakCount >= 3 || i >= MAX_LENGTH) {
-			return post.slice(firstBreak, i - 1);
+			let res = post.slice(firstBreak, i);
+
+			if (i >= MAX_LENGTH) {
+				res = res + '...';
+			}
+
+			return res;
 		}
 	}
 

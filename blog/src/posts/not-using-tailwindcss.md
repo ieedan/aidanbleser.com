@@ -12,7 +12,9 @@ First of all the argument that "It makes my HTML Ugly". To a non-Tailwind user l
 
 ```svelte
 <!-- Big red button -->
-<button class="big-red-button"> Click Me! </button>
+<button class="big-red-button"> 
+	Click Me! 
+</button>
 
 <style>
 	.big-red-button {
@@ -29,7 +31,9 @@ First of all the argument that "It makes my HTML Ugly". To a non-Tailwind user l
 
 ```svelte
 <!-- Big red button -->
-<button class="h-[100px] w-[100px] rounded-full bg-red-800 shadow-md"> Click Me! </button>
+<button class="h-[100px] w-[100px] rounded-full bg-red-800 shadow-md">
+	Click Me! 
+</button>
 ```
 
 The change in complexity is pretty obvious and this doesn't take into acount some of the built in overrides Tailwind provides such as every button automatically showing cursor-pointer when hovered.
