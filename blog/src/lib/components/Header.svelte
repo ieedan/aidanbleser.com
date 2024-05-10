@@ -32,7 +32,7 @@
 			/
 		</a>
 		<a
-			href="https://github.com/ieedan"
+			href="https://github.com/ieedan/aidanbleser.com"
 			target="_blank"
 			class="transition-all hover:text-foreground-primary"
 		>

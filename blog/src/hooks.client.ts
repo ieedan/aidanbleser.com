@@ -7,5 +7,5 @@ inject({ mode: dev ? 'development' : 'production' });
 
 // eslint-disable-next-line no-console
 console.log(
-	'Welcome to blog.aidanbleser.com! See the source here https://github.com/ieedan/aidanbleser.com! 🚀'
+	'Welcome to blog.aidanbleser.com! See the source here https://github.com/ieedan/aidanbleser.com/tree/main/blog! 🚀'
 );
