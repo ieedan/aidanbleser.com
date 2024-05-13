@@ -6,6 +6,10 @@
 
 <svelte:head>
 	<title>Posts | {post.name}</title>
+	<meta
+		name="description"
+		content="{post.summary}"
+	/>
 </svelte:head>
 
 <main class="flex flex-col place-items-center px-4">
