@@ -56,23 +56,18 @@
 						href="https://geist-ui-svelte.dev"
 					/>
 					<Badge src={vnvPNG} name="vnv" href="https://github.com/ieedan/vnv" />
-					<Badge src={RustPNG} name="ips" href="https://github.com/ieedan/ips" />
+					<Badge src={RustPNG} name="esetres" href="https://github.com/ieedan/esetres" />
 				</div>
 			</InfoSection>
 			<InfoSection icon={faInfo} title="About Me">
 				<P>
 					I started my journey as a maintenance technician at <P light type="span"
 						>Toyota</P
-					> where I learned how to program PLCs and build HMIs. After not long I felt like
-					I could challenge myself more than I was as a technician.
-				</P>
-				<Spacer h={16} />
-				<P>
-					So I chose to start looking for jobs as a controls engineer, at which point I
-					applied and accepted a position as a Maintenance Supervisor (PLC) at <P
-						light
-						type="span">Avanzar</P
-					>. Here I saw the problems that could be solved with software and took the
+					> where I learned how to program PLCs and build HMIs. Before long I started to feel
+					like I could challenge myself more than I was as a technician. So I chose to start
+					looking for jobs as a controls engineer, at which point I applied and accepted a
+					position as a Maintenance Supervisor (PLC) at <P light type="span">Avanzar</P>.
+					Here I saw the problems that could be solved with software and took the
 					opportunity to start building solutions.
 				</P>
 			</InfoSection>
