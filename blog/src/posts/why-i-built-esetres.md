@@ -16,137 +16,62 @@ My development environment is unique to say the least and downright difficult to
 
 Recently I have really grown a love for [Rust](https://www.rust-lang.org/) and it seems like the most appropriate choice if I want to build something reliable that can be easily refactored. I am most familiar with the [axum](https://github.com/tokio-rs/axum) web framework for building REST APIs in Rust so I will use that to build out the API.
 
-My hosting environment is just a virtual machine hosted on a private network so for access control I will use json web tokens that are generated on the server through a CLI. These can then be kept as environment variables that the client will need to send with their request.
-
-To store the tokens I will use [SQLite](https://www.sqlite.org/index.html) which should be the easiest solution considering I only need to create a single table. To keep the service fast I will implement a caching system to store all valid tokens to prevent unnecessary calls to the database.
-
-Since this can be a pain to setup I will create an `init` command that will automatically create the database and setup the necessary environment variables.
+My hosting environment is just a virtual machine hosted on a private network so for access control I will use json web tokens that are generated on the server through a CLI. Once generated these can be sent from the client in the request Authorization header so and validated by the server.
 
 ## Building esetres
 
-Building esetres was a great opportunity for me to learn quite a few things that no one wants to know about storing and serving files. First of which being [MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types). 
+Building esetres was a great opportunity for me to learn quite a few things that no one wants to know about storing and serving files. First of which being [MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
 
-MIME Types are what determines the content type of a http request or response. Most front end developers are familiar with these to the extent of setting the `Content-Type` header in their requests to `application/json`. However when you are trying to serve many different types of files it becomes unreasonable to manually create and maintain a list of all the types. Luckily for me I am not the first person to have ever dealt with this problem and therefore there are multiple maintained lists of MIME types already out there. 
+MIME Types are what determines the content type of a http request or response. Most front end developers are familiar with these to the extent of setting the `Content-Type` header in their requests to `application/json`. However when you are trying to serve many different types of files it becomes unreasonable to manually create and maintain a list of all the types. Luckily for me I am not the first person to have ever dealt with this problem and therefore there are multiple maintained lists of MIME types already out there.
 
-What I was looking for was a list of file extensions and their corresponding MIME types. I first came upon the list provided by [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml). This list is good but as I found out it is actually incomplete. For instance if you wanted to get the MIME type for a common file type such as `.jpg` you would find that it isn't present on the list. 
+What I was looking for was a list of file extensions and their corresponding MIME types. I first came upon the list provided by [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml). This list is good but as I found out it is actually incomplete. For instance if you wanted to get the MIME type for a common file type such as `.jpg` you would find that it isn't present on the list.
 
 After this realization I searched github and found [mime-db](https://github.com/jshttp/mime-db) a complete database of MIME types conveniently stored in everyone's favorite format, JSON! With this I wrote some code to fetch the file and parse the JSON into a hashmap of `[extension, MIME Type]`. Now when receiving a request I would extract the file extension and use that to determine the MIME type sent in the response.
 
 With this I could easily read the files from the `buckets` and serve them to the user. So I moved on to the next step **Authorization**.
 
-By now I am pretty confident implementing JWT having built and re-built authentication servers for applications at work a few times over. So the next part was fairly simple. I looked a bit for a library to handle the signing of the tokens and it seemed like [jsonwebtoken](https://github.com/Keats/jsonwebtoken) was by far the most popular so I chose to use that. First I need to determine the claims that should go with the token. Since these tokens won't expire all I will really need is `name` (for looking up the cached tokens), `scope` (what buckets can it access), `crt` (Created at timestamp mostly to ensure uniqueness), and `issuer`. And with that I create the Claims struct needed to validate the token.
+By now I am pretty confident implementing JWT having built and re-built authentication servers for applications at work a few times over. So the next part was fairly simple. I looked a bit for a library to handle the signing of the tokens and it seemed like [jsonwebtoken](https://github.com/Keats/jsonwebtoken) was by far the most popular so I chose to use that, implemented a few functions for signing and validating and that was that.
 
-```rs
-// Names are shortened to maintain token compactness
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Claims {
-    /// Name of the token
-    pub nm: String,
-    /// Bucket scope
-    pub scp: String,
-    /// Created at
-    pub crt: Duration,
-    /// Issuer
-    pub iss: String,
-}
+Next I would need to work on managing tokens so that they could be revoked and immediately return 401 codes to requests using that token. The easiest way to do that would be to create a cache containing the name of each token and its correct token hash. When a request is made I would extract the `name` of the token from the token claims and use that to retrieve the token from a hashmap. Once I found the token with the same name I would then verify the token against its hash using [bcrypt](https://github.com/Keats/rust-bcrypt) before using the `scope` claim to check its access to the requested bucket. This was slightly more complicated. First I would need a place to store the tokens.
+
+For this I opted to use [SQLite](https://www.sqlite.org/index.html) I would just need a single table for the tokens that ends up looking like this:
+
+```sql
+CREATE TABLE tokens (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    bucket_scope TEXT NOT NULL,
+    access TEXT NOT NULL, -- read | write | full
+    token TEXT NOT NULL
+)
 ```
 
-Next we need a signing key which prevents someone from forging claims and authenticating to your service. This needs to be kept secret so we will add an environment variable for it called `TOKEN_SECRET`.
+For accessing the database I decided to use [rusqlite](https://github.com/rusqlite/rusqlite) as it provides a simple api without the bloat you get by using an ORM especially since I only have 1 table. With that I can implement the CLI commands to `mint`, `list`, and `revoke` tokens allowing anyone with access to the VM to manage the tokens.
 
-With this I can follow the documentation to encode a token and create the following method:
+My next problem was with the cache, tokens are created from the CLI but tokens are consumed by the API, since these both run separately the CLI needs a way to tell the API that the token cache needs to be refreshed. Luckily since we are using a REST API this is fairly simple. We just add a route `/cache/invalidate` which will invalidate the token cache and re-fetch the tokens from the database when called by the CLI, excellent! Only one problem, exposing this route could easily lead to an attack by spamming the route with requests and preventing the cache from ever having tokens causing all requests to return 401.
+
+To prevent this from happening we need to prevent the API route from being called by anything other than the CLI. This is fairly simple, by adding an IP filter to the route we can restrict any IP that is not the host machine from accessing the route returning a 401. To do this I will add some middleware to **axum** to check the request IP against the current IP used to host the application.
 
 ```rs
-pub fn create(name: String, scope: String) -> Result<String, Box<dyn Error>> {
-    // Get config with the secret
+pub async fn from_host(
+    ConnectInfo(addr): ConnectInfo<SocketAddr>,
+    request: Request,
+    next: Next,
+) -> Response {
     let config = config::get();
 
-    let timestamp = SystemTime::now().duration_since(UNIX_EPOCH)?;
+    let valid_ip = IpAddr::from_str(&config.ip).unwrap();
 
-    // Initialize claims
-    let claims = Claims {
-        nm: name,
-        scp: scope,
-        crt: timestamp,
-        iss: ISSUER.to_string(),
-    };
-
-    // Sign the token
-    let token = encode(
-        &Header::default(),
-        &claims,
-        &EncodingKey::from_secret(config.token_secret.as_ref()),
-    )?;
-
-    Ok(token)
-}
-```
-
-With that we can sign tokens but what about validating tokens. Well thats just as simple:
-
-```rs
-pub fn validate(token: String) -> Result<TokenData<Claims>, Error> {
-    let config = config::get();
-
-    let validation = create_validator();
-
-    decode::<Claims>(
-        &token.as_str(),
-        &DecodingKey::from_secret(config.token_secret.as_ref()),
-        &validation,
-    )
-}
-
-/// Custom validator so that exp is not required for non expiring tokens
-fn create_validator() -> Validation {
-    let mut validation = Validation::new(Algorithm::HS256);
-    validation.set_issuer(&[ISSUER]);
-    validation.set_required_spec_claims(&["iss", "nm", "crt", "scp"]);
-
-    validation
-}
-```
-
-Really the only complicated part here is creating a custom validator so that you can have tokens that don't expire like we need for esetres.
-
-With this I can now authorize requests but I can't yet create tokens so we will need a way to do that. Again for my application I am hosting on a private VM and it just makes the most sense to only be able to create tokens from the CLI. 
-
-If you are building a CLI in Rust and you aren't using [clap](https://github.com/clap-rs/clap) you my friend are just selling. It is by far the easiest way to create usable CLI applications and does all the heavy lifting for you allowing you to just focus on your application logic. I am going to implement a few different sub commands for working with tokens from the CLI `list`, `mint`, and `revoke`. 
-
-I like to structure my clap applications like this:
-
-```
-src
-├── main.rs
-├── lib.rs
-└── commands
-    ├── mod.rs
-    └── tokens
-        ├── mint.rs
-        ├── list.rs
-        ├── revoke.rs
-        └── mod.rs
-```
-
-This allows you to keep the routing for the commands separate of the commands and just makes it a bit more reasonable at the cost of a few more files.
-
-With that your main.rs file can look something like this:
-
-```rs
-fn main() {
-    let args = Cli::parse();
-
-    match args.command {
-        Commands::Tokens(cmd) => match cmd {
-            commands::Tokens::List => tokens::list::run(),
-            commands::Tokens::Mint {
-                name,
-                scope,
-                access,
-            } => tokens::mint::run(name, scope, access),
-            commands::Tokens::Revoke { name } => tokens::revoke::run(name),
-        },
+    if addr.ip() != valid_ip {
+        return (StatusCode::UNAUTHORIZED).into_response();
     }
+
+    next.run(request).await
 }
 ```
 
-Thanks for reading and if esetres is the solution you are looking for then give it a try [here](https//github.com/ieedan/esetres).
+I can then apply this middleware to just the `/cache/invalidate` route so that the rule doesn't apply to everything else.
+
+Perfect now we can manage our access system
+
+Thanks for reading and if esetres is the solution you are looking for then you can give it a try [here](https//github.com/ieedan/esetres).
