@@ -27,6 +27,8 @@ export const getPosts = async () => {
 			fs.readFileSync(path.resolve(postsDirectory, post.replace('.md', '.json'))).toString()
 		);
 
+		meta.timeToRead = getTimeToRead(file);
+
 		return {
 			name: getTitle(file),
 			summary: md.render(summarize(file)),
@@ -84,3 +86,13 @@ const summarize = (post) => {
 
 	return post.slice(0, end);
 };
+
+/** Gets the time to read for an article
+ * 
+ * @param {string} article 
+ */
+const getTimeToRead = (article) => {
+	const words = article.trim().split(/\s+/);
+
+	return Math.ceil(words.length / 238);
+}

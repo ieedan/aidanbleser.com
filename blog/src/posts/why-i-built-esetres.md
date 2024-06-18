@@ -6,11 +6,11 @@ My development environment is unique to say the least and downright difficult to
 
 ## My Requirements
 
--   REST API
--   Access Control
--   Standalone (No database or hosts its own database)
--   Fast retrieval for even private files
--   Dead simple setup and startup
+-   Uses REST API
+-   Has Access Control
+-   Is standalone (No database or hosts its own database)
+-   Has fast retrieval for even private files
+-   Is dead simple setup and startup
 
 ## Choosing the tech
 
@@ -30,7 +30,7 @@ After this realization I searched GitHub and found [mime-db](https://github.com/
 
 With this I could easily read the files from the `buckets` and serve them to the user. So I moved on to the next step **Authorization**.
 
-By now I am pretty confident implementing JWT having built and re-built authentication servers for applications at work a few times over. So the next part was fairly simple. I looked a bit for a library to handle the signing of the tokens and it seemed like [jsonwebtoken](https://github.com/Keats/jsonwebtoken) was by far the most popular so I chose to use that, implemented a few functions for signing and validating and that was that.
+By now I am pretty confident implementing JWT having built and re-built authentication servers for applications at work a few times over. So the next part was fairly simple. I looked a bit for a library to handle the signing of the tokens and it seemed like [jsonwebtoken](https://github.com/Keats/jsonwebtoken) was by far the most popular so I chose to use that. I then implemented a few functions for signing and validating and that was that.
 
 Next I would need to work on managing tokens so that they could be revoked and immediately return 401 codes to requests using that token. The easiest way to do that would be to create a cache containing the name of each token and its correct token hash. When a request is made I would extract the `name` of the token from the token claims and use that to retrieve the token from a hashmap. Once I found the token with the same name I would then verify the token against its hash using [bcrypt](https://github.com/Keats/rust-bcrypt) before using the `scope` claim to check its access to the requested bucket. This was slightly more complicated. First I would need a place to store the tokens.
 
