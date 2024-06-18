@@ -59,7 +59,7 @@
 <ul class="flex place-items-center gap-2 px-4">
 	{#each breadCrumbs as { name, href }}
 		<span
-			class="font-serif
+			class="font-serif first:hidden
 			font-thin italic text-gray-300 dark:text-gray-700"
 		>
 			{separator}
