@@ -16,7 +16,15 @@
 </svelte:head>
 
 <main class="flex flex-col place-items-center px-4">
-	<h1 class="py-10 text-6xl font-semibold">Posts</h1>
+	<div class="py-6 flex place-items-center justify-center flex-col gap-2">
+		<img
+			src="https://github.com/ieedan/static/blob/main/assets/images/aidan-small.jpg?raw=true"
+			alt="Aidan Bleser"
+			width="75"
+			class="rounded-full"
+		/>
+		<p class="prose prose-zinc dark:prose-invert">I write dumb opinions about tech and post them here.</p>
+	</div>
 	<ul class="relative flex flex-col md:px-4">
 		<div
 			class="absolute left-0 z-[1] hidden h-full w-[2px] bg-component-background md:block"
