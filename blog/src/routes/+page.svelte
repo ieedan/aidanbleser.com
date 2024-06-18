@@ -2,8 +2,6 @@
 	import { faChevronRight } from '@fortawesome/pro-regular-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
 
-	const NEW_DAYS = 14;
-
 	export let data;
 
 	$: posts = data.posts.sort((a, b) => Date.parse(b.metaData.date) - Date.parse(a.metaData.date));
@@ -37,7 +35,7 @@
 						{post.metaData.date}
 					</span>
 				</div>
-				<a href="/posts/{post.name}">
+				<a href="/posts/{encodeURIComponent(post.name)}">
 					<small class="text-foreground-muted lg:hidden">
 						{post.metaData.date}
 					</small>
@@ -45,14 +43,6 @@
 						<h3 class="text-lg font-semibold">
 							{post.name}
 						</h3>
-						{#if (Date.now() - Date.parse(post.metaData.date)) / 1000 / 60 / 60 / 24 < NEW_DAYS}
-							<span
-								class="absolute -top-2 right-0 translate-x-full rounded-md bg-gradient-to-tr
-								from-red-600 to-blue-600 px-[6px] py-[2px] text-xs text-white dark:from-red-600 dark:to-blue-500"
-							>
-								NEW
-							</span>
-						{/if}
 					</div>
 					<div class="prose prose-zinc dark:prose-invert">
 						{@html post.summary}
