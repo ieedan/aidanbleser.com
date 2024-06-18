@@ -70,6 +70,11 @@
 					Here I saw the problems that could be solved with software and took the
 					opportunity to start building solutions.
 				</P>
+				<Spacer h={15} />
+				<P>
+					Since then I have built and rebuilt a variety of applications and services for Avanzar focused on
+					improving the workflow of our floor personal. 
+				</P>
 			</InfoSection>
 			<InfoSection icon={faGraduationCap} title="Education">
 				<P>Associates in Applied Science from St. Philips College San Antonio, TX</P>
