@@ -84,4 +84,4 @@ If you don't have the ability to use S3 but have easy access to a VM you control
 
 Overall it was a really fun and interesting project that is working really well for my application. 
 
-Thanks for reading and if esetres is the solution you are looking for then you can give it a try [here](https//github.com/ieedan/esetres).
+Thanks for reading and if esetres is the solution you are looking for then you can give it a try [here](https://github.com/ieedan/esetres).
