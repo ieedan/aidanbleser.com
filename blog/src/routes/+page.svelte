@@ -23,7 +23,7 @@
 			width="75"
 			class="rounded-full"
 		/>
-		<p class="prose prose-zinc dark:prose-invert">I write dumb opinions about tech and post them here.</p>
+		<p class="prose prose-zinc dark:prose-invert px-6 text-center">I write dumb opinions about tech and post them here.</p>
 	</div>
 	<ul class="relative flex flex-col md:px-4">
 		<div
