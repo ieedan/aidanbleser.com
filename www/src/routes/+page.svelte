@@ -57,23 +57,26 @@
 					/>
 					<Badge src={vnvPNG} name="vnv" href="https://github.com/ieedan/vnv" />
 					<Badge src={RustPNG} name="esetres" href="https://github.com/ieedan/esetres" />
+					<Badge
+						src={TypeScriptSVG}
+						name="ts-blocks"
+						href="https://github.com/ieedan/ts-blocks"
+					/>
 				</div>
 			</InfoSection>
 			<InfoSection icon={faInfo} title="About Me">
 				<P>
-					I started my journey as a maintenance technician at <P light type="span"
-						>Toyota</P
-					> where I learned how to program PLCs and build HMIs. Before long I started to feel
-					like I could challenge myself more than I was as a technician. So I chose to start
-					looking for jobs as a controls engineer, at which point I applied and accepted a
-					position as a Maintenance Supervisor (PLC) at <P light type="span">Avanzar</P>.
-					Here I saw the problems that could be solved with software and took the
-					opportunity to start building solutions.
+					I started my software development journey out of laziness. I had to do KPIs
+					every day to report on equipment downtime as a maintenance supervisor. This
+					inspired me to find a way to automate it and led me to create an internal CMMS
+					called Chorus.
 				</P>
 				<Spacer h={15} />
 				<P>
-					Since then I have built and rebuilt a variety of applications and services for Avanzar focused on
-					improving the workflow of our floor personal. 
+					Since I created Chorus in 2022 it has seen 3 complete rewrites across both
+					desktop and web applications finally landing where it is now. It has required me
+					to create services for automated downtime and productivity tracking, file
+					storage, and many other things we needed along the way.
 				</P>
 			</InfoSection>
 			<InfoSection icon={faGraduationCap} title="Education">
