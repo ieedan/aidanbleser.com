@@ -8,6 +8,7 @@
 	import MSSQLSVG from '$lib/icons/mssql.svg';
 	import GeistUISvelteSVG from '$lib/icons/geist-ui-svelte.svg';
 	import vnvPNG from '$lib/icons/vnv.png';
+	import GoSVG from '$lib/icons/go.svg';
 	import RAPNG from '$lib/icons/ra.png';
 	import {
 		faMountains,
@@ -44,7 +45,7 @@
 					<Badge src={TypeScriptSVG} name="TypeScript" />
 					<Badge src={DotNetSVG} name=".NET" />
 					<Badge src={RustPNG} name="Rust" />
-					<Badge src={MSSQLSVG} name="MSSQL" />
+					<Badge src={GoSVG} name="Go" logoWidth="32px"/>
 					<Badge src={RAPNG} name="Rockwell Automation" />
 				</div>
 			</InfoSection>
