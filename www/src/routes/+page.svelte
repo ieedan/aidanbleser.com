@@ -5,7 +5,6 @@
 	import TypeScriptSVG from '$lib/icons/typescript.svg';
 	import DotNetSVG from '$lib/icons/dotnet.svg';
 	import RustPNG from '$lib/icons/rust.png';
-	import MSSQLSVG from '$lib/icons/mssql.svg';
 	import GeistUISvelteSVG from '$lib/icons/geist-ui-svelte.svg';
 	import vnvPNG from '$lib/icons/vnv.png';
 	import GoSVG from '$lib/icons/go.svg';
