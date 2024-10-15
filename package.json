@@ -1,0 +1,7 @@
+{
+	"name": "aidanbleser.com",
+	"packageManager": "pnpm@9.8.0",
+	"devDependencies": {
+		"turbo": "^2.1.3"
+	}
+}
