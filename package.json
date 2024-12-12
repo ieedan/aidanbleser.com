@@ -1,5 +1,6 @@
 {
   "name": "aidanbleser.com",
+  "packageManager": "pnpm@9.12.3",
   "version": "1.0.0",
   "description": "A monorepo for the aidanbleser.com site.",
   "scripts": {
