@@ -1,0 +1,13 @@
+{
+  "name": "aidanbleser.com",
+  "version": "1.0.0",
+  "description": "A monorepo for the aidanbleser.com site.",
+  "scripts": {
+    "dev": "pnpm -F www dev",
+    "format": "pnpm -F www format",
+    "lint": "pnpm -F www lint",
+    "check": "pnpm -F www check"
+  },
+  "author": "Aidan Bleser",
+  "license": "MIT"
+}
