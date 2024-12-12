@@ -1,5 +1,3 @@
-# *.aidanbleser.com
+# aidanbleser.com
 
-monorepo for:
-- **aidanbleser.com** `sites/www`
-- **blog.aidanbleser.com** `site/blog`
+My personal website.
