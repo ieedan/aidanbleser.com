@@ -51,7 +51,7 @@ const run = async () => {
 		console.log(`info: Added post ${file}`);
 	}
 
-	const postsFile = fileTemplate(posts);
+	const postsFile = fileTemplate(posts.sort((a, b) => Date.parse(b.meta.date as string) - Date.parse(a.meta.date as string)));
 
 	const postsFilePath = './src/lib/blog/posts/posts.ts';
 
