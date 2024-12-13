@@ -17,11 +17,11 @@
 			title: 'Home',
 			href: '/',
 			activeForSubdirectories: false
+		},
+		{
+			title: 'Blog',
+			href: '/blog'
 		}
-		// {
-		// 	title: 'Blog',
-		// 	href: '/blog'
-		// }
 	];
 </script>
 
