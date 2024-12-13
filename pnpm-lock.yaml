@@ -8,88 +8,6 @@ importers:
 
   .: {}
 
-  sites/blog:
-    dependencies:
-      '@tailwindcss/typography':
-        specifier: ^0.5.15
-        version: 0.5.15(tailwindcss@3.4.16)
-    devDependencies:
-      '@eslint/compat':
-        specifier: ^1.2.3
-        version: 1.2.4(eslint@9.16.0(jiti@1.21.6))
-      '@fontsource-variable/inter':
-        specifier: ^5.1.0
-        version: 5.1.0
-      '@fontsource/share-tech-mono':
-        specifier: ^5.1.0
-        version: 5.1.0
-      '@sveltejs/adapter-auto':
-        specifier: ^3.0.0
-        version: 3.3.1(@sveltejs/kit@2.11.0(@sveltejs/vite-plugin-svelte@5.0.2(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1)))(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1)))
-      '@sveltejs/kit':
-        specifier: ^2.9.0
-        version: 2.11.0(@sveltejs/vite-plugin-svelte@5.0.2(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1)))(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1))
-      '@sveltejs/vite-plugin-svelte':
-        specifier: ^5.0.0
-        version: 5.0.2(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1))
-      autoprefixer:
-        specifier: ^10.4.20
-        version: 10.4.20(postcss@8.4.49)
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
-      eslint:
-        specifier: ^9.7.0
-        version: 9.16.0(jiti@1.21.6)
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@9.16.0(jiti@1.21.6))
-      eslint-plugin-svelte:
-        specifier: ^2.36.0
-        version: 2.46.1(eslint@9.16.0(jiti@1.21.6))(svelte@5.11.2)
-      globals:
-        specifier: ^15.0.0
-        version: 15.13.0
-      mode-watcher:
-        specifier: ^0.5.0
-        version: 0.5.0(svelte@5.11.2)
-      prettier:
-        specifier: ^3.3.2
-        version: 3.4.2
-      prettier-plugin-svelte:
-        specifier: ^3.2.6
-        version: 3.3.2(prettier@3.4.2)(svelte@5.11.2)
-      prettier-plugin-tailwindcss:
-        specifier: ^0.6.5
-        version: 0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.11.2))(prettier@3.4.2)
-      svelte:
-        specifier: ^5.0.0
-        version: 5.11.2
-      svelte-check:
-        specifier: ^4.0.0
-        version: 4.1.1(picomatch@4.0.2)(svelte@5.11.2)(typescript@5.7.2)
-      tailwind-merge:
-        specifier: ^2.5.5
-        version: 2.5.5
-      tailwind-variants:
-        specifier: ^0.3.0
-        version: 0.3.0(tailwindcss@3.4.16)
-      tailwindcss:
-        specifier: ^3.4.9
-        version: 3.4.16
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.16)
-      typescript:
-        specifier: ^5.0.0
-        version: 5.7.2
-      typescript-eslint:
-        specifier: ^8.0.0
-        version: 8.18.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)
-      vite:
-        specifier: ^6.0.0
-        version: 6.0.3(jiti@1.21.6)(yaml@2.6.1)
-
   sites/www:
     dependencies:
       '@shikijs/markdown-it':
@@ -605,11 +523,6 @@ packages:
 
   '@shikijs/vscode-textmate@9.3.1':
     resolution: {integrity: sha512-79QfK1393x9Ho60QFyLti+QfdJzRQCVLFb97kOIV7Eo9vQU/roINgk7m24uv0a7AUvN//RDH36FLjjK48v0s9g==}
-
-  '@sveltejs/adapter-auto@3.3.1':
-    resolution: {integrity: sha512-5Sc7WAxYdL6q9j/+D0jJKjGREGlfIevDyHSQ2eNETHcB1TKlQWHcAo8AS8H1QdjNvSXpvOwNjykDUHPEAyGgdQ==}
-    peerDependencies:
-      '@sveltejs/kit': ^2.0.0
 
   '@sveltejs/adapter-vercel@5.5.2':
     resolution: {integrity: sha512-6NpumKJ3m9Y6mkSFw4Z8YnaJZc42OWLkSFCk5hD6pLrS4f+b9JVBaXpKB/xkxf1Kf7JpzZtNZKbAaoRrTtJ+Hw==}
@@ -2383,11 +2296,6 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shikijs/vscode-textmate@9.3.1': {}
-
-  '@sveltejs/adapter-auto@3.3.1(@sveltejs/kit@2.11.0(@sveltejs/vite-plugin-svelte@5.0.2(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1)))(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1)))':
-    dependencies:
-      '@sveltejs/kit': 2.11.0(@sveltejs/vite-plugin-svelte@5.0.2(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1)))(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1))
-      import-meta-resolve: 4.1.0
 
   '@sveltejs/adapter-vercel@5.5.2(@sveltejs/kit@2.11.0(@sveltejs/vite-plugin-svelte@5.0.2(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1)))(svelte@5.11.2)(vite@6.0.3(jiti@1.21.6)(yaml@2.6.1)))(rollup@4.28.1)':
     dependencies:
