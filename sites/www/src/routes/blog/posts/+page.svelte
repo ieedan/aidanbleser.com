@@ -2,15 +2,15 @@
 	import { posts } from '$lib/blog/posts/posts';
 </script>
 
-<main class="min-h-svh font-serif flex place-items-start justify-center px-6 pt-20">
-	<ul class="flex flex-col gap-10 max-w-xl">
-		{#each posts as post, i}
+<main class="flex min-h-svh place-items-start justify-center px-6 pt-20 font-serif">
+	<ul class="flex max-w-xl flex-col gap-10">
+		{#each posts as post}
 			<a href="/blog/posts/{post.slug}">
 				<div class="group">
 					<span class="text-muted-foreground">
 						{post.meta.date}
 					</span>
-					<h3 class="text-2xl md:text-3xl group-hover:underline">
+					<h3 class="text-2xl group-hover:underline md:text-3xl">
 						{post.meta.title}
 					</h3>
 					<p class="text-base md:text-lg">

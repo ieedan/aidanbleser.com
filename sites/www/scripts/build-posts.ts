@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import MarkdownIt from 'markdown-it'
-import Shiki from '@shikijs/markdown-it'
+import MarkdownIt from 'markdown-it';
+import Shiki from '@shikijs/markdown-it';
 import { parseFrontmatter } from './markdown';
 import { Post } from '../src/lib/blog/posts/types';
 
@@ -13,12 +13,14 @@ const watch = process.argv[2] === '--watch';
 
 const md = MarkdownIt();
 
-md.use(await Shiki({
-  themes: {
-    light: 'ayu-dark',
-    dark: 'ayu-dark',
-  }
-}))
+md.use(
+	await Shiki({
+		themes: {
+			light: 'ayu-dark',
+			dark: 'ayu-dark'
+		}
+	})
+);
 
 const run = async () => {
 	const posts: Post[] = [];
@@ -51,7 +53,9 @@ const run = async () => {
 		console.log(`info: Added post ${file}`);
 	}
 
-	const postsFile = fileTemplate(posts.sort((a, b) => Date.parse(b.meta.date as string) - Date.parse(a.meta.date as string)));
+	const postsFile = fileTemplate(
+		posts.sort((a, b) => Date.parse(b.meta.date as string) - Date.parse(a.meta.date as string))
+	);
 
 	const postsFilePath = './src/lib/blog/posts/posts.ts';
 

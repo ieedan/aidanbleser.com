@@ -8,6 +8,6 @@ About a month ago I started working on a project called **jsrepo**. jsrepo aims 
 
 ```ts
 const thing = () => {
-    console.log('hello from thing!');
-}
+	console.log('hello from thing!');
+};
 ```
