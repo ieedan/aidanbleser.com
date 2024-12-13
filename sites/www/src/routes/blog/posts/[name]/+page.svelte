@@ -1,0 +1,32 @@
+<script lang="ts">
+	let { data } = $props();
+
+	import * as Breadcrumb from '$lib/components/ui/breadcrumb';
+</script>
+
+<main class="flex min-h-svh place-items-start justify-center">
+	{#if data.post}
+		<div class="flex flex-col gap-4">
+			<Breadcrumb.Root>
+				<Breadcrumb.List>
+					<Breadcrumb.Item>
+						<Breadcrumb.Link href="/blog/posts">Posts</Breadcrumb.Link>
+					</Breadcrumb.Item>
+					<Breadcrumb.Separator />
+					<Breadcrumb.Item>
+						<Breadcrumb.Page>{data.post.meta.title}</Breadcrumb.Page>
+					</Breadcrumb.Item>
+				</Breadcrumb.List>
+			</Breadcrumb.Root>
+			<div class="prose prose-zinc dark:prose-invert font-serif">
+				<span>
+					{data.post.meta.date}
+				</span>
+				<h1>
+					{data.post.meta.title}
+				</h1>
+				{@html data.post.content}
+			</div>
+		</div>
+	{/if}
+</main>
