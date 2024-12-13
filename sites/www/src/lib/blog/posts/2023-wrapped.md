@@ -8,11 +8,11 @@ date: 2023-12-21
 
 2023 was my second year doing web development after starting in the fall of 2022. I came into 2023 using vanilla JavaScript, HTML, and CSS for the front-end and C# rest API for the backend of my web applications. I had built a portfolio website and a large project at work using this stack and was doing okay but felt a few pain-points which I will list below.
 
--   No standards
--   No bundle versioning
--   Slower MPA
--   JavaScript
--   CSS
+- No standards
+- No bundle versioning
+- Slower MPA
+- JavaScript
+- CSS
 
 ## No standards
 
@@ -66,12 +66,12 @@ Going into 2024 my tech stack looks like this:
 
 **Front-End**
 
--   Svelte
--   TypeScript
--   TailwindCSS
+- Svelte
+- TypeScript
+- TailwindCSS
 
 **Back-End**
 
--   C# .NET Core
+- C# .NET Core
 
 For now this is the stack that I can move the fastest with and it will help me build even bigger things in 2024.

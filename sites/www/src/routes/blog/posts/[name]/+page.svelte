@@ -23,13 +23,13 @@
 					</Breadcrumb.Item>
 				</Breadcrumb.List>
 			</Breadcrumb.Root>
-			<div class="prose prose-zinc dark:prose-invert font-serif">
+			<div class="prose prose-zinc font-serif dark:prose-invert">
 				<span class="text-sm">
 					{data.post.meta.date}
 				</span>
 				<h1>
 					{data.post.meta.title}
-				</h1> 
+				</h1>
 				{@html data.post.content}
 			</div>
 		</div>

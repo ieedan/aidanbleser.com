@@ -10,11 +10,11 @@ My development environment is unique to say the least and downright difficult to
 
 ## My Requirements
 
--   Uses REST API
--   Has Access Control
--   Is standalone (No database or hosts its own database)
--   Has fast retrieval for even private files
--   Is dead simple setup and startup
+- Uses REST API
+- Has Access Control
+- Is standalone (No database or hosts its own database)
+- Has fast retrieval for even private files
+- Is dead simple setup and startup
 
 ## Choosing the tech
 
@@ -86,6 +86,6 @@ Finally I implemented an `init` command to help setup all the environment variab
 
 If you don't have the ability to use S3 but have easy access to a VM you control. **esetres** is insanely fast to setup and should easily scale for most of what you need to do on a private network. Since its open source its easy to [open an issue](https://github.com/ieedan/esetres/issues) or even just fork it and change it for your own liking.
 
-Overall it was a really fun and interesting project that is working really well for my application. 
+Overall it was a really fun and interesting project that is working really well for my application.
 
 Thanks for reading and if esetres is the solution you are looking for then you can give it a try [here](https://github.com/ieedan/esetres).

@@ -11,7 +11,7 @@
 	<meta name="description" content="Aidan Bleser's personal website." />
 </svelte:head>
 
-<main class="flex min-h-svh place-items-center justify-center font-serif pb-10">
+<main class="flex min-h-svh place-items-center justify-center pb-10 font-serif">
 	<div class="flex w-[336px] flex-col md:w-[500px]">
 		{#if isMounted.current}
 			<div class="flex min-h-12 place-items-end md:min-h-[72px]">

@@ -104,7 +104,7 @@ Another way that Rust differs from other languages is enums. Many languages have
 ```ts
 enum IpAddr {
 	IPV4,
-	IPV6,
+	IPV6
 }
 ```
 
@@ -294,7 +294,7 @@ mod tests {
 
 Rust also recognizes the value of tests to describe your code and enables automated tests for your documentation:
 
-```rs
+````rs
 /// # Add
 /// Adds the left to the right and returns the result
 ///
@@ -309,7 +309,7 @@ Rust also recognizes the value of tests to describe your code and enables automa
 pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
-```
+````
 
 This way someone using the function can see the tests as an example just by hovering in their editor.
 
