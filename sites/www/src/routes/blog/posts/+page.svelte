@@ -2,6 +2,11 @@
 	import { posts } from '$lib/blog/posts/posts';
 </script>
 
+<svelte:head>
+	<title>Blog - aidanbleser.com</title>
+	<meta name="description" content="Blog posts by Aidan Bleser" />
+</svelte:head>
+
 <main class="flex min-h-svh place-items-start justify-center px-6 pt-20 font-serif">
 	<ul class="flex max-w-xl flex-col gap-10">
 		{#each posts as post}

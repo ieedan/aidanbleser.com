@@ -1,5 +1,5 @@
 export type Post = {
 	slug: string;
-	meta: Record<string, unknown>;
+	meta: Record<string, string>;
 	content: string;
 };

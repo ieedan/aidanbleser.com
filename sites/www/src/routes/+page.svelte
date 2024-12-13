@@ -6,6 +6,11 @@
 	const isMounted = new IsMounted();
 </script>
 
+<svelte:head>
+	<title>Home - aidanbleser.com</title>
+	<meta name="description" content="Aidan Bleser's personal website." />
+</svelte:head>
+
 <main class="flex min-h-svh place-items-center justify-center font-serif">
 	<div class="flex w-[336px] flex-col md:w-[500px]">
 		{#if isMounted.current}

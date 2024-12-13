@@ -6,7 +6,6 @@ import { parseFrontmatter } from './markdown';
 import { Post } from '../src/lib/blog/posts/types';
 
 const POSTS_DIRECTORY = './src/lib/blog/posts';
-const AVERAGE_WPM = 225;
 const CHANGE_DEBOUNCE = 500;
 
 const watch = process.argv[2] === '--watch';
@@ -32,10 +31,6 @@ const run = async () => {
 		const fileContent = fs.readFileSync(path.join(POSTS_DIRECTORY, file)).toString();
 
 		const [meta, content] = parseFrontmatter(fileContent);
-
-		const readTime = calculateReadTime(content);
-
-		meta.readTime = readTime;
 
 		if (!meta.title) {
 			console.log(
@@ -71,14 +66,6 @@ const posts: Post[] = ${JSON.stringify(posts, null, '\t')};
 
 export { posts };
     `;
-};
-
-const calculateReadTime = (content: string): number => {
-	const words = content.split(' ');
-
-	const minutes = Math.ceil(words.length / AVERAGE_WPM);
-
-	return minutes;
 };
 
 run().then(() => {
