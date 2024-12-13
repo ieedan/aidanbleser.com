@@ -36,7 +36,7 @@ const run = async () => {
 			console.log(
 				`error: Couldn't add post because ${file} didn't include a 'title' in the front-matter. ❌`
 			);
-			process.exit(1);
+			continue;
 		}
 
 		const slug = encodeURIComponent(meta.title as string);

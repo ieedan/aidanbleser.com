@@ -9,7 +9,7 @@
 	<meta name="description" content={data.post?.meta.description} />
 </svelte:head>
 
-<main class="flex min-h-svh place-items-start justify-center">
+<main class="flex min-h-svh place-items-start justify-center pb-10">
 	{#if data.post}
 		<div class="flex flex-col gap-4">
 			<Breadcrumb.Root>
