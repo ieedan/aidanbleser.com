@@ -6,7 +6,7 @@ import { parseFrontmatter } from './markdown';
 import { Post } from '../src/lib/blog/posts/types';
 
 const POSTS_DIRECTORY = './src/lib/blog/posts';
-const CHANGE_DEBOUNCE = 500;
+const CHANGE_DEBOUNCE = 50;
 
 const watch = process.argv[2] === '--watch';
 
@@ -21,11 +21,17 @@ md.use(
 	})
 );
 
-const run = async () => {
-	const posts: Post[] = [];
+const run = async (
+	changed: string | undefined = undefined,
+	cache: Map<string, Post> = new Map()
+) => {
+	const posts: Map<string, Post> = cache;
 
 	const files = fs.readdirSync(POSTS_DIRECTORY);
 	for (const file of files) {
+		// skip this file if it is already in the cache
+		if (changed !== undefined && file !== changed && posts.has(file)) continue;
+
 		if (!file.endsWith('.md')) continue;
 
 		const fileContent = fs.readFileSync(path.join(POSTS_DIRECTORY, file)).toString();
@@ -43,13 +49,21 @@ const run = async () => {
 
 		const htmlContent = md.render(content);
 
-		posts.push({ meta, content: htmlContent, slug });
+		posts.set(file, { meta, content: htmlContent, slug });
 
-		console.log(`info: Added post ${file}`);
+		let action = 'Added';
+
+		if (posts.has(file)) {
+			action = 'Updated';
+		}
+
+		console.log(`info: ${action} post ${file}`);
 	}
 
 	const postsFile = fileTemplate(
-		posts.sort((a, b) => Date.parse(b.meta.date as string) - Date.parse(a.meta.date as string))
+		Array.from(posts.values()).sort(
+			(a, b) => Date.parse(b.meta.date as string) - Date.parse(a.meta.date as string)
+		)
 	);
 
 	const postsFilePath = './src/lib/blog/posts/posts.ts';
@@ -57,6 +71,8 @@ const run = async () => {
 	fs.writeFileSync(postsFilePath, postsFile);
 
 	console.log(`info: Wrote posts to ${postsFilePath} ✔️`);
+
+	return posts;
 };
 
 const fileTemplate = (posts: Post[]) => {
@@ -68,7 +84,7 @@ export { posts };
     `;
 };
 
-run().then(() => {
+run().then((cache) => {
 	let timeout: NodeJS.Timeout;
 
 	if (watch) {
@@ -78,9 +94,9 @@ run().then(() => {
 
 			clearTimeout(timeout);
 
-			timeout = setTimeout(() => {
+			timeout = setTimeout(async () => {
 				console.log(`${e} to ${file}`);
-				run();
+				cache = await run(file, cache);
 			}, CHANGE_DEBOUNCE);
 		});
 	}
