@@ -68,7 +68,7 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				serif: ['Share Tech Mono', 'monospace']
+				mono: ['Share Tech Mono', 'monospace']
 			},
 			keyframes: {
 				'accordion-down': {
