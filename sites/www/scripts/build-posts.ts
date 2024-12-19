@@ -25,6 +25,8 @@ const run = async (
 	changed: string | undefined = undefined,
 	cache: Map<string, Post> = new Map()
 ) => {
+	const start = Date.now();
+
 	const posts: Map<string, Post> = cache;
 
 	const files = fs.readdirSync(POSTS_DIRECTORY);
@@ -49,13 +51,13 @@ const run = async (
 
 		const htmlContent = md.render(content);
 
-		posts.set(file, { meta, content: htmlContent, slug });
-
 		let action = 'Added';
 
 		if (posts.has(file)) {
 			action = 'Updated';
 		}
+
+		posts.set(file, { meta, content: htmlContent, slug });
 
 		console.log(`info: ${action} post ${file}`);
 	}
@@ -70,7 +72,9 @@ const run = async (
 
 	fs.writeFileSync(postsFilePath, postsFile);
 
-	console.log(`info: Wrote posts to ${postsFilePath} ✔️`);
+	const end = Date.now();
+
+	console.log(`info: Wrote posts to ${postsFilePath} in ${end - start}ms ✔️ `);
 
 	return posts;
 };
