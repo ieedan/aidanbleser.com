@@ -31,7 +31,7 @@
 	class={cn('relative flex place-items-center justify-end rounded-md bg-background px-4 py-2')}
 >
 	<div class="flex place-items-center gap-4">
-		<nav class="flex place-items-center gap-4 font-serif">
+		<nav class="flex place-items-center gap-4 font-mono">
 			{#each links as link}
 				<a
 					class="font-medium text-muted-foreground transition-colors hover:text-primary data-[active=true]:text-primary"

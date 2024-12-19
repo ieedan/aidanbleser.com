@@ -9,7 +9,7 @@
 <footer class="flex place-items-center justify-center border-t px-4 py-6">
 	<div class="flex w-full max-w-2xl flex-col gap-2">
 		<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-			<div class="col-start-1 flex flex-col gap-1 font-serif">
+			<div class="col-start-1 flex flex-col gap-1 font-mono">
 				<span class="text-foreground">Projects</span>
 				<ul class="flex flex-col gap-1">
 					{#each projects as project}
@@ -28,7 +28,7 @@
 					{/each}
 				</ul>
 			</div>
-			<div class="col-start-2 flex flex-col gap-1 font-serif">
+			<div class="col-start-2 flex flex-col gap-1 font-mono">
 				<span class="text-foreground">Socials</span>
 				<ul class="flex flex-col gap-1">
 					{#each socials as social}
