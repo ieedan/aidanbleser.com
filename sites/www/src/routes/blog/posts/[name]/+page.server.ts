@@ -7,6 +7,6 @@ export const load = ({ params }) => {
 	if (!post) return fail(404);
 
 	return {
-		post
+		name: decodeURIComponent(params.name)
 	};
 };
