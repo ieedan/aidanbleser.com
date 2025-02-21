@@ -18,7 +18,7 @@
 					<h3 class="text-2xl group-hover:underline md:text-3xl">
 						{post.meta.title}
 					</h3>
-					<p class="text-base md:text-lg">
+					<p class="text-base text-muted-foreground md:text-lg">
 						{post.meta.description}
 					</p>
 				</div>
