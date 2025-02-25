@@ -4,21 +4,22 @@ description: Copilot plagiarism is no longer a theory.
 date: 2025-2-25
 ---
 
-Yesterday I was scrolling the internet as one does and I found a project called [shadcn-svelte-enhancements](https://github.com/tzezar/shadcn-svelte-enhancements). This piqued my interest because I was currently working on my own project [shadcn-svelte-extras](https://github.com/ieedan/shadcn-svelte-extras). 
+Yesterday I was scrolling the internet as one does and I found a project called [shadcn-svelte-enhancements](https://github.com/tzezar/shadcn-svelte-enhancements). This piqued my interest because I was currently working on my own project [shadcn-svelte-extras](https://github.com/ieedan/shadcn-svelte-extras).
 
-I started to check out the project to see what components it had to offer and noticed that many of the components were very similar to the ones I had built in `shadcn-svelte-extras`. 
+I started to check out the project to see what components it had to offer and noticed that many of the components were very similar to the ones I had built in `shadcn-svelte-extras`.
 
-I then decided to go a bit deeper and look at the code... 
+I then decided to go a bit deeper and look at the code...
 
-This is when my heart sank, the code was almost identical. Why would someone choose to copy my work and claim it as their own? 
+This is when my heart sank, the code was almost identical. Why would someone choose to copy my work and claim it as their own?
 
 I try to keep my head and not blow up in the comments of the [reddit post](https://www.reddit.com/r/sveltejs/comments/1iuvrjm/selfpromo_introducing_tzezars_shadcnsvelte/). But I can't help but feel frustrated and upset that this could happen.
 
-I vent my frustration to a friend who then opens an issue on the repository [#3](https://github.com/tzezar/shadcn-svelte-enhancements/issues/3) and comments on the reddit post. 
+I vent my frustration to a friend who then opens an issue on the repository [#3](https://github.com/tzezar/shadcn-svelte-enhancements/issues/3) and comments on the reddit post.
 
 At the time of the issue being opened there were 5 components that all had code identical or near identical (only different because of renames or added comments) to mine.
 
 For reference here is a diff of the [CopyButton](https://shadcn-svelte-extras.com) component:
+
 ```diff
 <script lang="ts">
 	import { Button, type ButtonProps } from '$lib/components/ui/button';
@@ -93,11 +94,11 @@ For reference here is a diff of the [CopyButton](https://shadcn-svelte-extras.co
 
 Most of the code looked exactly like this, almost completely identical with a few renames of variables or labels here and there. While it wasn't a lot of code the implementation was so similar that it was highly suspicious.
 
-From here things escalated, the creator was denying all claims of plagiarism refusing to take responsibility for their actions, insisting that they had never seen my project before. 
+From here things escalated, the creator was denying all claims of plagiarism refusing to take responsibility for their actions, insisting that they had never seen my project before.
 
 Not believing him, I doubled down finding more examples of ways that it simply wasn't possible that they wrote these components without significant influence from my project.
 
-At this point the creator started to try and "make things right" and made a note of the plagiarized components in the [README](https://github.com/tzezar/shadcn-svelte-enhancements/blob/d2cfe5640237a61f726cbceeeac1151a3542a745/README.md#credits). 
+At this point the creator started to try and "make things right" and made a note of the plagiarized components in the [README](https://github.com/tzezar/shadcn-svelte-enhancements/blob/d2cfe5640237a61f726cbceeeac1151a3542a745/README.md#credits).
 
 And this is when I asked them:
 
@@ -109,7 +110,7 @@ And then the response:
 
 > I started using Copilot because I found out about the free trial month, and it seemed like a good deal. Being able to generate dozens of lines of code with a single comment is amazing. Maybe you're right—if your repository was public and indexed, Copilot might have pulled code from it. I honestly don’t know.
 
-At this moment it was like watching a prophecy come true. I had seen creators [ThePrimeagen](https://www.youtube.com/ThePrimeagen) talk about the risks of Copilot and the possibility of plagiarism but this was the first time I had seen it first hand. 
+At this moment it was like watching a prophecy come true. I had seen creators [ThePrimeagen](https://www.youtube.com/ThePrimeagen) talk about the risks of Copilot and the possibility of plagiarism but this was the first time I had seen it first hand.
 
 Now I realized how badly I messed up. This guy had no idea that Copilot plagiarized my code. Furthermore I had gone after him over a very limited amount of [MIT](https://opensource.org/license/mit) licensed code that he had every right to use however he wanted.
 
