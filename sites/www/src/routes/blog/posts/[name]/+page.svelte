@@ -13,9 +13,9 @@
 	<meta name="description" content={post?.meta.description} />
 </svelte:head>
 
-<main class="flex min-h-svh place-items-start justify-center px-6 pb-10">
+<main class="flex min-h-svh place-items-start justify-center px-4 pb-10 sm:px-6">
 	{#if post}
-		<div class="flex flex-col gap-4">
+		<div class="flex min-w-72 flex-col gap-4">
 			<Breadcrumb.Root>
 				<Breadcrumb.List>
 					<Breadcrumb.Item>
