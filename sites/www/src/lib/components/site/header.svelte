@@ -32,7 +32,7 @@
 >
 	<div class="flex place-items-center gap-4">
 		<nav class="flex place-items-center gap-4 font-mono">
-			{#each links as link}
+			{#each links as link, i (i)}
 				<a
 					class="font-medium text-muted-foreground transition-colors hover:text-primary data-[active=true]:text-primary"
 					href={link.href}

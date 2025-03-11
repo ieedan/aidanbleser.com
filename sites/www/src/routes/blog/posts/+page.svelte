@@ -9,7 +9,7 @@
 
 <main class="flex min-h-svh place-items-start justify-center px-6 pb-10 pt-20 font-mono">
 	<ul class="flex max-w-xl flex-col gap-10">
-		{#each posts as post}
+		{#each posts as post, i (i)}
 			<a href="/blog/posts/{post.slug}">
 				<div class="group">
 					<span class="text-muted-foreground">

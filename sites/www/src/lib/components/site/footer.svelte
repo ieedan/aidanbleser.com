@@ -12,7 +12,7 @@
 			<div class="col-start-1 flex flex-col gap-1 font-mono">
 				<span class="text-foreground">Projects</span>
 				<ul class="flex flex-col gap-1">
-					{#each projects as project}
+					{#each projects as project, i (i)}
 						<li>
 							<a
 								target="_blank"
@@ -31,7 +31,7 @@
 			<div class="col-start-2 flex flex-col gap-1 font-mono">
 				<span class="text-foreground">Socials</span>
 				<ul class="flex flex-col gap-1">
-					{#each socials as social}
+					{#each socials as social, i (i)}
 						<li>
 							<a
 								target="_blank"
