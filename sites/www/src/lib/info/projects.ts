@@ -1,11 +1,4 @@
-import type { Component } from 'svelte';
-
-export type Project = {
-	name: string;
-	description: string;
-	link: string;
-	Logo?: Component;
-};
+import type { Project } from './types';
 
 const projects: Project[] = [
 	{
@@ -24,16 +17,6 @@ const projects: Project[] = [
 		name: 'ieedan/std',
 		description: 'A collection of utility functions and types I use in my projects.',
 		link: 'https://github.com/ieedan/std'
-	},
-	{
-		name: 'ieedan/sl',
-		description: 'A CLI to help me and my friends manage our Pokémon Soul Link play-throughs.',
-		link: 'https://github.com/ieedan/sl'
-	},
-	{
-		name: 'ieedan/esetres',
-		description: 'A self hosted file storage server build in rust.',
-		link: 'https://github.com/ieedan/esetres'
 	}
 ];
 
