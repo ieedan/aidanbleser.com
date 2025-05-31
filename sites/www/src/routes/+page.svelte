@@ -13,13 +13,13 @@
 </svelte:head>
 
 <main class="flex min-h-svh place-items-center justify-center pb-10 font-mono">
-	<div class="flex w-[336px] flex-col md:w-[500px]">
+	<div class="flex w-[375px] flex-col md:w-[550px]">
 		{#if isMounted.current}
 			<div class="flex min-h-12 place-items-end md:min-h-[72px]">
 				<h1 class="text-5xl md:text-7xl" transition:typewriter={{ delay: 100, speed: 0.75 }}>
 					Aidan Bleser
 				</h1>
-				<div class="h-2 w-6 animate-caret-blink bg-primary"></div>
+				<div class="animate-caret-blink bg-primary h-2 w-6"></div>
 			</div>
 		{/if}
 		<span class="text-muted-foreground">
@@ -40,7 +40,7 @@
 							<a
 								target="_blank"
 								href={project.link}
-								class="text-nowrap text-muted-foreground transition-all hover:text-foreground"
+								class="text-muted-foreground hover:text-foreground text-nowrap transition-all"
 							>
 								{project.name}
 							</a>
@@ -57,7 +57,7 @@
 							<a
 								target="_blank"
 								href={project.link}
-								class="text-nowrap text-muted-foreground transition-all hover:text-foreground"
+								class="text-muted-foreground hover:text-foreground text-nowrap transition-all"
 							>
 								{project.name}
 							</a>

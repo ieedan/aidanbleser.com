@@ -28,13 +28,13 @@
 <header
 	in:scale={{ duration: 300, start: 0.75 }}
 	out:fade={{ duration: 150 }}
-	class={cn('relative flex place-items-center justify-end rounded-md bg-background px-4 py-2')}
+	class={cn('bg-background relative flex place-items-center justify-end rounded-md px-4 py-2')}
 >
 	<div class="flex place-items-center gap-4">
 		<nav class="flex place-items-center gap-4 font-mono">
 			{#each links as link, i (i)}
 				<a
-					class="font-medium text-muted-foreground transition-colors hover:text-primary data-[active=true]:text-primary"
+					class="text-muted-foreground hover:text-primary data-[active=true]:text-primary font-medium transition-colors"
 					href={link.href}
 					use:active={{ activeForSubdirectories: link.activeForSubdirectories }}
 				>

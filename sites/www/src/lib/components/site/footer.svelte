@@ -17,7 +17,7 @@
 							<a
 								target="_blank"
 								href={project.link}
-								class="flex place-items-center gap-2 text-nowrap text-muted-foreground transition-all hover:text-foreground"
+								class="text-muted-foreground hover:text-foreground flex place-items-center gap-2 text-nowrap transition-all"
 							>
 								{#if project.Logo}
 									<project.Logo class="inline size-4" />
@@ -36,7 +36,7 @@
 							<a
 								target="_blank"
 								href={social.link}
-								class="flex place-items-center gap-2 text-nowrap text-muted-foreground transition-all hover:text-foreground"
+								class="text-muted-foreground hover:text-foreground flex place-items-center gap-2 text-nowrap transition-all"
 							>
 								{#if social.Logo}
 									<social.Logo class="inline size-4" />

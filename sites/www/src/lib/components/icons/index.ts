@@ -2,6 +2,7 @@ import type { HTMLAttributes } from 'svelte/elements';
 import GitHub from './github.svelte';
 import Svelte from './svelte.svelte';
 import YouTube from './youtube.svelte';
+import Twitter from './twitter.svelte';
 
 export interface Props extends HTMLAttributes<SVGElement> {
 	class?: string;
@@ -9,4 +10,4 @@ export interface Props extends HTMLAttributes<SVGElement> {
 	height?: number;
 }
 
-export { GitHub, Svelte, YouTube };
+export { GitHub, Svelte, YouTube, Twitter };
