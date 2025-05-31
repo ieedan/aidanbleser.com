@@ -32,6 +32,9 @@ importers:
       '@eslint/compat':
         specifier: ^1.2.9
         version: 1.2.9(eslint@9.28.0(jiti@2.4.2))
+      '@eslint/js':
+        specifier: ^9.28.0
+        version: 9.28.0
       '@fontsource-variable/inter':
         specifier: ^5.2.5
         version: 5.2.5

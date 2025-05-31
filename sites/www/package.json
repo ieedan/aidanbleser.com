@@ -15,6 +15,7 @@
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.9",
+		"@eslint/js": "^9.28.0",
 		"@fontsource-variable/inter": "^5.2.5",
 		"@fontsource/share-tech-mono": "^5.2.5",
 		"@lucide/svelte": "^0.511.0",
