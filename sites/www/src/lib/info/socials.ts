@@ -1,4 +1,4 @@
-import { GitHub, YouTube } from '$lib/components/icons';
+import { GitHub, Twitter, YouTube } from '$lib/components/icons';
 import type { Component } from 'svelte';
 
 export type Social = {
@@ -17,6 +17,11 @@ const socials: Social[] = [
 		name: 'YouTube',
 		link: 'https://www.youtube.com/@ieedan',
 		Logo: YouTube
+	},
+	{
+		name: 'Twitter',
+		link: 'https://x.com/ieeeedan',
+		Logo: Twitter
 	}
 ];
 

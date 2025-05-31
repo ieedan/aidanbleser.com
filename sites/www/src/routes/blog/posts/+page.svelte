@@ -7,7 +7,7 @@
 	<meta name="description" content="Blog posts by Aidan Bleser" />
 </svelte:head>
 
-<main class="flex min-h-svh place-items-start justify-center px-6 pb-10 pt-20 font-mono">
+<main class="flex min-h-svh place-items-start justify-center px-6 pt-20 pb-10 font-mono">
 	<ul class="flex max-w-xl flex-col gap-10">
 		{#each posts as post, i (i)}
 			<a href="/blog/posts/{post.slug}">
@@ -18,7 +18,7 @@
 					<h3 class="text-2xl group-hover:underline md:text-3xl">
 						{post.meta.title}
 					</h3>
-					<p class="text-base text-muted-foreground md:text-lg">
+					<p class="text-muted-foreground text-base md:text-lg">
 						{post.meta.description}
 					</p>
 				</div>

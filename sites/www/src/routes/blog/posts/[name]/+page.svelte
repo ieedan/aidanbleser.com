@@ -27,7 +27,7 @@
 					</Breadcrumb.Item>
 				</Breadcrumb.List>
 			</Breadcrumb.Root>
-			<div class="prose prose-zinc font-mono dark:prose-invert">
+			<div class="prose prose-zinc dark:prose-invert font-mono">
 				<span class="text-sm">
 					{post.meta.date}
 				</span>

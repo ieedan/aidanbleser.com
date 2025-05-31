@@ -8,6 +8,12 @@ const projects: Project[] = [
 		link: 'https://jsrepo.dev'
 	},
 	{
+		name: 'jsrepo.com',
+		description:
+			'npm for component registries. The most maintainable way to distribute your shadcn-style registries.',
+		link: 'https://jsrepo.com'
+	},
+	{
 		name: 'shadcn-svelte-extras',
 		description:
 			'A collection of reusable components that extend and introduce components to shadcn-svelte.',
