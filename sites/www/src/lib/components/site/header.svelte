@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { LightSwitch } from '$lib/components/ui/light-switch';
 	import { Button } from '$lib/components/ui/button';
-	import { GitHub } from '$lib/components/icons';
+	import * as Icons from '$lib/components/icons';
 	import { active } from '$lib/actions/active.svelte';
 	import { cn } from '$lib/utils/utils';
 	import { fade, scale } from 'svelte/transition';
@@ -43,8 +43,11 @@
 			{/each}
 		</nav>
 		<div class="flex place-items-center gap-1">
+			<Button target="_blank" href="https://x.com/ieeeedan" variant="ghost" size="icon">
+				<Icons.Twitter />
+			</Button>
 			<Button target="_blank" href="https://github.com/ieedan" variant="ghost" size="icon">
-				<GitHub />
+				<Icons.GitHub />
 			</Button>
 			<LightSwitch variant="ghost" />
 		</div>

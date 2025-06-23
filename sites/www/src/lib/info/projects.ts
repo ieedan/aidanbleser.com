@@ -20,9 +20,9 @@ const projects: Project[] = [
 		link: 'https://www.shadcn-svelte-extras.com'
 	},
 	{
-		name: 'ieedan/std',
-		description: 'A collection of utility functions and types I use in my projects.',
-		link: 'https://github.com/ieedan/std'
+		name: 'thom.chat',
+		description: 'Our submission for the T3Chat Cloneathon a blazingly fast AI chat app.',
+		link: 'https://thom.chat'
 	}
 ];
 
