@@ -10,7 +10,7 @@ const CHANGE_DEBOUNCE = 50;
 
 const watch = process.argv[2] === '--watch';
 
-const md = MarkdownIt();
+const md = MarkdownIt({ html: true });
 
 md.use(
 	await Shiki({

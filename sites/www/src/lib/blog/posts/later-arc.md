@@ -65,6 +65,6 @@ Right now I only use one [Super Url Bar](https://zen-browser.app/mods/d93e67f8-e
 
 ## Conclusion
 
-While I will missing Chromium I won't miss Arc. While Arc had many features that were useful Zen has everything and more.
+While I will miss Chromium I won't miss Arc. While Arc had many features that were useful Zen has everything and more.
 
 Hopefully you found this helpful for getting Arc out of your life.
