@@ -2,6 +2,11 @@ import type { Project } from './types';
 
 const projects: Project[] = [
 	{
+		name: 'comprably.ai',
+		description: 'Compare products in realtime with AI.',
+		link: 'https://comprably.ai'
+	},
+	{
 		name: 'jsrepo',
 		description:
 			'A CLI to that allows you to share code though a repository like shadcn/ui except you own the registry.',
