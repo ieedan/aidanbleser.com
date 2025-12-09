@@ -5,4 +5,5 @@ export type Project = {
 	description: string;
 	link: string;
 	Logo?: Component;
+	status?: 'maintainer' | 'contributor';
 };

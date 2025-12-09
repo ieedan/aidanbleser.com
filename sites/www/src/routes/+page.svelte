@@ -49,7 +49,18 @@
 				</ul>
 			</div>
 			<div class="flex flex-col gap-2">
-				<p>A few of the things I contribute to:</p>
+				<p>
+					{(() => {
+						const hasMaintainer = openSource.some((p) => p.status === 'maintainer');
+						const hasContributor = openSource.some((p) => !p.status || p.status === 'contributor');
+						if (hasMaintainer && hasContributor) {
+							return 'A few of the things I maintain and contribute to:';
+						}
+						return hasMaintainer
+							? 'A few of the things I maintain:'
+							: 'A few of the things I contribute to:';
+					})()}
+				</p>
 				<ul>
 					{#each openSource as project, i (i)}
 						<li>

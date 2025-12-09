@@ -4,7 +4,8 @@ const openSource: Project[] = [
 	{
 		name: 'shadcn-svelte',
 		description: 'A Svelte port of shadcn/ui.',
-		link: 'https://shadcn-svelte.com'
+		link: 'https://shadcn-svelte.com',
+		status: 'maintainer'
 	}
 ];
 
