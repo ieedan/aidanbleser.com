@@ -28,8 +28,8 @@
 		</span>
 		<div class="flex flex-col gap-5 pt-4">
 			<p>
-				I'm a software developer from San Antonio, TX. I build things that I find useful and I hope
-				others will too.
+				I'm a software developer from San Antonio, TX. I thrive in the details and I'm obsessed
+				with building beautiful interfaces that feel great to use.
 			</p>
 			<div class="flex flex-col gap-2">
 				<p>A few of the things I have built:</p>
@@ -49,7 +49,7 @@
 				</ul>
 			</div>
 			<div class="flex flex-col gap-2">
-				<p>A few of the things I contribute to:</p>
+				<p>A few of the things I maintain:</p>
 				<ul>
 					{#each openSource as project, i (i)}
 						<li>
