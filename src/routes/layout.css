@@ -3,7 +3,7 @@
 :root {
 	--background: oklch(0.15 0 0);
 	--foreground: oklch(0.85 0 0);
-    --muted-foreground: oklch(0.7 0 0);
+	--muted-foreground: oklch(0.7 0 0);
 	--primary: oklch(1 0 0);
 	--primary-foreground: oklch(0 0 0);
 	--border: oklch(0.35 0 0);

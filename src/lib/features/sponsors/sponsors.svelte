@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { getSponsors } from './sponsors.remote';
+	import { getSponsors } from './sponsors.remote';
 	import type { HTMLAttributes } from 'svelte/elements';
-    import * as Sidebar from '$lib/components/home/sidebar';
-    import { RiHeartLine } from 'remixicon-svelte'
+	import * as Sidebar from '$lib/components/home/sidebar';
+	import { RiHeartLine } from 'remixicon-svelte';
 
-    let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+	let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 
-    const sponsorsQuery = getSponsors();
+	const sponsorsQuery = getSponsors();
 </script>
 
 <Sidebar.Section {...rest}>
