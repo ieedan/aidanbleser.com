@@ -2,13 +2,12 @@
 	import Sponsors from '$lib/features/sponsors/sponsors.svelte';
 	import * as Sidebar from '$lib/components/home/sidebar';
 	import Projects from '$lib/features/projects/projects.svelte';
-	import { socials } from '$lib/features/socials/socials';
-	import Status from '$lib/features/status/status.svelte';
 	import ContactMe from '$lib/features/contact-me/contact-me.svelte';
+	import Footer from '$lib/features/footer/footer.svelte';
 </script>
 
-<div class="relative flex w-full max-w-4xl border border-border">
-	<div class="flex flex-1 flex-col">
+<div class="relative flex w-full max-w-4xl flex-col border border-border sm:flex-row">
+	<div class="flex flex-1 flex-col border-b sm:border-b-0">
 		<div class="flex flex-1 flex-col">
 			<div class="flex w-full items-center gap-4 border-b p-4">
 				<img
@@ -38,20 +37,7 @@
 				</p>
 			</div>
 		</div>
-		<footer class="border-t border-border p-4">
-			<div class="flex w-full items-center justify-between">
-				<div class="flex items-center gap-6">
-					{#each socials as social (social.name)}
-						<a href={social.url} aria-label={social.name} target="_blank">
-							<social.logo class="size-4" />
-						</a>
-					{/each}
-				</div>
-				<div>
-					<Status />
-				</div>
-			</div>
-		</footer>
+		<Footer class="hidden sm:block" />
 	</div>
 
 	<Sidebar.Root>
@@ -59,4 +45,6 @@
 		<Sponsors />
 		<ContactMe />
 	</Sidebar.Root>
+
+	<Footer class="block sm:hidden" />
 </div>

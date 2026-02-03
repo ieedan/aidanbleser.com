@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "dotenvx run -f .env.local -- pnpm dev:vite",
-		"dev:vite": "vite dev",
+		"dev:vite": "vite dev --host",
 		"build": "vite build",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
