@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Sponsors from '$lib/features/sponsors/sponsors.svelte';
     import * as Sidebar from '$lib/components/home/sidebar';
+	import Projects from '$lib/features/projects/projects.svelte';
 </script>
 
 <div class="relative flex w-full max-w-5xl border border-border">
@@ -10,6 +11,7 @@
 	</div>
 
 	<Sidebar.Root>
+		<Projects />
 		<Sponsors />
 	</Sidebar.Root>
 </div>

@@ -1,8 +1,8 @@
 <script lang="ts">
     import { getSponsors } from './sponsors.remote';
-    import { cn } from '$lib/utils';
 	import type { HTMLAttributes } from 'svelte/elements';
     import * as Sidebar from '$lib/components/home/sidebar';
+    import { RiHeartLine } from 'remixicon-svelte'
 
     let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 
@@ -28,4 +28,11 @@
 			{/each}
 		{/await}
 	</div>
+	<a
+		href="https://github.com/sponsors/ieedan"
+		class="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary hover:underline"
+	>
+		<RiHeartLine class="size-3 text-pink-600" />
+		Become a sponsor
+	</a>
 </Sidebar.Section>
