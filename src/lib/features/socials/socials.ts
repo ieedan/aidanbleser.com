@@ -9,7 +9,7 @@ type Social = {
 
 export const socials: Social[] = [
 	{
-		name: 'X (Formerly Twitter)',
+		name: 'X',
 		url: 'https://x.com/ieeeedan',
 		logo: XLogo
 	},

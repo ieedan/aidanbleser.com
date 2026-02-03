@@ -3,8 +3,9 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { RiMailLine } from 'remixicon-svelte';
 	import { Button } from '$lib/components/ui/button';
+	import type { WithoutChildren } from '$lib/utils';
 
-	let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+	let { ...rest }: WithoutChildren<HTMLAttributes<HTMLDivElement>> = $props();
 </script>
 
 <Sidebar.Section {...rest}>
