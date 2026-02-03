@@ -4,13 +4,23 @@
 	import Projects from '$lib/features/projects/projects.svelte';
 	import { socials } from '$lib/features/socials/socials';
 	import Status from '$lib/features/status/status.svelte';
+	import ContactMe from '$lib/features/contact-me/contact-me.svelte';
 </script>
 
-<div class="relative flex w-full max-w-5xl border border-border">
+<div class="relative flex w-full max-w-4xl border border-border">
 	<div class="flex flex-1 flex-col">
 		<div class="flex-1 p-4">
-			<h1 class="text-2xl">Aidan Bleser</h1>
-			<p class="text-sm text-muted-foreground">Frontend Engineer</p>
+			<div class="flex items-center gap-4">
+				<img
+					src="https://avatars.githubusercontent.com/ieedan"
+					alt="Aidan Bleser"
+					class="size-14 shrink-0 rounded-full"
+				/>
+				<div class="flex flex-col">
+					<h1 class="text-2xl">Aidan Bleser</h1>
+					<span class="text-sm text-muted-foreground">Frontend Engineer</span>
+				</div>
+			</div>
 		</div>
 		<footer class="border-t border-border p-4">
 			<div class="flex w-full items-center justify-between">
@@ -31,5 +41,6 @@
 	<Sidebar.Root>
 		<Projects />
 		<Sponsors />
+		<ContactMe />
 	</Sidebar.Root>
 </div>
