@@ -30,7 +30,7 @@
 	</div>
 	<a
 		href="https://github.com/sponsors/ieedan"
-		class="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary hover:underline"
+		class="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground hover:underline"
 	>
 		<RiHeartLine class="size-3 text-pink-600" />
 		Become a sponsor

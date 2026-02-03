@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 	import * as Sidebar from '$lib/components/home/sidebar';
-    import { type Project, projects } from './projects';
+	import { type Project, projects } from './projects';
 
 	let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 </script>
@@ -15,12 +15,7 @@
 	</div>
 </Sidebar.Section>
 
-{#snippet Project({
-	title,
-	link,
-	description,
-    logo
-}: Project)}
+{#snippet Project({ title, link, description, logo }: Project)}
 	<div class="relative border border-border p-2 transition-colors hover:bg-secondary">
 		<a href={link} target="_blank">
 			<h3 class="flex items-center gap-2 text-sm font-medium">

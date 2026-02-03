@@ -3,6 +3,7 @@
 	import * as Sidebar from '$lib/components/home/sidebar';
 	import Projects from '$lib/features/projects/projects.svelte';
 	import { socials } from '$lib/features/socials/socials';
+	import Status from '$lib/features/status/status.svelte';
 </script>
 
 <div class="relative flex w-full max-w-5xl border border-border">
@@ -12,12 +13,17 @@
 			<p class="text-sm text-muted-foreground">Frontend Engineer</p>
 		</div>
 		<footer class="border-t border-border p-4">
-			<div class="flex items-center gap-6">
-				{#each socials as social (social.name)}
-					<a href={social.url} aria-label={social.name} target="_blank">
-						<social.logo class="size-4" />
-					</a>
-				{/each}
+			<div class="flex w-full items-center justify-between">
+				<div class="flex items-center gap-6">
+					{#each socials as social (social.name)}
+						<a href={social.url} aria-label={social.name} target="_blank">
+							<social.logo class="size-4" />
+						</a>
+					{/each}
+				</div>
+				<div>
+					<Status />
+				</div>
 			</div>
 		</footer>
 	</div>
