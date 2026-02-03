@@ -17,9 +17,6 @@ jobs:
             - name: Install dependencies
               run: pnpm install
 
-            - name: Build posts
-              run: pnpm -F www build:posts
-
             - name: Lint
               run: pnpm lint
 
