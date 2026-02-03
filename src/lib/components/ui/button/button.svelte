@@ -1,31 +1,40 @@
 <script lang="ts" module>
-    import { tv, type VariantProps } from 'tailwind-variants';
+	import { tv, type VariantProps } from 'tailwind-variants';
 
-    export const buttonVariants = tv({
-        base: "flex h-8 items-center justify-center gap-2 px-4 py-2",
-        variants: {
-            variant: {
-                default: "bg-primary text-primary-foreground",
-            }
-        }
-    });
+	export const buttonVariants = tv({
+		base: 'flex h-8 items-center justify-center gap-2 px-4 py-2',
+		variants: {
+			variant: {
+				default: 'bg-primary text-primary-foreground'
+			}
+		}
+	});
 
-    export type ButtonVariants = VariantProps<typeof buttonVariants>;
+	export type ButtonVariants = VariantProps<typeof buttonVariants>;
 
-    export type ButtonPropsWithoutHtml = {
-        variant?: ButtonVariants['variant'];
-    }
+	export type ButtonPropsWithoutHtml = {
+		variant?: ButtonVariants['variant'];
+	};
 
-    export type ButtonElementProps = HTMLButtonAttributes;
-    export type AnchorElementProps = HTMLAnchorAttributes;
-    export type ButtonProps = ButtonElementProps & AnchorElementProps & ButtonPropsWithoutHtml;
+	export type ButtonElementProps = HTMLButtonAttributes;
+	export type AnchorElementProps = HTMLAnchorAttributes;
+	export type ButtonProps = ButtonElementProps & AnchorElementProps & ButtonPropsWithoutHtml;
 </script>
 
 <script lang="ts">
-    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
-    import { cn } from '$lib/utils';
+	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
+	import { cn } from '$lib/utils';
 
-    let { href, variant = 'default', disabled, type, tabindex, class: className, children, ...rest }: ButtonProps = $props();
+	let {
+		href,
+		variant = 'default',
+		disabled,
+		type,
+		tabindex,
+		class: className,
+		children,
+		...rest
+	}: ButtonProps = $props();
 </script>
 
 <!-- This approach to disabled links is inspired by bits-ui see: https://github.com/huntabyte/bits-ui/pull/1055 -->

@@ -1,10 +1,10 @@
 <script lang="ts">
-    import * as Sidebar from '$lib/components/home/sidebar';
+	import * as Sidebar from '$lib/components/home/sidebar';
 	import type { HTMLAttributes } from 'svelte/elements';
-    import { RiMailLine } from 'remixicon-svelte';
+	import { RiMailLine } from 'remixicon-svelte';
 	import { Button } from '$lib/components/ui/button';
 
-    let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+	let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 </script>
 
 <Sidebar.Section {...rest}>

@@ -22,7 +22,7 @@ export const projects: Project[] = [
 		logo: 'https://shadcn-svelte.com/favicon.ico',
 		link: 'https://shadcn-svelte.com',
 		description: 'A Svelte port of shadcn/ui'
-	},
+	}
 ];
 
 export type Project = {
