@@ -4,19 +4,28 @@
 	import { getMostRecentBlogPosts } from './blog';
 	import type { WithoutChildren } from '$lib/utils';
 
-	let { postKey, ...rest }: WithoutChildren<HTMLAttributes<HTMLDivElement>> & { postKey?: string } =
-		$props();
+	let {
+		postKey,
+		title = 'Other Blog Posts',
+		...rest
+	}: WithoutChildren<HTMLAttributes<HTMLDivElement>> & {
+		postKey?: string;
+		title?: string;
+	} = $props();
 
 	const posts = $derived(getMostRecentBlogPosts({ count: 3, excludeKey: postKey }));
 </script>
 
 <Sidebar.Section {...rest}>
-	<Sidebar.SectionHeading>Other Blog Posts</Sidebar.SectionHeading>
+	<Sidebar.SectionHeading>{title}</Sidebar.SectionHeading>
 	<div class="flex flex-col gap-2 overflow-y-auto">
 		{#each posts as post (post.key)}
 			{@render Post(post)}
 		{/each}
 	</div>
+	<a href="/blog/posts" class="text-xs text-muted-foreground hover:text-foreground hover:underline">
+		View all blog posts
+	</a>
 </Sidebar.Section>
 
 {#snippet Post({

@@ -10,6 +10,7 @@
 	import { MetaTags } from 'svelte-meta-tags';
 	import { socials } from '$lib/features/socials/socials';
 	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
+	import OtherBlogPosts from '$lib/features/blog/other-blog-posts.svelte';
 </script>
 
 <MetaTags
@@ -77,6 +78,7 @@
 	</div>
 
 	<Sidebar.Root>
+		<OtherBlogPosts title="Recent Blog Posts" />
 		<Projects />
 		<Sponsors />
 		<ContactMe />

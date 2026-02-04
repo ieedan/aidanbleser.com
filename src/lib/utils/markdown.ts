@@ -34,6 +34,25 @@ async function getMarkdownRenderer() {
 	}
 
 	const markdown = MarkdownIt();
+	const defaultRender =
+		markdown.renderer.rules.link_open ||
+		function (tokens, idx, options, _env, self) {
+			return self.renderToken(tokens, idx, options);
+		};
+	// convert all links to open in a new tab
+	markdown.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+		const aIndex = tokens[idx].attrIndex('target');
+		if (aIndex < 0) {
+			tokens[idx].attrPush(['target', '_blank']);
+		} else {
+			tokens[idx].attrs![aIndex][1] = '_blank';
+		}
+		const relIndex = tokens[idx].attrIndex('rel');
+		if (relIndex < 0) {
+			tokens[idx].attrPush(['rel', 'noopener']);
+		}
+		return defaultRender(tokens, idx, options, env, self);
+	};
 	markdown.use(
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		fromHighlighter((await highlighter) as HighlighterGeneric<any, any>, {
