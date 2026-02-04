@@ -6,6 +6,9 @@ const config = {
 		adapter: adapter(),
 		experimental: {
 			remoteFunctions: true
+		},
+		alias: {
+			$prerendered: 'src/lib/__prerendered__'
 		}
 	}
 };

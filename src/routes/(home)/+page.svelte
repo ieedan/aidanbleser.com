@@ -5,6 +5,7 @@
 	import ContactMe from '$lib/features/contact-me/contact-me.svelte';
 	import Footer from '$lib/features/footer/footer.svelte';
 	import DropdownMenu from '$lib/features/dropdown-menu/dropdown-menu.svelte';
+	import summary from '$prerendered/summary';
 </script>
 
 <div class="relative flex w-full max-w-4xl flex-col border border-border sm:flex-row">
@@ -26,21 +27,8 @@
 					<DropdownMenu />
 				</div>
 			</div>
-			<div class="flex flex-col gap-4 p-4">
-				<p>
-					I'm a software engineer from San Antonio, Texas. I learned to code to automate my KPIs as
-					a maintenance supervisor and I ended up building (and rebuilding, and rebuilding again)
-					the CMMS (Computerized Maintenance Management System) now used by Avanzar Interior
-					Technologies.
-				</p>
-				<p>
-					I started contributing to open source in 2024 and since have become a maintainer of
-					several popular projects such as, shadcn-svelte, jsrepo, and shadcn-svelte-extras.
-				</p>
-				<p>
-					If I'm not slaving (or rather watching Cursor slave) behind my desk I'm probably cycling,
-					skiing, hiking, or just spending time with my beautiful wife.
-				</p>
+			<div class="typography p-4">
+				{@html summary}
 			</div>
 		</div>
 		<Footer class="hidden sm:block" />

@@ -1,0 +1,38 @@
+import MarkdownIt from 'markdown-it';
+import { createHighlighterCore, type HighlighterGeneric } from 'shiki/core';
+import { fromHighlighter } from '@shikijs/markdown-it/core';
+import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers';
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma';
+
+export async function renderMarkdown(markdown: string) {
+	const md = await getMarkdownRenderer();
+	return md.render(markdown);
+}
+
+let md: MarkdownIt | undefined = undefined;
+
+const highlighter = createHighlighterCore({
+	themes: [import('@shikijs/themes/slack-ochin'), import('@shikijs/themes/slack-dark')],
+	langs: [import('@shikijs/langs/ts'), import('@shikijs/langs/svelte')],
+	engine: createOnigurumaEngine(import('shiki/wasm'))
+});
+
+async function getMarkdownRenderer() {
+	if (md) {
+		return md;
+	}
+
+	const markdown = MarkdownIt();
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	markdown.use(
+		fromHighlighter((await highlighter) as HighlighterGeneric<any, any>, {
+			themes: {
+				light: 'slack-ochin',
+				dark: 'slack-dark'
+			},
+			transformers: [transformerNotationDiff(), transformerNotationHighlight()]
+		})
+	);
+	md = markdown;
+	return markdown;
+}
