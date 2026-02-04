@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"packageManager": "pnpm@10.28.2",
 	"scripts": {
 		"dev": "dotenvx run -f .env.local -- pnpm dev:vite",
 		"dev:vite": "vite dev --host",
