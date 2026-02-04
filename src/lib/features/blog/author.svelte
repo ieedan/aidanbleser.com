@@ -12,7 +12,7 @@
 		class="size-8 rounded-full"
 	/>
 	<div class="flex flex-col">
-		<h3 class="text-sm font-medium">Aidan Bleser</h3>
+		<span class="text-sm font-medium">Aidan Bleser</span>
 		<p class="text-xs text-muted-foreground">Frontend Engineer</p>
 	</div>
 </div>

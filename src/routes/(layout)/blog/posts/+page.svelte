@@ -35,6 +35,7 @@
 					<DropdownMenu.Root>
 						<DropdownMenu.Trigger class={buttonVariants({ size: 'icon', variant: 'outline' })}>
 							<RiMoreLine class="size-4" />
+							<span class="sr-only">More options</span>
 						</DropdownMenu.Trigger>
 						<DropdownMenu.Content align="end">
 							{#each socials as social (social.name)}
@@ -56,14 +57,10 @@
 								Contact Me
 							</DropdownMenu.Item>
 							<DropdownMenu.Separator />
-							<DropdownMenu.Item
-								onSelect={() => {
-									window.location.href = 'https://github.com/sponsors/ieedan';
-								}}
-							>
+							<DropdownMenu.LinkItem href="https://github.com/sponsors/ieedan">
 								<RiHeartLine class="size-4 text-pink-600" />
 								Sponsor me
-							</DropdownMenu.Item>
+							</DropdownMenu.LinkItem>
 						</DropdownMenu.Content>
 					</DropdownMenu.Root>
 				</div>
@@ -72,9 +69,9 @@
 				{#each posts as post (post.key)}
 					<div class="relative border border-border p-2 transition-colors hover:bg-secondary">
 						<a href="/blog/posts/{post.key}">
-							<h3 class="flex items-center gap-2 text-lg font-medium">
+							<span class="flex items-center gap-2 text-lg font-medium">
 								{post.title}
-							</h3>
+							</span>
 							<span class="absolute inset-0"></span>
 						</a>
 						<p class="line-clamp-2 text-sm text-muted-foreground">{post.description}</p>

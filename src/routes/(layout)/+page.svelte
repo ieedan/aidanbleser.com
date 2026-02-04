@@ -37,6 +37,7 @@
 					<DropdownMenu.Root>
 						<DropdownMenu.Trigger class={buttonVariants({ size: 'icon', variant: 'outline' })}>
 							<RiMoreLine class="size-4" />
+							<span class="sr-only">More options</span>
 						</DropdownMenu.Trigger>
 						<DropdownMenu.Content align="end">
 							{#each socials as social (social.name)}
@@ -58,14 +59,10 @@
 								Contact Me
 							</DropdownMenu.Item>
 							<DropdownMenu.Separator />
-							<DropdownMenu.Item
-								onSelect={() => {
-									window.location.href = 'https://github.com/sponsors/ieedan';
-								}}
-							>
+							<DropdownMenu.LinkItem href="https://github.com/sponsors/ieedan">
 								<RiHeartLine class="size-4 text-pink-600" />
 								Sponsor me
-							</DropdownMenu.Item>
+							</DropdownMenu.LinkItem>
 						</DropdownMenu.Content>
 					</DropdownMenu.Root>
 				</div>

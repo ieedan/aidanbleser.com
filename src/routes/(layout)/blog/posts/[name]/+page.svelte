@@ -47,6 +47,7 @@
 					<DropdownMenu.Root>
 						<DropdownMenu.Trigger class={buttonVariants({ size: 'icon', variant: 'outline' })}>
 							<RiMoreLine class="size-4" />
+							<span class="sr-only">More options</span>
 						</DropdownMenu.Trigger>
 						<DropdownMenu.Content align="end">
 							<DropdownMenu.CopyItem text={page.url.toString()}>

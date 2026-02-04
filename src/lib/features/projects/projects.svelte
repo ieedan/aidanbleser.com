@@ -19,10 +19,10 @@
 {#snippet Project({ title, link, description, logo }: Project)}
 	<div class="relative border border-border p-2 transition-colors hover:bg-secondary">
 		<a href={link} target="_blank">
-			<h3 class="flex items-center gap-2 text-sm font-medium">
+			<span class="flex items-center gap-2 text-sm font-medium">
 				<img src={logo} alt={title} class="size-4" />
 				{title}
-			</h3>
+			</span>
 			<span class="absolute inset-0"></span>
 		</a>
 		<p class="text-xs text-muted-foreground">{description}</p>

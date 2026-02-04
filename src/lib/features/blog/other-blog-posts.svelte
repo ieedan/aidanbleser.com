@@ -41,9 +41,9 @@
 })}
 	<div class="relative border border-border p-2 transition-colors hover:bg-secondary">
 		<a href="/blog/posts/{key}">
-			<h3 class="flex items-center gap-2 text-sm font-medium">
+			<span class="flex items-center gap-2 text-sm font-medium">
 				{title}
-			</h3>
+			</span>
 			<span class="absolute inset-0"></span>
 		</a>
 		<p class="line-clamp-2 text-xs text-muted-foreground">{description}</p>
