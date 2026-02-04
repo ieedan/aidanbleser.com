@@ -2,8 +2,9 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import * as Sidebar from '$lib/components/home/sidebar';
 	import { type Project, projects } from './projects';
+	import type { WithoutChildren } from '$lib/utils';
 
-	let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+	let { ...rest }: WithoutChildren<HTMLAttributes<HTMLDivElement>> = $props();
 </script>
 
 <Sidebar.Section {...rest}>

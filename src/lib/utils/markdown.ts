@@ -23,8 +23,8 @@ async function getMarkdownRenderer() {
 	}
 
 	const markdown = MarkdownIt();
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	markdown.use(
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		fromHighlighter((await highlighter) as HighlighterGeneric<any, any>, {
 			themes: {
 				light: 'slack-ochin',
