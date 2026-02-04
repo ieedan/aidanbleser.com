@@ -15,15 +15,15 @@
 	let { toc, isChild = false, class: className }: TocProps = $props();
 </script>
 
-<ul class={cn('m-0 list-none text-sm font-medium', { 'pl-4': isChild })}>
+<ul class={cn('m-0 list-none text-sm', { 'pl-4': isChild })}>
 	{#each toc as heading, i (i)}
 		<li
-			class={cn('text-muted-foreground mt-0 pt-2 transition-all', {
+			class={cn('mt-0 pt-2 text-muted-foreground transition-all', {
 				'text-foreground': heading.active
 			})}
 		>
 			{#if heading.id}
-				<a href="#{heading.id}" class="hover:text-foreground block">
+				<a href="#{heading.id}" class="block hover:text-foreground">
 					{heading.label}
 				</a>
 			{:else}

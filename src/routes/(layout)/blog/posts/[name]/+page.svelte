@@ -33,9 +33,11 @@
 
 <MetaTags {...metaTags} />
 
-<div class="relative flex w-full max-w-4xl flex-col border border-border md:flex-row">
-	<div class="flex flex-1 flex-col border-b md:max-w-[calc(100%-16rem)] md:border-b-0">
-		<div class="flex flex-1 flex-col">
+<div class="relative flex w-full max-w-4xl flex-col border-x border-border md:flex-row">
+	<div
+		class="flex flex-1 flex-col border-b md:max-w-[calc(100%-16rem)] md:border-r md:border-b-0 md:border-border"
+	>
+		<div class="flex flex-1 flex-col border-t">
 			<div class="flex h-16 w-full items-center justify-between gap-4 border-b p-4">
 				<Button href="/blog/posts" variant="outline" size="icon">
 					<RiArrowLeftLine class="size-4" />
@@ -113,13 +115,15 @@
 				{@html data.post.content}
 			</div>
 		</div>
-		<Footer class="hidden md:block" />
+		<Footer class="hidden border-b md:block" />
 	</div>
 
-	<Sidebar.Root>
+	<Sidebar.Root
+		class="border-y md:sticky md:top-0 md:min-h-dvh md:self-start md:overflow-y-auto md:border-l-0"
+	>
 		<Author />
 		{#if toc.current.length > 0}
-			<Sidebar.Section>
+			<Sidebar.Section class="hidden gap-0 md:flex">
 				<Sidebar.SectionHeading>On this page</Sidebar.SectionHeading>
 				<Toc.Root toc={toc.current} />
 			</Sidebar.Section>

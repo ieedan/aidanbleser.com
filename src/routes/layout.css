@@ -22,7 +22,7 @@
 
 @layer base {
 	* {
-		@apply border-border;
+		@apply overscroll-none border-border;
 	}
 	body {
 		@apply bg-background text-foreground;
