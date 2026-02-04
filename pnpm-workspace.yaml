@@ -1,2 +1,3 @@
-packages: 
-  - 'sites/*'
+onlyBuiltDependencies:
+  - esbuild
+  - '@tailwindcss/oxide'
