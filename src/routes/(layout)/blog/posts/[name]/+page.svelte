@@ -5,7 +5,7 @@
 	import ContactMe from '$lib/features/contact-me/contact-me.svelte';
 	import Footer from '$lib/features/footer/footer.svelte';
 	import { MetaTags } from 'svelte-meta-tags';
-	import { RiMoreLine, RiMailLine, RiHeartLine } from 'remixicon-svelte';
+	import { RiMoreLine, RiMailLine, RiHeartLine, RiLink } from 'remixicon-svelte';
 	import { socials } from '$lib/features/socials/socials';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { FinalchatLogo, MarkdownLogo } from '$lib/components/logos/index.js';
@@ -14,6 +14,8 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { RiArrowLeftLine, RiTimeLine } from 'remixicon-svelte';
 	import { formatDate } from '$lib/features/blog/blog.js';
+	import { page } from '$app/state';
+	import Author from '$lib/features/blog/author.svelte';
 
 	let { data } = $props();
 </script>
@@ -21,9 +23,9 @@
 <MetaTags title={data.post.title} description={data.post.description} />
 
 <div class="relative flex w-full max-w-4xl flex-col border border-border md:flex-row">
-	<div class="flex flex-1 flex-col border-b md:border-b-0">
+	<div class="flex flex-1 flex-col border-b md:max-w-[calc(100%-16rem)] md:border-b-0">
 		<div class="flex flex-1 flex-col">
-			<div class="flex w-full items-center justify-between gap-4 border-b p-4">
+			<div class="flex h-16 w-full items-center justify-between gap-4 border-b p-4">
 				<Button href="/blog/posts" variant="outline" size="icon">
 					<RiArrowLeftLine class="size-4" />
 				</Button>
@@ -47,6 +49,12 @@
 							<RiMoreLine class="size-4" />
 						</DropdownMenu.Trigger>
 						<DropdownMenu.Content align="end">
+							<DropdownMenu.CopyItem text={page.url.toString()}>
+								{#snippet icon()}
+									<RiLink class="size-4 text-foreground" />
+								{/snippet}
+								Copy URL
+							</DropdownMenu.CopyItem>
 							<DropdownMenu.CopyItem text={data.post.contentMd}>
 								{#snippet icon()}
 									<MarkdownLogo class="size-4 text-foreground" />
@@ -97,6 +105,7 @@
 	</div>
 
 	<Sidebar.Root>
+		<Author />
 		<OtherBlogPosts postKey={data.post.key} />
 		<Projects />
 		<Sponsors />

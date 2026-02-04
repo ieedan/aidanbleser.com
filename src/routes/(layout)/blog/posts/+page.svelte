@@ -17,6 +17,7 @@
 	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import { getMostRecentBlogPosts, formatDate } from '$lib/features/blog/blog';
 	import { Button } from '$lib/components/ui/button';
+	import Author from '$lib/features/blog/author.svelte';
 
 	const posts = $derived(getMostRecentBlogPosts({ count: 10 }));
 </script>
@@ -24,9 +25,9 @@
 <MetaTags title="Aidan Bleser's Blog" description="Aidan Bleser's (ieedan) tech blog." />
 
 <div class="relative flex w-full max-w-4xl flex-col border border-border md:flex-row">
-	<div class="flex flex-1 flex-col border-b md:border-b-0">
+	<div class="flex flex-1 flex-col border-b md:max-w-[calc(100%-16rem)] md:border-b-0">
 		<div class="flex flex-1 flex-col">
-			<header class="flex w-full items-center justify-between gap-4 border-b p-4">
+			<header class="flex h-16 w-full items-center justify-between gap-4 border-b p-4">
 				<Button href="/" variant="outline" size="icon">
 					<RiArrowLeftLine class="size-4" />
 				</Button>
@@ -94,6 +95,7 @@
 	</div>
 
 	<Sidebar.Root>
+		<Author />
 		<Projects />
 		<Sponsors />
 		<ContactMe />
