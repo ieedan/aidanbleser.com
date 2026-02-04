@@ -16,8 +16,12 @@
 	import { formatDate } from '$lib/features/blog/blog.js';
 	import { page } from '$app/state';
 	import Author from '$lib/features/blog/author.svelte';
+	import * as Toc from '$lib/components/ui/toc';
+	import { UseToc } from '$lib/hooks/use-toc.svelte';
 
 	let { data } = $props();
+
+	const toc = new UseToc();
 
 	const metaTags = $derived(
 		deepMerge(data.baseMetaTags, {
@@ -105,7 +109,7 @@
 					</DropdownMenu.Root>
 				</div>
 			</header>
-			<div class="typography p-4">
+			<div class="typography p-4" bind:this={toc.ref}>
 				{@html data.post.content}
 			</div>
 		</div>
@@ -114,6 +118,12 @@
 
 	<Sidebar.Root>
 		<Author />
+		{#if toc.current.length > 0}
+			<Sidebar.Section>
+				<Sidebar.SectionHeading>On this page</Sidebar.SectionHeading>
+				<Toc.Root toc={toc.current} />
+			</Sidebar.Section>
+		{/if}
 		<OtherBlogPosts postKey={data.post.key} />
 		<Projects />
 		<Sponsors />

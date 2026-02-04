@@ -37,11 +37,11 @@ export async function getBlogPost(name: string): Promise<BlogPost | null> {
 
 export function getMostRecentBlogPosts({
 	count,
-	excludeKey = ''
+	excludeKey
 }: {
 	count?: number;
 	excludeKey?: string;
-}): { key: string; title: string; description: string; date: string; readingTime: string }[] {
+} = {}): { key: string; title: string; description: string; date: string; readingTime: string }[] {
 	return Object.entries(postsIndex)
 		.map(([key, value]) => ({ key, ...value }))
 		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
