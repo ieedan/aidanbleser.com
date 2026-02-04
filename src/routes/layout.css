@@ -310,7 +310,14 @@
 	/* Diff transformer */
 	.typography .line.diff {
 		display: inline-block;
+		position: relative;
+		margin-left: calc(var(--spacing) * -4);
+		margin-right: calc(var(--spacing) * -4);
+		padding-left: calc(var(--spacing) * 4);
+		padding-right: calc(var(--spacing) * 4);
 		width: 100%;
+		max-width: none;
+		box-sizing: content-box;
 	}
 	.typography .line.diff::before {
 		position: absolute;
@@ -318,7 +325,6 @@
 	}
 	.typography .line.diff.remove {
 		opacity: 0.7;
-		width: 100%;
 		background-color: color-mix(in srgb, var(--color-red-400) 20%, transparent);
 	}
 	.typography .line.diff.remove::before {
@@ -326,7 +332,6 @@
 		color: rgb(230, 10, 100);
 	}
 	.typography .line.diff.add {
-		width: 100%;
 		background-color: color-mix(in srgb, var(--color-green-400) 10%, transparent);
 	}
 	.typography .line.diff.add::before {
