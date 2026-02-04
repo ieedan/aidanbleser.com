@@ -1,9 +1,5 @@
 import path from 'node:path';
-import {
-	buildBlogPostsIndex,
-	findAllContentFiles,
-	prerenderFile
-} from '../.vite/content-renderer';
+import { buildBlogPostsIndex, findAllContentFiles, prerenderFile } from '../.vite/content-renderer';
 
 async function main() {
 	const contentBasePath = path.join(process.cwd(), 'src/lib/content');
