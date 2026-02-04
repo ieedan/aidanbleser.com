@@ -94,11 +94,11 @@ For reference here is a diff of the [CopyButton](https://shadcn-svelte-extras.co
 
 Most of the code looked exactly like this, almost completely identical with a few renames of variables or labels here and there. While it wasn't a lot of code the implementation was so similar that it was highly suspicious.
 
-From here things escalated, the creator was denying all claims of plagiarism refusing to take responsibility for their actions, insisting that they had never seen my project before.
+From here things escalated, the creator was denying all claims of plagiarism, refusing to take responsibility for their actions, insisting that they had never seen my project before.
 
-Not believing him, I doubled down finding more examples of ways that it simply wasn't possible that they wrote these components without significant influence from my project.
+Not believing him, I doubled down, finding more examples of ways that it simply wasn't possible that they wrote these components without significant influence from my project.
 
-At this point the creator started to try and "make things right" and made a note of the plagiarized components in the [README](https://github.com/tzezar/shadcn-svelte-enhancements/blob/d2cfe5640237a61f726cbceeeac1151a3542a745/README.md#credits).
+At this point the creator started to try to "make things right" and made a note of the plagiarized components in the [README](https://github.com/tzezar/shadcn-svelte-enhancements/blob/d2cfe5640237a61f726cbceeeac1151a3542a745/README.md#credits).
 
 And this is when I asked them:
 
@@ -110,9 +110,9 @@ And then the response:
 
 > I started using Copilot because I found out about the free trial month, and it seemed like a good deal. Being able to generate dozens of lines of code with a single comment is amazing. Maybe you're right—if your repository was public and indexed, Copilot might have pulled code from it. I honestly don’t know.
 
-At this moment it was like watching a prophecy come true. I had seen creators [ThePrimeagen](https://www.youtube.com/ThePrimeagen) talk about the risks of Copilot and the possibility of plagiarism but this was the first time I had seen it first hand.
+At this moment it was like watching a prophecy come true. I had seen creators [ThePrimeagen](https://www.youtube.com/ThePrimeagen) talk about the risks of Copilot and the possibility of plagiarism, but this was the first time I had seen it firsthand.
 
-Now I realized how badly I messed up. This guy had no idea that Copilot plagiarized my code. Furthermore I had gone after him over a very limited amount of [MIT](https://opensource.org/license/mit) licensed code that he had every right to use however he wanted.
+Now I realized how badly I messed up. This guy had no idea that Copilot plagiarized my code. Furthermore, I had gone after him over a very limited amount of [MIT](https://opensource.org/license/mit) licensed code that he had every right to use however he wanted.
 
 In reality no one had done anything wrong except for me.
 
@@ -120,11 +120,11 @@ In reality no one had done anything wrong except for me.
 
 I completely stepped over the line here with the accusations that were made and for that I apologize to the open source community and I promise to do better.
 
-For me this further adds to my list of reasons not to use Copilot. It was far too easy to generate code that was essentially identical to someone elses without even knowing it. In this case it ended with a funny misunderstanding but the stakes here really couldn't have been lower.
+For me this further adds to my list of reasons not to use Copilot. It was far too easy to generate code that was essentially identical to someone else's without even knowing it. In this case it ended with a funny misunderstanding, but the stakes here really couldn't have been lower.
 
 ## Afterword
 
-Before writing this I apologized to [Tzezar](https://github.com/tzezar) and I think it's safe to say we are both on good terms. This was a learning experience for both of us and I think we will both be more careful in the future.
+Before writing this I apologized to [Tzezar](https://github.com/tzezar), and I think it's safe to say we are both on good terms. This was a learning experience for both of us, and I think we will both be more careful in the future.
 
 > [...] I learned something important—that the easy way with AI isn’t always the best way. [...]
 
