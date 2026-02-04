@@ -33,7 +33,9 @@ async function getMarkdownRenderer() {
 		return md;
 	}
 
-	const markdown = MarkdownIt();
+	const markdown = MarkdownIt({
+		html: true
+	});
 	const defaultRender =
 		markdown.renderer.rules.link_open ||
 		function (tokens, idx, options, _env, self) {

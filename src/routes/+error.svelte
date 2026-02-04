@@ -14,7 +14,5 @@
 	<p class="text-lg text-muted-foreground">
 		{statusMessages[page.status as keyof typeof statusMessages]}
 	</p>
-	<Button href="/" style="margin-top: 1rem;">
-		Go Home
-	</Button>
+	<Button href="/" style="margin-top: 1rem;">Go Home</Button>
 </main>

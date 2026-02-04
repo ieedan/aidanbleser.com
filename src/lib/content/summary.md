@@ -8,3 +8,8 @@ I started contributing to open source in 2024 and since have become a maintainer
 - [finalchat](https://github.com/ieedan/finalchat)
 
 When I'm not building cool stuff on the internet I'm cycling, skiing, hiking, or just spending time with my beautiful wife.
+
+<div class="grid grid-cols-2 gap-4 mt-4 not-typography">
+    <img src="/aidan-and-eva-1.jpg" alt="Aidan and Eva" />
+    <img src="/aidan-and-eva-2.jpg" alt="Aidan and Eva" />
+</div>
