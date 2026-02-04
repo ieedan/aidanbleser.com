@@ -7,16 +7,22 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import summary from '$prerendered/summary';
 	import { RiMoreLine, RiMailLine, RiHeartLine } from 'remixicon-svelte';
-	import { MetaTags } from 'svelte-meta-tags';
+	import { deepMerge, MetaTags } from 'svelte-meta-tags';
 	import { socials } from '$lib/features/socials/socials';
 	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import OtherBlogPosts from '$lib/features/blog/other-blog-posts.svelte';
+
+	let { data } = $props();
+
+	const metaTags = $derived(
+		deepMerge(data.baseMetaTags, {
+			title: 'Aidan Bleser - Frontend Engineer',
+			description: "Aidan Bleser's (ieedan) personal website and tech blog."
+		})
+	);
 </script>
 
-<MetaTags
-	title="Aidan Bleser - Frontend Engineer"
-	description="Aidan Bleser's (ieedan) personal website and tech blog."
-/>
+<MetaTags {...metaTags} />
 
 <div class="relative flex w-full max-w-4xl flex-col border border-border md:flex-row">
 	<div class="flex flex-1 flex-col border-b md:border-b-0">

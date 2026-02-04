@@ -12,17 +12,26 @@
 		RiTimeLine,
 		RiArrowLeftLine
 	} from 'remixicon-svelte';
-	import { MetaTags } from 'svelte-meta-tags';
+	import { deepMerge, MetaTags } from 'svelte-meta-tags';
 	import { socials } from '$lib/features/socials/socials';
 	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import { getMostRecentBlogPosts, formatDate } from '$lib/features/blog/blog';
 	import { Button } from '$lib/components/ui/button';
 	import Author from '$lib/features/blog/author.svelte';
 
+	let { data } = $props();
+
 	const posts = $derived(getMostRecentBlogPosts({ count: 10 }));
+
+	const metaTags = $derived(
+		deepMerge(data.baseMetaTags, {
+			title: "Aidan Bleser's Blog",
+			description: "Aidan Bleser's (ieedan) tech blog."
+		})
+	);
 </script>
 
-<MetaTags title="Aidan Bleser's Blog" description="Aidan Bleser's (ieedan) tech blog." />
+<MetaTags {...metaTags} />
 
 <div class="relative flex w-full max-w-4xl flex-col border border-border md:flex-row">
 	<div class="flex flex-1 flex-col border-b md:max-w-[calc(100%-16rem)] md:border-b-0">

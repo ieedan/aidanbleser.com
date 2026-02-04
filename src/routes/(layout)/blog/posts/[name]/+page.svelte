@@ -4,7 +4,7 @@
 	import Projects from '$lib/features/projects/projects.svelte';
 	import ContactMe from '$lib/features/contact-me/contact-me.svelte';
 	import Footer from '$lib/features/footer/footer.svelte';
-	import { MetaTags } from 'svelte-meta-tags';
+	import { deepMerge, MetaTags } from 'svelte-meta-tags';
 	import { RiMoreLine, RiMailLine, RiHeartLine, RiLink } from 'remixicon-svelte';
 	import { socials } from '$lib/features/socials/socials';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
@@ -18,9 +18,16 @@
 	import Author from '$lib/features/blog/author.svelte';
 
 	let { data } = $props();
+
+	const metaTags = $derived(
+		deepMerge(data.baseMetaTags, {
+			title: data.post.title,
+			description: data.post.description
+		})
+	);
 </script>
 
-<MetaTags title={data.post.title} description={data.post.description} />
+<MetaTags {...metaTags} />
 
 <div class="relative flex w-full max-w-4xl flex-col border border-border md:flex-row">
 	<div class="flex flex-1 flex-col border-b md:max-w-[calc(100%-16rem)] md:border-b-0">
