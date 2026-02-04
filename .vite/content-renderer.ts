@@ -110,7 +110,7 @@ export async function prerenderFile(contentFile: { path: string; content: string
 	};
 }
 
-async function buildBlogPostsIndex(
+export async function buildBlogPostsIndex(
 	contentBasePath: string,
 	contentFiles: { path: string; content: string }[] = findAllContentFiles(contentBasePath)
 ) {

@@ -9,7 +9,8 @@
 		"dev:vite": "vite dev --host",
 		"build": "vite build",
 		"build:dev": "dotenvx run -f .env.local -- pnpm build",
-		"prepare": "svelte-kit sync || echo ''",
+		"content:build": "tsx scripts/build-content.ts",
+		"prepare": "svelte-kit sync || echo '' && pnpm content:build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write ."
