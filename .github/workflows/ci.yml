@@ -17,8 +17,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Sync
-        run: pnpm prepare
+      - name: Dev
+        run: pnpm dev
 
       - name: Lint
         run: pnpm lint
