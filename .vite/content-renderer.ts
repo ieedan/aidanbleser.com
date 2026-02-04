@@ -50,11 +50,19 @@ const contentDir = path.join(process.cwd(), 'src/lib/content');
 
 export async function prerenderFile(contentFile: { path: string; content: string }) {
 	const relativePath = path.relative(contentDir, contentFile.path);
-	const outputPath = path.join('src/lib/__prerendered__', `${path.parse(relativePath).name}.ts`);
+	const parsedRelativePath = path.parse(relativePath);
+	const outputPath = path.join('src/lib/__prerendered__', parsedRelativePath.dir, `${parsedRelativePath.name}.ts`);
 
-	const renderedContent = await renderMarkdown(contentFile.content);
+	const [frontmatter, content] = parseFrontmatter(contentFile.content);
 
-	const fileContent = `export default \`${escapeForTemplateLiteral(renderedContent)}\``;
+	const renderedContent = await renderMarkdown(content);
+
+	const fileContent = `export default {
+	meta: ${JSON.stringify(frontmatter)},
+	content: \`${escapeForTemplateLiteral(renderedContent)}\`,
+	contentMd: \`${escapeForTemplateLiteral(contentFile.content)}\`
+}
+`;
 
 	const outputPathFull = path.join(process.cwd(), outputPath);
 	fs.mkdirSync(path.dirname(outputPathFull), { recursive: true });
@@ -78,3 +86,43 @@ export function findAllContentFiles(dir: string): { path: string; content: strin
 	}
 	return contentFiles;
 }
+
+export function parseFrontmatter(content: string): [Record<string, string>, string] {
+	if (!content.trim().startsWith('---')) {
+		return [{}, content];
+	}
+
+	const fmStart = content.indexOf('---') + 3;
+	const fmEnd = content.indexOf('---', fmStart);
+
+	const frontMatter = content.slice(fmStart, fmEnd).trim();
+
+	const lines = frontMatter
+		.split('\n')
+		.map((l) => l.trim())
+		.filter((l) => l !== '');
+
+	const meta: Record<string, string> = {};
+
+	for (const line of lines) {
+		const colonIndex = line.indexOf(':');
+
+		const key = line.slice(0, colonIndex);
+		let value = line.slice(colonIndex + 1).trim();
+
+		// ensure that the date is in the correct format
+		if (key === 'date') {
+			const date = new Date(value);
+
+			value = formatDate(date);
+		}
+
+		meta[key] = value;
+	}
+
+	return [meta, content.slice(fmEnd + 3).trimStart()];
+}
+
+/** yyyy-MM-dd */
+const formatDate = (date: Date) =>
+	`${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`;

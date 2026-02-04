@@ -6,7 +6,13 @@
 	import Footer from '$lib/features/footer/footer.svelte';
 	import DropdownMenu from '$lib/features/dropdown-menu/dropdown-menu.svelte';
 	import summary from '$prerendered/summary';
+	import { MetaTags } from 'svelte-meta-tags';
 </script>
+
+<MetaTags
+	title="Aidan Bleser - Frontend Engineer"
+	description="Aidan Bleser's (ieedan) personal website and tech blog."
+/>
 
 <div class="relative flex w-full max-w-4xl flex-col border border-border sm:flex-row">
 	<div class="flex flex-1 flex-col border-b sm:border-b-0">
@@ -28,7 +34,7 @@
 				</div>
 			</div>
 			<div class="typography p-4">
-				{@html summary}
+				{@html summary.content}
 			</div>
 		</div>
 		<Footer class="hidden sm:block" />
