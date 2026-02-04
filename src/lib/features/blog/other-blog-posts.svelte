@@ -7,7 +7,7 @@
 	let { postKey, ...rest }: WithoutChildren<HTMLAttributes<HTMLDivElement>> & { postKey?: string } =
 		$props();
 
-	const posts = $derived(getMostRecentBlogPosts(3, postKey));
+	const posts = $derived(getMostRecentBlogPosts({ count: 3, excludeKey: postKey }));
 </script>
 
 <Sidebar.Section {...rest}>

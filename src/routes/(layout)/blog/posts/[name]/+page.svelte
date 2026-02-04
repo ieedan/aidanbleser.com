@@ -13,16 +13,9 @@
 	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { RiArrowLeftLine, RiTimeLine } from 'remixicon-svelte';
+	import { formatDate } from '$lib/features/blog/blog.js';
 
 	let { data } = $props();
-
-	function formatDate(dateString: string): string {
-		return new Date(dateString).toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric'
-		});
-	}
 </script>
 
 <MetaTags title={data.post.title} description={data.post.description} />

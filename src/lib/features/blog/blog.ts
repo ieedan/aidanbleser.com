@@ -36,12 +36,22 @@ export async function getBlogPost(name: string): Promise<BlogPost | null> {
 }
 
 export function getMostRecentBlogPosts(
-	count: number,
-	excludeKey?: string
-): { key: string; title: string; description: string; date: string }[] {
+	{ count, excludeKey = '' }: {
+		count?: number,
+		excludeKey?: string
+	}
+): { key: string; title: string; description: string; date: string; readingTime: string }[] {
 	return Object.entries(postsIndex)
 		.map(([key, value]) => ({ key, ...value }))
 		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 		.filter((post) => post.key !== excludeKey)
-		.slice(0, count);
+		.slice(0, count)
+}
+
+export function formatDate(dateString: string): string {
+	return new Date(dateString).toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'short',
+		day: 'numeric'
+	});
 }
