@@ -241,6 +241,11 @@
 		margin-top: calc(var(--spacing) * 6);
 		margin-bottom: calc(var(--spacing) * 6);
 	}
+	.typography img:not(.not-typography img):first-child,
+	.typography picture:not(.not-typography picture):first-child,
+	.typography video:not(.not-typography video):first-child {
+		margin-top: 0;
+	}
 	.typography picture > img:not(.not-typography picture > img) {
 		margin-top: 0;
 		margin-bottom: 0;
@@ -287,6 +292,63 @@
 	.typography small:not(.not-typography small) {
 		font-size: var(--text-xs);
 		line-height: 1;
+	}
+
+	/* Shiki Transformer Styles */
+	.typography .line {
+		position: relative;
+		min-height: 1lh;
+	}
+	/* Focus transformer */
+	.typography .has-focused .line:not(.focused) {
+		filter: blur(2px);
+		transition: filter 200ms;
+	}
+	.typography .has-focused:hover .line:not(.focused) {
+		filter: blur(0);
+	}
+	/* Diff transformer */
+	.typography .line.diff {
+		display: inline-block;
+		width: 100%;
+	}
+	.typography .line.diff::before {
+		position: absolute;
+		left: calc(var(--spacing) * 1.5);
+	}
+	.typography .line.diff.remove {
+		opacity: 0.7;
+		width: 100%;
+		background-color: color-mix(in srgb, var(--color-red-400) 20%, transparent);
+	}
+	.typography .line.diff.remove::before {
+		content: '-';
+		color: rgb(230, 10, 100);
+	}
+	.typography .line.diff.add {
+		width: 100%;
+		background-color: color-mix(in srgb, var(--color-green-400) 10%, transparent);
+	}
+	.typography .line.diff.add::before {
+		content: '+';
+		color: rgb(10, 200, 100);
+	}
+	/* Highlight transformer */
+	.typography .line.highlighted {
+		display: block;
+		width: 100%;
+		padding-left: calc(var(--spacing) * 3.5);
+		border-left: 2px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+	}
+	/* Word highlight transformer */
+	.typography .highlighted-word {
+		padding: 1px;
+		border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+		background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+		border-radius: calc(var(--radius) - 2px);
+		font-weight: 500;
+		margin: -1px 0;
 	}
 
 	@media (min-width: 1024px) {

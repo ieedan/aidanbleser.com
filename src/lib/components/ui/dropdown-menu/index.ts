@@ -9,6 +9,7 @@ import Trigger from './dropdown-menu-trigger.svelte';
 import GroupHeading from './dropdown-menu-group-heading.svelte';
 import Portal from './dropdown-menu-portal.svelte';
 import CopyItem from './dropdown-menu-copy-item.svelte';
+import LinkItem from './dropdown-menu-link-item.svelte';
 
 export {
 	Content,
@@ -32,5 +33,7 @@ export {
 	Shortcut,
 	Trigger,
 	CopyItem as DropdownMenuCopyItem,
-	CopyItem
+	CopyItem,
+	LinkItem as DropdownMenuLinkItem,
+	LinkItem
 };

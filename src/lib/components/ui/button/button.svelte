@@ -2,10 +2,16 @@
 	import { tv, type VariantProps } from 'tailwind-variants';
 
 	export const buttonVariants = tv({
-		base: 'flex h-8 items-center justify-center gap-2 px-4 py-2',
+		base: 'flex items-center justify-center gap-2 transition-colors',
 		variants: {
 			variant: {
-				default: 'bg-primary text-primary-foreground'
+				default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+				outline:
+					'border border-border bg-background text-muted-foreground hover:text-foreground hover:bg-secondary'
+			},
+			size: {
+				default: 'h-8 px-4 py-2',
+				icon: 'size-8'
 			}
 		}
 	});
@@ -14,6 +20,7 @@
 
 	export type ButtonPropsWithoutHtml = {
 		variant?: ButtonVariants['variant'];
+		size?: ButtonVariants['size'];
 	};
 
 	export type ButtonElementProps = HTMLButtonAttributes;
@@ -28,6 +35,7 @@
 	let {
 		href,
 		variant = 'default',
+		size = 'default',
 		disabled,
 		type,
 		tabindex,
@@ -47,7 +55,7 @@
 	aria-disabled={href ? disabled : undefined}
 	role={href && disabled ? 'link' : undefined}
 	tabindex={href && disabled ? -1 : tabindex}
-	class={cn(buttonVariants({ variant }), className)}
+	class={cn(buttonVariants({ variant, size }), className)}
 >
 	{@render children?.()}
 </svelte:element>

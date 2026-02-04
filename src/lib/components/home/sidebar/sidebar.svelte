@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class={cn('flex min-h-0 flex-1 flex-col self-stretch sm:max-w-64 sm:border-l', className)}
+	class={cn('flex min-h-0 flex-1 flex-col self-stretch md:max-w-64 md:border-l', className)}
 	{...rest}
 >
 	{@render children?.()}

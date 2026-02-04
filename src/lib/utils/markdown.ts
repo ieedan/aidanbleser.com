@@ -12,8 +12,19 @@ export async function renderMarkdown(markdown: string) {
 let md: MarkdownIt | undefined = undefined;
 
 const highlighter = createHighlighterCore({
-	themes: [import('@shikijs/themes/slack-ochin'), import('@shikijs/themes/slack-dark')],
-	langs: [import('@shikijs/langs/ts'), import('@shikijs/langs/svelte')],
+	themes: [
+		// import('@shikijs/themes/slack-ochin'),
+		import('@shikijs/themes/slack-dark')
+	],
+	langs: [
+		import('@shikijs/langs/ts'),
+		import('@shikijs/langs/svelte'),
+		import('@shikijs/langs/rust'),
+		import('@shikijs/langs/sql'),
+		import('@shikijs/langs/csharp'),
+		import('@shikijs/langs/toml'),
+		import('@shikijs/langs/go')
+	],
 	engine: createOnigurumaEngine(import('shiki/wasm'))
 });
 
@@ -27,7 +38,7 @@ async function getMarkdownRenderer() {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		fromHighlighter((await highlighter) as HighlighterGeneric<any, any>, {
 			themes: {
-				light: 'slack-ochin',
+				light: 'slack-dark',
 				dark: 'slack-dark'
 			},
 			transformers: [transformerNotationDiff(), transformerNotationHighlight()]

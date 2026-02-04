@@ -20,6 +20,8 @@ export function contentRenderer(): Plugin {
 				})
 			);
 
+			await buildBlogPostsIndex(contentBasePath, contentFiles);
+
 			this.info('✅ Prerendering complete.');
 		},
 		hotUpdate: {
@@ -31,6 +33,7 @@ export function contentRenderer(): Plugin {
 							const content = fs.readFileSync(mod.file, 'utf-8');
 
 							await prerenderFile({ path: mod.file, content });
+							await buildBlogPostsIndex(contentBasePath);
 						}
 					})
 				);
@@ -46,21 +49,55 @@ function escapeForTemplateLiteral(content: string): string {
 	return content.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\${/g, '\\${');
 }
 
+/**
+ * Calculate reading time in minutes based on word count
+ * Uses average reading speed of 200 words per minute
+ */
+function calculateReadingTime(markdown: string): number {
+	// Remove frontmatter (content between --- markers)
+	const contentWithoutFrontmatter = markdown.replace(/^---[\s\S]*?---\n/, '');
+
+	// Remove markdown syntax and count words
+	// Remove code blocks, links, images, headers, etc. to get plain text
+	const plainText = contentWithoutFrontmatter
+		.replace(/```[\s\S]*?```/g, '') // Remove code blocks
+		.replace(/`[^`]+`/g, '') // Remove inline code
+		.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Convert links to just text
+		.replace(/!\[([^\]]*)\]\([^\)]+\)/g, '') // Remove images
+		.replace(/[#*\-_`~>]/g, '') // Remove markdown formatting characters
+		.replace(/\n+/g, ' ') // Replace newlines with spaces
+		.trim();
+
+	// Count words (split by whitespace and filter empty strings)
+	const wordCount = plainText.split(/\s+/).filter((word) => word.length > 0).length;
+
+	// Calculate reading time (200 words per minute)
+	const readingTime = Math.max(1, Math.round(wordCount / 200));
+
+	return readingTime;
+}
+
 const contentDir = path.join(process.cwd(), 'src/lib/content');
 
 export async function prerenderFile(contentFile: { path: string; content: string }) {
 	const relativePath = path.relative(contentDir, contentFile.path);
 	const parsedRelativePath = path.parse(relativePath);
-	const outputPath = path.join('src/lib/__prerendered__', parsedRelativePath.dir, `${parsedRelativePath.name}.ts`);
+	const outputPath = path.join(
+		'src/lib/__prerendered__',
+		parsedRelativePath.dir,
+		`${parsedRelativePath.name}.ts`
+	);
 
 	const [frontmatter, content] = parseFrontmatter(contentFile.content);
 
 	const renderedContent = await renderMarkdown(content);
+	const readingTime = calculateReadingTime(contentFile.content);
 
 	const fileContent = `export default {
 	meta: ${JSON.stringify(frontmatter)},
 	content: \`${escapeForTemplateLiteral(renderedContent)}\`,
-	contentMd: \`${escapeForTemplateLiteral(contentFile.content)}\`
+	contentMd: \`${escapeForTemplateLiteral(contentFile.content)}\`,
+	readingTime: ${readingTime}
 }
 `;
 
@@ -71,6 +108,42 @@ export async function prerenderFile(contentFile: { path: string; content: string
 	return {
 		outputPath
 	};
+}
+
+async function buildBlogPostsIndex(
+	contentBasePath: string,
+	contentFiles: { path: string; content: string }[] = findAllContentFiles(contentBasePath)
+) {
+	const blogPosts = contentFiles
+		.map((file) => ({
+			...file,
+			relativePath: path.relative(contentBasePath, file.path)
+		}))
+		.filter((file) => normalizePath(file.relativePath).startsWith('blog/posts/'));
+
+	const postsIndex: Record<string, Record<string, string>> = {};
+
+	for (const file of blogPosts) {
+		const slug = path.parse(file.relativePath).name;
+		const [frontmatter] = parseFrontmatter(file.content);
+		const readingTime = calculateReadingTime(file.content);
+
+		postsIndex[slug] = {
+			...frontmatter,
+			readingTime: readingTime.toString()
+		};
+	}
+
+	const outputPath = path.join(process.cwd(), 'src/lib/__prerendered__/blog/posts/index.ts');
+	fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+	fs.writeFileSync(
+		outputPath,
+		`const postsIndex = ${JSON.stringify(postsIndex, null, 2)} as const;\n\nexport default postsIndex;\n`
+	);
+}
+
+function normalizePath(filePath: string) {
+	return filePath.split(path.sep).join('/');
 }
 
 export function findAllContentFiles(dir: string): { path: string; content: string }[] {

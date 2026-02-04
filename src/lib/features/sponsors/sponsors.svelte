@@ -11,7 +11,7 @@
 
 <Sidebar.Section {...rest}>
 	<Sidebar.SectionHeading>Sponsors</Sidebar.SectionHeading>
-	<div class="flex flex-wrap gap-2 sm:grid sm:grid-cols-6">
+	<div class="flex flex-wrap gap-2 md:grid md:grid-cols-6">
 		{#await sponsorsQuery}
 			{#each { length: 4 } as _, i (i)}
 				<div class="size-8 shrink-0 animate-pulse rounded-full bg-secondary"></div>
