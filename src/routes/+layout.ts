@@ -1,6 +1,6 @@
 import { defineBaseMetaTags } from 'svelte-meta-tags';
 
-export function load() {
+export function load({ url }) {
 	const baseTags = defineBaseMetaTags({
 		openGraph: {
 			title: 'Aidan Bleser - Frontend Engineer',
@@ -9,7 +9,7 @@ export function load() {
 			siteName: 'Aidan Bleser',
 			images: [
 				{
-					url: '/og.png'
+					url: `${url.origin}/og.png`
 				}
 			]
 		},
@@ -17,7 +17,7 @@ export function load() {
 			cardType: 'summary_large_image',
 			title: 'Aidan Bleser - Frontend Engineer',
 			description: "Aidan Bleser's (ieedan) personal website and tech blog.",
-			image: '/og.png'
+			image: `${url.origin}/og.png`
 		}
 	});
 
