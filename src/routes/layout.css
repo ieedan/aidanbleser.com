@@ -203,7 +203,9 @@
 		margin-bottom: calc(var(--spacing) * 6);
 		font-size: var(--text-sm);
 		line-height: var(--text-sm--line-height);
-		overflow-y: auto;
+		max-height: min(24rem, 70vh);
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
 	}
 	.typography code:not(pre code):not(.not-typography code) {
 		position: relative;
