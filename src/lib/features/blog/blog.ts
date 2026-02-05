@@ -54,7 +54,14 @@ export function getMostRecentBlogPosts({
 }: {
 	count?: number;
 	excludeKey?: string;
-} = {}): { key: string; title: string; description: string; date: string; readingTime: string; isNew: boolean }[] {
+} = {}): {
+	key: string;
+	title: string;
+	description: string;
+	date: string;
+	readingTime: string;
+	isNew: boolean;
+}[] {
 	return Object.entries(postsIndex)
 		.map(([key, value]) => ({
 			key,

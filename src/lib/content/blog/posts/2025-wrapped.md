@@ -103,4 +103,8 @@ With using AI more and more I have begun to become better at crafting prompts th
 
 ### I have to do stuff to build stuff
 
-I haven't come up with any ideas this year by just looking around my desk and trying to come up with something. I need to do stuff to find inspiration. This year I need to do stuff.
+I haven't come up with any ideas this year by just looking around my desk and trying to come up with something. I need to do stuff to find inspiration.
+
+## Conclusion
+
+When I come to writing the blog post for next year I hope I will have shipped at least twice as many things or at least tried twice as many ideas. This year I want to explore unique ideas, improve on old ones, and as always things of high quality that I am proud of. But I hope I don't put that unusual amount of care into ideas that aren't worth it, and that I can identify the ones that aren't.
