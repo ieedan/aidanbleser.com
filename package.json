@@ -32,6 +32,7 @@
 		"@types/markdown-it": "^14.1.2",
 		"@types/node": "^22.19.8",
 		"bits-ui": "^2.15.5",
+		"clsx": "^2.1.1",
 		"eslint": "^9.39.2",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.14.0",

@@ -2,6 +2,6 @@
 	let { children } = $props();
 </script>
 
-<main class="flex min-h-dvh flex-col items-center justify-center p-4">
+<main class="flex min-h-dvh flex-col items-center justify-center px-4">
 	{@render children()}
 </main>

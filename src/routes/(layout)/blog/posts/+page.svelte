@@ -21,7 +21,7 @@
 
 	let { data } = $props();
 
-	const posts = $derived(getMostRecentBlogPosts({ count: 10 }));
+	const posts = $derived(getMostRecentBlogPosts());
 
 	const metaTags = $derived(
 		deepMerge(data.baseMetaTags, {
