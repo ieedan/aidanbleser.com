@@ -32,14 +32,15 @@
 	key,
 	title,
 	description,
-	date
+	date,
+	isNew
 }: {
 	title: string;
 	description: string;
 	date: string;
 	key: string;
+	isNew: boolean;
 })}
-	{@const isNew = Date.now() - new Date(date).getTime() < 30 * 24 * 60 * 60 * 1000}
 	<div class="relative border border-border p-2 transition-colors hover:bg-secondary">
 		<a href="/blog/posts/{key}">
 			<span class="flex items-center gap-2 text-sm font-medium">
