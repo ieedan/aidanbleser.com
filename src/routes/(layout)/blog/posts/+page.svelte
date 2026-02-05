@@ -91,6 +91,13 @@
 							<span class="flex items-center gap-1 text-xs text-muted-foreground">
 								<RiTimeLine class="inline-block size-3" />
 								{post.readingTime}m
+								{#if post.isNew}
+									<span
+										class="ml-0.5 size-1.5 shrink-0 rounded-full bg-blue-500"
+										title="New (within 30 days)"
+										aria-hidden="true"
+									></span>
+								{/if}
 							</span>
 						</div>
 					</div>
