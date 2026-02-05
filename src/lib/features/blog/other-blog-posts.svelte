@@ -39,6 +39,7 @@
 	date: string;
 	key: string;
 })}
+	{@const isNew = Date.now() - new Date(date).getTime() < 30 * 24 * 60 * 60 * 1000}
 	<div class="relative border border-border p-2 transition-colors hover:bg-secondary">
 		<a href="/blog/posts/{key}">
 			<span class="flex items-center gap-2 text-sm font-medium">
@@ -47,12 +48,19 @@
 			<span class="absolute inset-0"></span>
 		</a>
 		<p class="line-clamp-2 text-xs text-muted-foreground">{description}</p>
-		<span class="text-xs text-muted-foreground">
+		<span class="flex items-center gap-1.5 text-xs text-muted-foreground">
 			{new Date(date).toLocaleDateString('en-US', {
 				year: 'numeric',
 				month: 'short',
 				day: 'numeric'
 			})}
+			{#if isNew}
+				<span
+					class="size-1.5 shrink-0 rounded-full bg-blue-500"
+					title="New (within 30 days)"
+					aria-hidden="true"
+				></span>
+			{/if}
 		</span>
 	</div>
 {/snippet}

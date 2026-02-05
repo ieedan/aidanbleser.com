@@ -2,7 +2,7 @@
 
 :root {
 	--background: oklch(0.15 0 0);
-	--foreground: oklch(0.875 0 0);
+	--foreground: oklch(0.925 0 0);
 	--muted-foreground: oklch(0.7 0 0);
 	--primary: oklch(1 0 0);
 	--primary-foreground: oklch(0 0 0);
@@ -22,7 +22,7 @@
 
 @layer base {
 	* {
-		@apply border-border;
+		@apply overscroll-none border-border;
 	}
 	body {
 		@apply bg-background text-foreground;
@@ -203,7 +203,9 @@
 		margin-bottom: calc(var(--spacing) * 6);
 		font-size: var(--text-sm);
 		line-height: var(--text-sm--line-height);
-		overflow-y: auto;
+		max-height: min(24rem, 70vh);
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
 	}
 	.typography code:not(pre code):not(.not-typography code) {
 		position: relative;

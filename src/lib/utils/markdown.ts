@@ -28,6 +28,17 @@ const highlighter = createHighlighterCore({
 	engine: createOnigurumaEngine(import('shiki/wasm'))
 });
 
+function slugify(text: string): string {
+	return (
+		text
+			.toLowerCase()
+			.replace(/\s+/g, '-')
+			.replace(/[^\w-]/g, '')
+			.replace(/-+/g, '-')
+			.replace(/^-|-$/g, '') || 'section'
+	);
+}
+
 async function getMarkdownRenderer() {
 	if (md) {
 		return md;
@@ -36,6 +47,24 @@ async function getMarkdownRenderer() {
 	const markdown = MarkdownIt({
 		html: true
 	});
+	// add id to headings for TOC anchor links
+	const defaultHeadingOpen =
+		markdown.renderer.rules.heading_open ||
+		function (tokens, idx, options, _env, self) {
+			return self.renderToken(tokens, idx, options);
+		};
+	markdown.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
+		const inline = tokens[idx + 1];
+		const content = inline?.type === 'inline' ? inline.content : '';
+		const id = slugify(content);
+		const aIndex = tokens[idx].attrIndex('id');
+		if (aIndex < 0) {
+			tokens[idx].attrPush(['id', id]);
+		} else {
+			tokens[idx].attrs![aIndex][1] = id;
+		}
+		return defaultHeadingOpen(tokens, idx, options, env, self);
+	};
 	const defaultRender =
 		markdown.renderer.rules.link_open ||
 		function (tokens, idx, options, _env, self) {
