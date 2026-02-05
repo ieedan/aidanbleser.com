@@ -1,6 +1,8 @@
 import { getBlogPost } from '$lib/features/blog/blog.js';
 import { error, redirect } from '@sveltejs/kit';
 
+export const prerender = true;
+
 export async function load({ params }) {
 	const post = await getBlogPost(params.name);
 	if (!post) return error(404, 'Post not found');
