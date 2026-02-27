@@ -1,0 +1,17 @@
+{
+  "$schema": "https://getbizi.dev/schemas/task.config.json",
+  "tasks": {
+    "dev": {
+      "command": "pnpm dev"
+    },
+    "check": {
+      "command": "pnpm check"
+    },
+    "lint": {
+      "command": "pnpm lint"
+    },
+    "format": {
+      "command": "pnpm format"
+    }
+  }
+}
