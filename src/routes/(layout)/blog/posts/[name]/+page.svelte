@@ -18,6 +18,7 @@
 	import Author from '$lib/features/blog/author.svelte';
 	import * as Toc from '$lib/components/ui/toc';
 	import { UseToc } from '$lib/hooks/use-toc.svelte';
+	import PromptCallout from '$lib/features/blog/prompt-callout.svelte';
 
 	let { data } = $props();
 
@@ -75,6 +76,10 @@
 								{/snippet}
 								Copy Markdown
 							</DropdownMenu.CopyItem>
+							<DropdownMenu.LinkItem href="/blog/posts/{data.post.key}.md">
+								<MarkdownLogo class="size-4 text-foreground" />
+								View as Markdown
+							</DropdownMenu.LinkItem>
 							<DropdownMenu.LinkItem
 								href={`https://finalchat.app/chat?q=Read this blog post by Aidan Bleser: https://aidanbleser.com/blog/posts/${
 									data.post.key
@@ -112,6 +117,9 @@
 				</div>
 			</header>
 			<div class="typography p-4" bind:this={toc.ref}>
+				{#if data.post.prompt}
+					<PromptCallout prompt={data.post.prompt} />
+				{/if}
 				{@html data.post.content}
 			</div>
 		</div>
