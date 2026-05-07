@@ -39,6 +39,11 @@ function slugify(text: string): string {
 	);
 }
 
+/** Absolute http(s) URLs open in a new tab; relative, hash, and other schemes stay same-tab. */
+function isAbsoluteHttpUrl(href: string): boolean {
+	return /^https?:\/\//i.test(href.trim());
+}
+
 async function getMarkdownRenderer() {
 	if (md) {
 		return md;
@@ -70,17 +75,20 @@ async function getMarkdownRenderer() {
 		function (tokens, idx, options, _env, self) {
 			return self.renderToken(tokens, idx, options);
 		};
-	// convert all links to open in a new tab
+	// http(s) links open in a new tab; relative and same-page links stay in the same tab
 	markdown.renderer.rules.link_open = (tokens, idx, options, env, self) => {
-		const aIndex = tokens[idx].attrIndex('target');
-		if (aIndex < 0) {
-			tokens[idx].attrPush(['target', '_blank']);
-		} else {
-			tokens[idx].attrs![aIndex][1] = '_blank';
-		}
-		const relIndex = tokens[idx].attrIndex('rel');
-		if (relIndex < 0) {
-			tokens[idx].attrPush(['rel', 'noopener']);
+		const href = tokens[idx].attrGet('href') ?? '';
+		if (isAbsoluteHttpUrl(href)) {
+			const aIndex = tokens[idx].attrIndex('target');
+			if (aIndex < 0) {
+				tokens[idx].attrPush(['target', '_blank']);
+			} else {
+				tokens[idx].attrs![aIndex][1] = '_blank';
+			}
+			const relIndex = tokens[idx].attrIndex('rel');
+			if (relIndex < 0) {
+				tokens[idx].attrPush(['rel', 'noopener']);
+			}
 		}
 		return defaultRender(tokens, idx, options, env, self);
 	};

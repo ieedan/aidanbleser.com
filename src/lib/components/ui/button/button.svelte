@@ -2,7 +2,7 @@
 	import { tv, type VariantProps } from 'tailwind-variants';
 
 	export const buttonVariants = tv({
-		base: 'flex items-center justify-center gap-2 transition-colors',
+		base: 'flex items-center justify-center gap-2 transition-colors [&_svg]:shrink-0 [&_svg]:size-4',
 		variants: {
 			variant: {
 				default: 'bg-primary text-primary-foreground hover:bg-primary/90',

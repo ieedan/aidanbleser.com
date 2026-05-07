@@ -5,6 +5,7 @@ export type BlogPost = {
 	title: string;
 	description: string;
 	date: string;
+	prompt: string | undefined;
 	content: string;
 	contentMd: string;
 	/** Reading time in minutes */
@@ -41,6 +42,7 @@ export async function getBlogPost(name: string): Promise<BlogPost | null> {
 		title: post.meta.title,
 		description: post.meta.description,
 		date: post.meta.date,
+		prompt: post.meta.prompt,
 		content: post.content,
 		contentMd: post.contentMd,
 		readingTime: post.readingTime,
