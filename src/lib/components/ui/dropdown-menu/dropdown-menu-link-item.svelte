@@ -7,9 +7,11 @@
 	type Props = {
 		href: string;
 		children: Snippet;
+		/** Full document load instead of SPA navigation (needed for `+server`-only routes like raw `.md`). */
+		reload?: boolean;
 	};
 
-	let { href, children }: Props = $props();
+	let { href, children, reload = false }: Props = $props();
 </script>
 
 <DropdownMenuItem
@@ -17,6 +19,8 @@
 	onSelect={() => {
 		if (href.startsWith('http')) {
 			window.open(href, '_blank');
+		} else if (reload) {
+			window.location.assign(href);
 		} else {
 			goto(href);
 		}

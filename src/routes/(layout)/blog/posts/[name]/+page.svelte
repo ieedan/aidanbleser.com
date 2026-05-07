@@ -75,6 +75,10 @@
 								{/snippet}
 								Copy Markdown
 							</DropdownMenu.CopyItem>
+							<DropdownMenu.LinkItem reload href="/blog/posts/{data.post.key}.md">
+								<MarkdownLogo class="size-4 text-foreground" />
+								View as Markdown
+							</DropdownMenu.LinkItem>
 							<DropdownMenu.LinkItem
 								href={`https://finalchat.app/chat?q=Read this blog post by Aidan Bleser: https://aidanbleser.com/blog/posts/${
 									data.post.key
