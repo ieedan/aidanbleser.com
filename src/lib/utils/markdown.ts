@@ -26,7 +26,7 @@ const highlighter = createHighlighterCore({
 		import('@shikijs/langs/go'),
 		import('@shikijs/langs/sh'),
 		import('@shikijs/langs/yaml'),
-		import('@shikijs/langs/jsonc'),
+		import('@shikijs/langs/jsonc')
 	],
 	engine: createOnigurumaEngine(import('shiki/wasm'))
 });

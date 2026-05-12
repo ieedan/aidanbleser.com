@@ -1,27 +1,27 @@
 ---
 title: Do these things or I'm forking your project
-description: Your ignorance to supply chain security is hurting all of us.
+description: Your disregard for supply chain security is hurting all of us.
 date: 2026-05-12
 prompt: Implement the guidelines laid out in this post and let me know what I need to do https://aidanbleser.com/blog/posts/do-these-things-or-im-forking-your-project.md
 ---
 
-In the recent months we have had multiple supply chain attacks directed at the npm ecosystem. Including multiple worm attacks that aim to steal credentials used in CI environments.
+In the recent months we have had multiple supply chain attacks directed at the npm ecosystem, including multiple worm attacks that aim to steal credentials used in CI environments.
 
-It's getting to the point where if I want to use your project and it isn't setup to follow these guidelines I will consider alternatives (or even forking it for myself if I need it enough) so that I can improve the chances my projects don't get compromised.
+It's getting to the point where if I want to use your project and it isn't setup to follow these guidelines I will consider alternatives (or even forking it for myself if I need it enough) so that I can improve the chances that my projects don't get compromised.
 
-Here's a non-exhaustive list of the *bare minimum* things you should be doing to protect yourself (and your users).
+Here's a non-exhaustive list of the _bare minimum_ things you should be doing to protect yourself (and your users).
 
 ## 1. Turn on "Require approval for all external contributors" on GitHub
 
-A lot of the supply chain attacks by opening a pull request or otherwise triggering a workflow on a repository. This can be avoided by preventing any unauthorized users from triggering workflows without approval.
+A lot of the supply chain attacks work by opening a pull request or otherwise triggering a workflow on a repository. This can be avoided by preventing any unauthorized users from triggering workflows without approval.
 
-Navigate to `https://github.com/<owner>/<repo>/settings/actions` and find "Approval for running fork pull request workflows from contributors". Next select either "Require approval for first-time contributors" OR "Require approval for all external contributors" and then hit Save.
+Navigate to `https://github.com/<owner>/<repo>/settings/actions` and find "Approval for running fork pull request workflows from contributors". Next, select either "Require approval for first-time contributors" OR "Require approval for all external contributors" and then hit Save.
 
 ![approval settings ui](/blog/do-these-things-or-im-forking-your-project/approval-settings.png)
 
 ## 2. Setup trusted publishing on npm
 
-Setting up trusted publishing is incredibly easy (we won't mention the time it took me my first time but that's aside the point). 
+Setting up trusted publishing is incredibly easy (we won't mention the time it took me my first time but that's beside the point).
 
 Trusted publishing will ensure that your package is published from the repository that you select and generate an entry in a transparency log using sigstore so that others can audit where your code is coming from.
 
@@ -39,7 +39,7 @@ Here at the top you should see "Trusted Publisher":
 
 ![npm settings](/blog/do-these-things-or-im-forking-your-project/npm-settings.png)
 
-Select your "GitHub" from the options.
+Select "GitHub" from the options.
 
 Enter your repository information and use `publish.yml` as the "Workflow filename". If you are publishing from an environment then make sure you also provide the "Environment name" otherwise you can leave it blank.
 
@@ -49,7 +49,7 @@ Once you're done click "Set up connection" to complete the setup.
 
 Once you've setup the trusted publisher all that's left is to setup the workflows.
 
-My preferred way to do this (and the default for most of the ecosystem) is to use [github.com/changesets](https://github.com/changesets/changesets). Changesets allow you to automatically version and release your packages while also maintaining a `CHANGELOG.md` for each one of your published packages.
+My preferred way to do this (and the default for most of the ecosystem) is to use [github.com/changesets](https://github.com/changesets/changesets). Changesets allows you to automatically version and release your packages while also maintaining a `CHANGELOG.md` for each one of your published packages.
 
 The basic workflow for changesets is as follows:
 
@@ -58,7 +58,7 @@ The basic workflow for changesets is as follows:
 3. Changesets will look at these changesets and create a PR automatically to version your package accordingly
 4. Once the versioning PR is merged Changesets will automatically publish your package to npm
 
-I love changesets because it makes it easier to track what changed, when, and why by simply looking through the commits in the changelog. I sorely miss it on every project that's not making us of it. 
+I love changesets because it makes it easier to track what changed, when, and why by simply looking through the commits in the changelog. I sorely miss it on every project that's not making use of it.
 
 Here's how to set it up:
 
@@ -91,14 +91,14 @@ Create a `ci:release` script in your package.json like so:
 
 ```jsonc
 {
-    // ...
-    "private": false, // also important that private is set to false when publishing publish packages
-    // ...
-    "scripts": {
-        // ...
-        "ci:release": "npm run build:packages && changeset publish" // make sure you run `changeset publish` before you're done
-    }
-    // ...
+	// ...
+	"private": false, // also important that private is set to false when publishing packages
+	// ...
+	"scripts": {
+		// ...
+		"ci:release": "npm run build:packages && changeset publish" // make sure you run `changeset publish` before you're done
+	}
+	// ...
 }
 ```
 
@@ -114,47 +114,47 @@ Here's a (heavily commented) workflow you can use:
 name: Publish
 
 on:
-    push:
-        branches:
-            - main # if you are using master or another branch as your default branch make sure to change this
+  push:
+    branches:
+      - main # if you are using master or another branch as your default branch make sure to change this
 
 jobs:
-    release:
-        permissions:
-            contents: write # to create release (changesets/action)
-            pull-requests: write # to create pull request (changesets/action)
-            id-token: write # Required for OIDC
-        name: Build & Publish Release
-        runs-on: ubuntu-latest
+  release:
+    permissions:
+      contents: write # to create release (changesets/action)
+      pull-requests: write # to create pull request (changesets/action)
+      id-token: write # Required for OIDC
+    name: Build & Publish Release
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
-                fetch-depth: 0
-            - uses: pnpm/action-setup@v4
-            - uses: actions/setup-node@v4
-              with:
-                node-version: "24" # put whatever node version you are using here
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24' # put whatever node version you are using here
 
-            # we need to install the latest version of the npm CLI to ensure that it has the ability to generate provenance
-            - run: npm install -g npm@latest
+      # we need to install the latest version of the npm CLI to ensure that it has the ability to generate provenance
+      - run: npm install -g npm@latest
 
-            # if you're using another package manager make sure you have it here
-            - name: Install dependencies
-              run: pnpm install
+      # if you're using another package manager make sure you have it here
+      - name: Install dependencies
+        run: pnpm install
 
-            - name: Create Release Pull Request or Publish to npm
-              id: changesets
-              uses: changesets/action@v1
-              with:
-                # feel free to change the name of the PR title and commit here
-                commit: "chore(release): version package"
-                title: "chore(release): version package"
-                publish: pnpm ci:release # here's that script we created earlier
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # changesets needs this to be able to open PRs
-                NPM_CONFIG_PROVENANCE: true # make sure this is true you need this for trusted publishing
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # feel free to change the name of the PR title and commit here
+          commit: 'chore(release): version package'
+          title: 'chore(release): version package'
+          publish: pnpm ci:release # here's that script we created earlier
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # changesets needs this to be able to open PRs
+          NPM_CONFIG_PROVENANCE: true # make sure this is true you need this for trusted publishing
 ```
 
 ### 3. Configure GitHub settings for changesets
@@ -165,6 +165,8 @@ You will need to configure the following settings under `https://github.com/<own
 2. Choose whether GitHub Actions can create pull requests or submit approving pull request reviews - Check this box
 
 ![changeset settings](/blog/do-these-things-or-im-forking-your-project/changeset-settings.png)
+
+You may also consider configuring the [changeset-bot](https://github.com/apps/changeset-bot) to run on your PRs and let you know how your changesets will effect versioning of your packages.
 
 ### 4. Create a changeset and commit it to your main branch
 
