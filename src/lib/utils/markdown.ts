@@ -23,7 +23,10 @@ const highlighter = createHighlighterCore({
 		import('@shikijs/langs/sql'),
 		import('@shikijs/langs/csharp'),
 		import('@shikijs/langs/toml'),
-		import('@shikijs/langs/go')
+		import('@shikijs/langs/go'),
+		import('@shikijs/langs/sh'),
+		import('@shikijs/langs/yaml'),
+		import('@shikijs/langs/jsonc')
 	],
 	engine: createOnigurumaEngine(import('shiki/wasm'))
 });
@@ -43,6 +46,12 @@ function slugify(text: string): string {
 function isAbsoluteHttpUrl(href: string): boolean {
 	return /^https?:\/\//i.test(href.trim());
 }
+
+const COPY_ICON_SVG =
+	'<svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z"/></svg>';
+
+const CHECK_ICON_SVG =
+	'<svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z"/></svg>';
 
 async function getMarkdownRenderer() {
 	if (md) {
@@ -102,6 +111,12 @@ async function getMarkdownRenderer() {
 			transformers: [transformerNotationDiff(), transformerNotationHighlight()]
 		})
 	);
+	// wrap fenced code blocks with a copy button that appears on hover
+	const defaultFence = markdown.renderer.rules.fence!;
+	markdown.renderer.rules.fence = (tokens, idx, options, env, self) => {
+		const rendered = defaultFence(tokens, idx, options, env, self);
+		return `<div class="code-block">${rendered}<button class="code-block-copy" type="button" data-copy-code aria-label="Copy code" tabindex="-1">${COPY_ICON_SVG}${CHECK_ICON_SVG}<span class="sr-only">Copy code</span></button></div>\n`;
+	};
 	md = markdown;
 	return markdown;
 }

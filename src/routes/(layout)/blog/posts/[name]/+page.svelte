@@ -18,11 +18,42 @@
 	import Author from '$lib/features/blog/author.svelte';
 	import * as Toc from '$lib/components/ui/toc';
 	import { UseToc } from '$lib/hooks/use-toc.svelte';
+	import { copyText } from '$lib/hooks/use-clipboard.svelte';
 	import PromptCallout from '$lib/features/blog/prompt-callout.svelte';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 
 	const toc = new UseToc();
+
+	onMount(() => {
+		const root = toc.ref;
+		if (!root) return;
+
+		const timeouts = new WeakMap<HTMLButtonElement, ReturnType<typeof setTimeout>>();
+
+		const handler = async (event: Event) => {
+			const target = event.target as HTMLElement | null;
+			const button = target?.closest<HTMLButtonElement>('[data-copy-code]');
+			if (!button) return;
+
+			const pre = button.closest('.code-block')?.querySelector('pre');
+			if (!pre) return;
+
+			const status = await copyText(pre.textContent ?? '');
+			button.setAttribute('data-copied', status);
+
+			const existing = timeouts.get(button);
+			if (existing) clearTimeout(existing);
+			timeouts.set(
+				button,
+				setTimeout(() => button.removeAttribute('data-copied'), 1500)
+			);
+		};
+
+		root.addEventListener('click', handler);
+		return () => root.removeEventListener('click', handler);
+	});
 
 	const metaTags = $derived(
 		deepMerge(data.baseMetaTags, {
