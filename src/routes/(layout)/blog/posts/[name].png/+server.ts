@@ -23,10 +23,7 @@ export async function GET({ params, fetch }) {
 
 	if (post.key !== params.name) throw redirect(302, `/blog/posts/${post.key}.png`);
 
-	const avatarDataUrl = await fetchAsDataUrl(
-		'https://avatars.githubusercontent.com/ieedan',
-		fetch
-	);
+	const avatarDataUrl = await fetchAsDataUrl('https://avatars.githubusercontent.com/ieedan', fetch);
 
 	return new ImageResponse(
 		OG,
