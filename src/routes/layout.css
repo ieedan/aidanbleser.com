@@ -203,9 +203,56 @@
 		margin-bottom: calc(var(--spacing) * 6);
 		font-size: var(--text-sm);
 		line-height: var(--text-sm--line-height);
-		max-height: min(24rem, 70vh);
+		max-height: 600px;
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
+	}
+	.typography .code-block {
+		position: relative;
+	}
+	.typography .code-block-copy {
+		position: absolute;
+		top: calc(var(--spacing) * 2);
+		right: calc(var(--spacing) * 2);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: calc(var(--spacing) * 2);
+		width: calc(var(--spacing) * 8);
+		height: calc(var(--spacing) * 8);
+		border: 1px solid var(--color-border);
+		background-color: var(--color-background);
+		color: var(--color-muted-foreground);
+		opacity: 0;
+		cursor: pointer;
+		transition:
+			opacity 150ms ease,
+			color 150ms ease,
+			background-color 150ms ease;
+	}
+	.typography .code-block-copy:hover {
+		color: var(--color-foreground);
+		background-color: var(--color-secondary);
+	}
+	.typography .code-block:hover .code-block-copy,
+	.typography .code-block-copy:focus-visible,
+	.typography .code-block-copy[data-copied='success'],
+	.typography .code-block-copy[data-copied='failure'] {
+		opacity: 1;
+	}
+	.typography .code-block-copy svg {
+		width: 1rem;
+		height: 1rem;
+		flex-shrink: 0;
+	}
+	.typography .code-block-copy .check-icon {
+		display: none;
+	}
+	.typography .code-block-copy[data-copied='success'] .copy-icon {
+		display: none;
+	}
+	.typography .code-block-copy[data-copied='success'] .check-icon {
+		display: inline-block;
 	}
 	.typography code:not(pre code):not(.not-typography code) {
 		position: relative;
