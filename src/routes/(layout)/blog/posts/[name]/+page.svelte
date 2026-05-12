@@ -20,12 +20,13 @@
 	import { UseToc } from '$lib/hooks/use-toc.svelte';
 	import { copyText } from '$lib/hooks/use-clipboard.svelte';
 	import PromptCallout from '$lib/features/blog/prompt-callout.svelte';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 
 	const toc = new UseToc();
 
-	$effect(() => {
+	onMount(() => {
 		const root = toc.ref;
 		if (!root) return;
 
@@ -34,7 +35,7 @@
 		const handler = async (event: Event) => {
 			const target = event.target as HTMLElement | null;
 			const button = target?.closest<HTMLButtonElement>('[data-copy-code]');
-			if (!button || !root.contains(button)) return;
+			if (!button) return;
 
 			const pre = button.closest('.code-block')?.querySelector('pre');
 			if (!pre) return;

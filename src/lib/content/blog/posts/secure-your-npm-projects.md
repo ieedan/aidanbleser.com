@@ -1,8 +1,8 @@
 ---
-title: Do these things or I'm forking your project
-description: Your disregard for supply chain security is hurting all of us.
+title: It's time to secure your npm projects
+description: How to harden your npm projects against supply chain attacks.
 date: 2026-05-12
-prompt: Implement the guidelines laid out in this post and let me know what I need to do https://aidanbleser.com/blog/posts/do-these-things-or-im-forking-your-project.md
+prompt: Implement the guidelines laid out in this post and let me know what I need to do https://aidanbleser.com/blog/posts/secure-your-npm-projects.md
 ---
 
 In the recent months we have had multiple supply chain attacks directed at the npm ecosystem, including multiple worm attacks that aim to steal credentials used in CI environments.
@@ -17,7 +17,7 @@ A lot of the supply chain attacks work by opening a pull request or otherwise tr
 
 Navigate to `https://github.com/<owner>/<repo>/settings/actions` and find "Approval for running fork pull request workflows from contributors". Next, select either "Require approval for first-time contributors" OR "Require approval for all external contributors" and then hit Save.
 
-![approval settings ui](/blog/do-these-things-or-im-forking-your-project/approval-settings.png)
+![approval settings ui](/blog/secure-your-npm-projects/approval-settings.png)
 
 ## 2. Setup trusted publishing on npm
 
@@ -25,7 +25,7 @@ Setting up trusted publishing is incredibly easy (we won't mention the time it t
 
 Trusted publishing will ensure that your package is published from the repository that you select and generate an entry in a transparency log using sigstore so that others can audit where your code is coming from.
 
-![provenance certificate](/blog/do-these-things-or-im-forking-your-project/provenance.png)
+![provenance certificate](/blog/secure-your-npm-projects/provenance.png)
 
 Here's how you can setup trusted publishing for your projects on npm.
 
@@ -37,7 +37,7 @@ Navigate to your package and then to the "Settings" tab.
 
 Here at the top you should see "Trusted Publisher":
 
-![npm settings](/blog/do-these-things-or-im-forking-your-project/npm-settings.png)
+![npm settings](/blog/secure-your-npm-projects/npm-settings.png)
 
 Select "GitHub" from the options.
 
@@ -164,7 +164,7 @@ You will need to configure the following settings under `https://github.com/<own
 1. Workflow Permissions - Set this to "Read and write permissions"
 2. Choose whether GitHub Actions can create pull requests or submit approving pull request reviews - Check this box
 
-![changeset settings](/blog/do-these-things-or-im-forking-your-project/changeset-settings.png)
+![changeset settings](/blog/secure-your-npm-projects/changeset-settings.png)
 
 You may also consider configuring the [changeset-bot](https://github.com/apps/changeset-bot) to run on your PRs and let you know how your changesets will effect versioning of your packages.
 
