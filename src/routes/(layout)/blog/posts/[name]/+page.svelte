@@ -55,10 +55,32 @@
 		return () => root.removeEventListener('click', handler);
 	});
 
+	const ogImageUrl = $derived(`${page.url.origin}/blog/posts/${data.post.key}.png`);
+
 	const metaTags = $derived(
 		deepMerge(data.baseMetaTags, {
 			title: data.post.title,
-			description: data.post.description
+			description: data.post.description,
+			openGraph: {
+				title: data.post.title,
+				description: data.post.description,
+				url: `${page.url.origin}/blog/posts/${data.post.key}`,
+				type: 'article',
+				images: [
+					{
+						url: ogImageUrl,
+						width: 1200,
+						height: 630,
+						alt: data.post.title
+					}
+				]
+			},
+			twitter: {
+				cardType: 'summary_large_image',
+				title: data.post.title,
+				description: data.post.description,
+				image: ogImageUrl
+			}
 		})
 	);
 </script>
