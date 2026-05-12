@@ -19,6 +19,7 @@
 		"@dotenvx/dotenvx": "^1.52.0",
 		"@eslint/compat": "^2.0.2",
 		"@eslint/js": "^9.39.2",
+		"@ethercorps/sveltekit-og": "^4.2.1",
 		"@lukulent/svelte-umami": "^0.0.4",
 		"@shikijs/langs": "^3.22.0",
 		"@shikijs/markdown-it": "^3.22.0",
