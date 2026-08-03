@@ -154,7 +154,7 @@
 							<DropdownMenu.Item
 								onSelect={() => {
 									window.location.href =
-										"mailto:aidanbleser35@gmail.com?subject=Let's work together!";
+										"mailto:aidan@bleser.me?subject=Let's work together!";
 								}}
 							>
 								<RiMailLine class="size-4" />
