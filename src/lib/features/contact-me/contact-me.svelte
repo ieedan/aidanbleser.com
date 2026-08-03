@@ -4,6 +4,7 @@
 	import { RiMailLine } from 'remixicon-svelte';
 	import { Button } from '$lib/components/ui/button';
 	import type { WithoutChildren } from '$lib/utils';
+	import { contactMeHref } from './contact-me';
 
 	let { ...rest }: WithoutChildren<HTMLAttributes<HTMLDivElement>> = $props();
 </script>
@@ -12,7 +13,7 @@
 	<Sidebar.SectionHeading>Let's connect</Sidebar.SectionHeading>
 	<div class="flex flex-col gap-2">
 		<p class="text-sm">Want to work with me? Great! Reach out below!</p>
-		<Button href="mailto:aidanbleser35@gmail.com?subject=Let's work together!">
+		<Button href={contactMeHref}>
 			<RiMailLine class="size-4" />
 			Contact Me
 		</Button>

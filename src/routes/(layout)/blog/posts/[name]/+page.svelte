@@ -7,6 +7,7 @@
 	import { deepMerge, MetaTags } from 'svelte-meta-tags';
 	import { RiMoreLine, RiMailLine, RiHeartLine, RiLink } from 'remixicon-svelte';
 	import { socials } from '$lib/features/socials/socials';
+	import { contactMeHref } from '$lib/features/contact-me/contact-me';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { FinalchatLogo, MarkdownLogo } from '$lib/components/logos/index.js';
 	import OtherBlogPosts from '$lib/features/blog/other-blog-posts.svelte';
@@ -153,8 +154,7 @@
 							<DropdownMenu.Separator />
 							<DropdownMenu.Item
 								onSelect={() => {
-									window.location.href =
-										"mailto:aidanbleser35@gmail.com?subject=Let's work together!";
+									window.location.href = contactMeHref;
 								}}
 							>
 								<RiMailLine class="size-4" />

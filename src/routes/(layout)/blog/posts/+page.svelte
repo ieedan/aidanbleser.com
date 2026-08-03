@@ -14,6 +14,7 @@
 	} from 'remixicon-svelte';
 	import { deepMerge, MetaTags } from 'svelte-meta-tags';
 	import { socials } from '$lib/features/socials/socials';
+	import { contactMeHref } from '$lib/features/contact-me/contact-me';
 	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import { getMostRecentBlogPosts, formatDate } from '$lib/features/blog/blog';
 	import { Button } from '$lib/components/ui/button';
@@ -58,8 +59,7 @@
 							<DropdownMenu.Separator />
 							<DropdownMenu.Item
 								onSelect={() => {
-									window.location.href =
-										"mailto:aidanbleser35@gmail.com?subject=Let's work together!";
+									window.location.href = contactMeHref;
 								}}
 							>
 								<RiMailLine class="size-4" />
