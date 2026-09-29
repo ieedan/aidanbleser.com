@@ -1,5 +1,13 @@
-import { getBlogPost } from '$lib/features/blog/blog.js';
+import { getBlogPost, getBlogPostKeys } from '$lib/features/blog/blog.js';
 import { error, redirect } from '@sveltejs/kit';
+
+// prerender every known post, but still fall back to the server for unknown names
+// so that the old title based urls can redirect
+export const prerender = 'auto';
+
+export function entries() {
+	return getBlogPostKeys().map((name) => ({ name }));
+}
 
 export async function load({ params }) {
 	const post = await getBlogPost(params.name);

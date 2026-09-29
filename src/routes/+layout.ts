@@ -1,5 +1,7 @@
 import { defineBaseMetaTags } from 'svelte-meta-tags';
 
+export const prerender = true;
+
 export function load({ url }) {
 	const baseTags = defineBaseMetaTags({
 		openGraph: {

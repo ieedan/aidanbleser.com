@@ -4,7 +4,7 @@ description: How I grew and updated my tech stack in 2024.
 date: 2024-12-19
 ---
 
-Last december I recounted my journey as a developer in 2023 you can see that post [here](https://aidanbleser.com/blog/posts/My%202023%20Web%20Development%20Wrapped). Looking back on that post it's pretty incredible to see how things have changed and stayed the same.
+Last december I recounted my journey as a developer in 2023 you can see that post [here](https://aidanbleser.com/blog/posts/2023-wrapped). Looking back on that post it's pretty incredible to see how things have changed and stayed the same.
 
 Lets start by talking about where I started this year (the end of last years post):
 

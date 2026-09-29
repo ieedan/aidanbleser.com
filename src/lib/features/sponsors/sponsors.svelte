@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { getSponsors } from './sponsors.remote';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import * as Sidebar from '$lib/components/home/sidebar';
@@ -6,7 +7,8 @@
 
 	let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 
-	const sponsorsQuery = getSponsors();
+	// only fetch in the browser so that pages including this can be prerendered
+	const sponsorsQuery = browser ? getSponsors() : new Promise<never>(() => {});
 </script>
 
 <Sidebar.Section {...rest}>

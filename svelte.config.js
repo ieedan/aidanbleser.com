@@ -4,6 +4,10 @@ import adapter from '@sveltejs/adapter-vercel';
 const config = {
 	kit: {
 		adapter: adapter(),
+		prerender: {
+			// used as `url.origin` while prerendering so absolute urls (og images, etc.) are correct
+			origin: 'https://aidanbleser.com'
+		},
 		experimental: {
 			remoteFunctions: true
 		},

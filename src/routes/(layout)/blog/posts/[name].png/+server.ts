@@ -1,8 +1,16 @@
 import { error, redirect } from '@sveltejs/kit';
 import { ImageResponse } from '@ethercorps/sveltekit-og';
 import { GoogleFont, resolveFonts } from '@ethercorps/sveltekit-og/fonts';
-import { formatDate, getBlogPost } from '$lib/features/blog/blog.js';
+import { formatDate, getBlogPost, getBlogPostKeys } from '$lib/features/blog/blog.js';
 import OG from '$lib/features/blog/og.svelte';
+
+// prerender every known post, but still fall back to the server for unknown names
+// so that the old title based urls can redirect
+export const prerender = 'auto';
+
+export function entries() {
+	return getBlogPostKeys().map((name) => ({ name }));
+}
 
 const interRegular = new GoogleFont('Inter', { weight: 400 });
 const interSemiBold = new GoogleFont('Inter', { weight: 600 });

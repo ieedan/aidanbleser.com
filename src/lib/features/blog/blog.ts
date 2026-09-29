@@ -24,6 +24,10 @@ export function isPostNew(dateString: string): boolean {
 	return Date.now() - postDate < 30 * 24 * 60 * 60 * 1000;
 }
 
+export function getBlogPostKeys(): string[] {
+	return Object.keys(postsIndex);
+}
+
 export async function getBlogPost(name: string): Promise<BlogPost | null> {
 	let postKey: string | null = null;
 	for (const [key, value] of Object.entries(postsIndex)) {
