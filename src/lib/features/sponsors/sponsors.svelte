@@ -4,6 +4,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import * as Sidebar from '$lib/components/home/sidebar';
 	import { RiHeartLine } from 'remixicon-svelte';
+	import { sponsorHref } from './sponsors';
 
 	let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 
@@ -31,7 +32,7 @@
 		{/await}
 	</div>
 	<a
-		href="https://github.com/sponsors/ieedan"
+		href={sponsorHref}
 		class="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground hover:underline"
 	>
 		<RiHeartLine class="size-3 text-pink-600" />

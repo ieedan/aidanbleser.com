@@ -4,13 +4,9 @@
 	import Projects from '$lib/features/projects/projects.svelte';
 	import ContactMe from '$lib/features/contact-me/contact-me.svelte';
 	import Footer from '$lib/features/footer/footer.svelte';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import summary from '$prerendered/summary';
-	import { RiMoreLine, RiMailLine, RiHeartLine } from 'remixicon-svelte';
 	import { deepMerge, MetaTags } from 'svelte-meta-tags';
-	import { socials } from '$lib/features/socials/socials';
-	import { contactMeHref } from '$lib/features/contact-me/contact-me';
-	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
+	import MoreMenu from '$lib/features/more-menu/more-menu.svelte';
 	import OtherBlogPosts from '$lib/features/blog/other-blog-posts.svelte';
 
 	let { data } = $props();
@@ -41,36 +37,7 @@
 					</div>
 				</div>
 				<div>
-					<DropdownMenu.Root>
-						<DropdownMenu.Trigger class={buttonVariants({ size: 'icon', variant: 'outline' })}>
-							<RiMoreLine class="size-4" />
-							<span class="sr-only">More options</span>
-						</DropdownMenu.Trigger>
-						<DropdownMenu.Content align="end">
-							{#each socials as social (social.name)}
-								<DropdownMenu.CopyItem text={social.url}>
-									{#snippet icon()}
-										<social.logo class="size-4 text-foreground" />
-									{/snippet}
-									Copy {social.name} Profile
-								</DropdownMenu.CopyItem>
-							{/each}
-							<DropdownMenu.Separator />
-							<DropdownMenu.Item
-								onSelect={() => {
-									window.location.href = contactMeHref;
-								}}
-							>
-								<RiMailLine class="size-4" />
-								Contact Me
-							</DropdownMenu.Item>
-							<DropdownMenu.Separator />
-							<DropdownMenu.LinkItem href="https://github.com/sponsors/ieedan">
-								<RiHeartLine class="size-4 text-pink-600" />
-								Sponsor me
-							</DropdownMenu.LinkItem>
-						</DropdownMenu.Content>
-					</DropdownMenu.Root>
+					<MoreMenu />
 				</div>
 			</header>
 			<div class="typography p-4">

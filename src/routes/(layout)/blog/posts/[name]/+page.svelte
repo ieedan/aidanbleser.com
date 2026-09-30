@@ -5,13 +5,11 @@
 	import ContactMe from '$lib/features/contact-me/contact-me.svelte';
 	import Footer from '$lib/features/footer/footer.svelte';
 	import { deepMerge, MetaTags } from 'svelte-meta-tags';
-	import { RiMoreLine, RiMailLine, RiHeartLine, RiLink } from 'remixicon-svelte';
-	import { socials } from '$lib/features/socials/socials';
-	import { contactMeHref } from '$lib/features/contact-me/contact-me';
+	import { RiLink } from 'remixicon-svelte';
+	import MoreMenu from '$lib/features/more-menu/more-menu.svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { FinalchatLogo, MarkdownLogo } from '$lib/components/logos/index.js';
 	import OtherBlogPosts from '$lib/features/blog/other-blog-posts.svelte';
-	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { RiArrowLeftLine, RiTimeLine } from 'remixicon-svelte';
 	import { formatDate } from '$lib/features/blog/blog.js';
@@ -112,61 +110,32 @@
 					</div>
 				</div>
 				<div class="flex items-center gap-2">
-					<DropdownMenu.Root>
-						<DropdownMenu.Trigger class={buttonVariants({ size: 'icon', variant: 'outline' })}>
-							<RiMoreLine class="size-4" />
-							<span class="sr-only">More options</span>
-						</DropdownMenu.Trigger>
-						<DropdownMenu.Content align="end">
-							<DropdownMenu.CopyItem text={page.url.toString()}>
-								{#snippet icon()}
-									<RiLink class="size-4 text-foreground" />
-								{/snippet}
-								Copy URL
-							</DropdownMenu.CopyItem>
-							<DropdownMenu.CopyItem text={data.post.contentMd}>
-								{#snippet icon()}
-									<MarkdownLogo class="size-4 text-foreground" />
-								{/snippet}
-								Copy Markdown
-							</DropdownMenu.CopyItem>
-							<DropdownMenu.LinkItem reload href="/blog/posts/{data.post.key}.md">
+					<MoreMenu>
+						<DropdownMenu.CopyItem text={page.url.toString()}>
+							{#snippet icon()}
+								<RiLink class="size-4 text-foreground" />
+							{/snippet}
+							Copy URL
+						</DropdownMenu.CopyItem>
+						<DropdownMenu.CopyItem text={data.post.contentMd}>
+							{#snippet icon()}
 								<MarkdownLogo class="size-4 text-foreground" />
-								View as Markdown
-							</DropdownMenu.LinkItem>
-							<DropdownMenu.LinkItem
-								href={`https://finalchat.app/chat?q=Read this blog post by Aidan Bleser: https://aidanbleser.com/blog/posts/${
-									data.post.key
-								}.md I want to ask questions about it.`}
-							>
-								<FinalchatLogo class="size-4" />
-								Open in Finalchat
-							</DropdownMenu.LinkItem>
-							<DropdownMenu.Separator />
-							{#each socials as social (social.name)}
-								<DropdownMenu.CopyItem text={social.url}>
-									{#snippet icon()}
-										<social.logo class="size-4 text-foreground" />
-									{/snippet}
-									Copy {social.name} Profile
-								</DropdownMenu.CopyItem>
-							{/each}
-							<DropdownMenu.Separator />
-							<DropdownMenu.Item
-								onSelect={() => {
-									window.location.href = contactMeHref;
-								}}
-							>
-								<RiMailLine class="size-4" />
-								Contact Me
-							</DropdownMenu.Item>
-							<DropdownMenu.Separator />
-							<DropdownMenu.LinkItem href="https://github.com/sponsors/ieedan">
-								<RiHeartLine class="size-4 text-pink-600" />
-								Sponsor me
-							</DropdownMenu.LinkItem>
-						</DropdownMenu.Content>
-					</DropdownMenu.Root>
+							{/snippet}
+							Copy Markdown
+						</DropdownMenu.CopyItem>
+						<DropdownMenu.LinkItem reload href="/blog/posts/{data.post.key}.md">
+							<MarkdownLogo class="size-4 text-foreground" />
+							View as Markdown
+						</DropdownMenu.LinkItem>
+						<DropdownMenu.LinkItem
+							href={`https://finalchat.app/chat?q=Read this blog post by Aidan Bleser: https://aidanbleser.com/blog/posts/${
+								data.post.key
+							}.md I want to ask questions about it.`}
+						>
+							<FinalchatLogo class="size-4" />
+							Open in Finalchat
+						</DropdownMenu.LinkItem>
+					</MoreMenu>
 				</div>
 			</header>
 			<div class="typography p-4" bind:this={toc.ref}>
