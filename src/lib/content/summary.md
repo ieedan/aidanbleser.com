@@ -1,11 +1,17 @@
-I'm a software engineer from San Antonio, Texas. I learned to code to automate my KPIs as a maintenance supervisor and ended up building the [CMMS](https://www.ibm.com/think/topics/what-is-a-cmms) now used by Avanzar Interior Technologies.
+I'm a software engineer from San Antonio, Texas. 
 
-I started contributing to open source in 2024 and since have become a maintainer of several popular projects such as:
+You might recognize me from my work in these open source projects:
 
-- [shadcn-svelte](https://github.com/huntabyte/shadcn-svelte)
-- [jsrepo](https://github.com/ieedan/jsrepo)
-- [shadcn-svelte-extras](https://github.com/ieedan/shadcn-svelte-extras)
-- [finalchat](https://github.com/ieedan/finalchat)
+- [shadcn-svelte](https://github.com/huntabyte/shadcn-svelte) - Core Maintainer
+- [jsrepo](https://github.com/ieedan/jsrepo) - Creator
+- [shadcn-svelte-extras](https://github.com/ieedan/shadcn-svelte-extras) - Creator
+
+I am constantly looking for ways to automate/improve my workflow which has lead me to build a lot of my own tools like:
+
+- [super-review](https://github.com/ieedan/super-review) - A desktop app for reviewing code.
+- [bizi](https://github.com/ieedan/bizi) - A server and CLI to manage your local tasks.
+- [skilless](https://github.com/ieedan/skilless) - Powerful, invisible skill management.
+- [label](https://github.com/ieedan/label) - Issue labeling for open source projects built on top of Jev
 
 When I'm not building cool stuff on the internet I'm cycling, skiing, hiking, or just spending time with my beautiful wife.
 
